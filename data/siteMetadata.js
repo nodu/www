@@ -8,7 +8,7 @@ const siteMetadata = {
   theme: 'system', // system, dark or light
   siteUrl: 'https://nodu.io',
   siteRepo: 'https://github.com/nodu/www',
-  siteLogo: '/static/images/logo.png',
+  siteLogo: '/static/images/logo.svg',
   socialBanner: '/static/images/twitter-card.png',
   mastodon: '',
   email: 'blog@nodu.io',
