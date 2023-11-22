@@ -22,11 +22,12 @@ module.exports = {
         14: '3.5rem',
       },
       fontFamily: {
-        sans: ['var(--font-space-grotesk)', ...fontFamily.sans],
+        sans: ['var(--font-karla)', ...fontFamily.sans],
       },
       colors: {
-        primary: colors.pink,
+        primary: colors.blue,
         gray: colors.gray,
+        'tokyonightgreen': "#9ece6a",
       },
       typography: ({ theme }) => ({
         DEFAULT: {

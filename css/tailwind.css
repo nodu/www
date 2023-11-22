@@ -33,3 +33,16 @@ input:-webkit-autofill:focus {
 .katex-display {
   overflow: auto hidden;
 }
+
+h1 {
+  font-family: var(--font-overpass)
+}
+
+h2 {
+  /* font-family: var(--font-nunito-sans) */
+  /* font-family: var(--font-cormorant) */
+  font-family: var(--font-crimson-pro)
+
+  /* font-family: var(--font-noto-serif); */
+  /* font-style: oblique; */
+}

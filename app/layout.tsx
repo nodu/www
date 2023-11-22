@@ -1,7 +1,8 @@
 import 'css/tailwind.css'
 import 'pliny/search/algolia.css'
 
-import { Space_Grotesk } from 'next/font/google'
+// import { Space_Grotesk, Crimson_Pro, Noto_Serif, Karla, Nunito_Sans, Cormorant, Roboto_Mono, Yrsa, Varta, Overpass } from 'next/font/google'
+import { Crimson_Pro, Karla, Overpass } from 'next/font/google'
 import { Analytics, AnalyticsConfig } from 'pliny/analytics'
 import { SearchProvider, SearchConfig } from 'pliny/search'
 import Header from '@/components/Header'
@@ -11,10 +12,55 @@ import siteMetadata from '@/data/siteMetadata'
 import { ThemeProviders } from './theme-providers'
 import { Metadata } from 'next'
 
-const space_grotesk = Space_Grotesk({
+// const space_grotesk = Space_Grotesk({
+//   subsets: ['latin'],
+//   display: 'swap',
+//   variable: '--font-space-grotesk',
+// })
+// const cormorant = Cormorant({
+//   subsets: ['latin'],
+//   display: 'swap',
+//   variable: '--font-cormorant',
+// })
+// const roboto_mono = Roboto_Mono({
+//   subsets: ['latin'],
+//   display: 'swap',
+//   variable: '--font-roboto-mono',
+// })
+// const yrsa = Yrsa({
+//   subsets: ['latin'],
+//   display: 'swap',
+//   variable: '--font-yrsa',
+// })
+// const varta = Varta({
+//   subsets: ['latin'],
+//   display: 'swap',
+//   variable: '--font-varta',
+// })
+const overpass = Overpass({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-space-grotesk',
+  variable: '--font-overpass',
+})
+// const nunito_sans = Nunito_Sans({
+//   subsets: ['latin'],
+//   display: 'swap',
+//   variable: '--font-nunito-sans',
+// })
+const karla = Karla({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-karla',
+})
+// const noto_serif = Noto_Serif({
+//   subsets: ['latin'],
+//   display: 'swap',
+//   variable: '--font-noto-serif',
+// })
+const crimson_pro = Crimson_Pro({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-crimson-pro',
 })
 
 export const metadata: Metadata = {
@@ -61,7 +107,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang={siteMetadata.language}
-      className={`${space_grotesk.variable} scroll-smooth`}
+      // className={`${cormorant.variable} ${noto_serif.variable} ${crimson_pro.variable} ${karla.variable} ${nunito_sans.variable} ${space_grotesk.variable} ${yrsa.variable} ${overpass.variable} ${varta.variable} ${roboto_mono.variable} scroll-smooth`}
+      className={`${crimson_pro.variable} ${karla.variable} ${overpass.variable} } scroll-smooth`}
       suppressHydrationWarning
     >
       <link rel="apple-touch-icon" sizes="76x76" href="/static/favicons/apple-touch-icon.png" />
