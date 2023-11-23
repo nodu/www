@@ -22,7 +22,8 @@ module.exports = {
         14: '3.5rem',
       },
       fontFamily: {
-        sans: ['var(--font-karla)', ...fontFamily.sans],
+        sans: [...fontFamily.sans],
+        serif: ['var(--font-karla)'],
       },
       colors: {
         primary: colors.blue,

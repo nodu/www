@@ -108,7 +108,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html
       lang={siteMetadata.language}
       // className={`${cormorant.variable} ${noto_serif.variable} ${crimson_pro.variable} ${karla.variable} ${nunito_sans.variable} ${space_grotesk.variable} ${yrsa.variable} ${overpass.variable} ${varta.variable} ${roboto_mono.variable} scroll-smooth`}
-      className={`${overpass.variable} ${crimson_pro.variable} ${karla.variable}} scroll-smooth`}
+      className={`${overpass.variable} ${crimson_pro.variable} ${karla.variable} } scroll-smooth`}
       suppressHydrationWarning
     >
       <link rel="apple-touch-icon" sizes="76x76" href="/static/favicons/apple-touch-icon.png" />
@@ -134,7 +134,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ThemeProviders>
           <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />
           <SectionContainer>
-            <div className="flex h-screen flex-col justify-between font-sans">
+            <div className="flex h-screen flex-col justify-between font-serif">
               <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>
                 <Header />
                 <main className="mb-auto">{children}</main>
