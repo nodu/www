@@ -13,6 +13,9 @@ export default function Page() {
   return (
     <>
       <AuthorLayout content={mainContent}>
+        <h1>h1 lorem ipum pop gerg</h1>
+        <h2>h2 lorem ipum pop gerg</h2>
+        <p>p lorem ipum pop gerg</p>
         <MDXLayoutRenderer code={author.body.code} />
       </AuthorLayout>
     </>

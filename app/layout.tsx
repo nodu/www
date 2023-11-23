@@ -2,7 +2,7 @@ import 'css/tailwind.css'
 import 'pliny/search/algolia.css'
 
 // import { Space_Grotesk, Crimson_Pro, Noto_Serif, Karla, Nunito_Sans, Cormorant, Roboto_Mono, Yrsa, Varta, Overpass } from 'next/font/google'
-import { Crimson_Pro, Karla, Overpass } from 'next/font/google'
+import { Overpass, Crimson_Pro, Karla } from 'next/font/google'
 import { Analytics, AnalyticsConfig } from 'pliny/analytics'
 import { SearchProvider, SearchConfig } from 'pliny/search'
 import Header from '@/components/Header'
@@ -47,11 +47,6 @@ const overpass = Overpass({
 //   display: 'swap',
 //   variable: '--font-nunito-sans',
 // })
-const karla = Karla({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-karla',
-})
 // const noto_serif = Noto_Serif({
 //   subsets: ['latin'],
 //   display: 'swap',
@@ -61,6 +56,11 @@ const crimson_pro = Crimson_Pro({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-crimson-pro',
+})
+const karla = Karla({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-karla',
 })
 
 export const metadata: Metadata = {
@@ -108,7 +108,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html
       lang={siteMetadata.language}
       // className={`${cormorant.variable} ${noto_serif.variable} ${crimson_pro.variable} ${karla.variable} ${nunito_sans.variable} ${space_grotesk.variable} ${yrsa.variable} ${overpass.variable} ${varta.variable} ${roboto_mono.variable} scroll-smooth`}
-      className={`${crimson_pro.variable} ${karla.variable} ${overpass.variable} } scroll-smooth`}
+      className={`${overpass.variable} ${crimson_pro.variable} ${karla.variable}} scroll-smooth`}
       suppressHydrationWarning
     >
       <link rel="apple-touch-icon" sizes="76x76" href="/static/favicons/apple-touch-icon.png" />
