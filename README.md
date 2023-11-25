@@ -1,4 +1,3 @@
-
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/timlrx/tailwind-nextjs-starter-blog)
 
 Facing issues? Check the [FAQ page](https://github.com/timlrx/tailwind-nextjs-starter-blog/wiki) and do a search on past issues. Feel free to open a new issue if none has been posted previously.
@@ -21,7 +20,7 @@ Facing issues? Check the [FAQ page](https://github.com/timlrx/tailwind-nextjs-st
 - [Example of long prose](https://tailwind-nextjs-starter-blog.vercel.app/blog/the-time-machine)
 - [Example of Nested Route Post](https://tailwind-nextjs-starter-blog.vercel.app/blog/nested-route/introducing-multi-part-posts-with-nested-routing)
 
-```
+````
 
 2. Personalize `siteMetadata.js` (site related information)
 3. Modify the content security policy in `next.config.js` if you want to use
@@ -36,7 +35,7 @@ Facing issues? Check the [FAQ page](https://github.com/timlrx/tailwind-nextjs-st
 
 ```bash
 yarn
-```
+````
 
 ## Development
 
@@ -286,8 +285,7 @@ Using the template? Support this effort by giving a star on GitHub, sharing your
 
 [MIT](https://github.com/timlrx/tailwind-nextjs-starter-blog/blob/main/LICENSE) © [Timothy Lin](https://www.timlrx.com)
 
-TODO
----
+## TODO
 
 - [x] check build output of nextjs to see if android favicons are present
 - [x] delete favicons, make note on sites

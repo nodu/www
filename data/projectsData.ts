@@ -29,7 +29,8 @@ const projectsData = [
   },
   {
     title: 'Defaults',
-    description: 'Sane set of aliases and functions to instantaly setup containers and new servers for debugging.',
+    description:
+      'Sane set of aliases and functions to instantaly setup containers and new servers for debugging.',
     imgSrc: '/static/images/google.png',
     href: '/blog/defaults',
     showProject: false,

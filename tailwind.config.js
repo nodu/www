@@ -28,7 +28,7 @@ module.exports = {
       colors: {
         primary: colors.blue,
         gray: colors.gray,
-        'tokyonightgreen': "#9ece6a",
+        tokyonightgreen: '#9ece6a',
       },
       typography: ({ theme }) => ({
         DEFAULT: {
