@@ -285,3 +285,11 @@ Using the template? Support this effort by giving a star on GitHub, sharing your
 ## Licence
 
 [MIT](https://github.com/timlrx/tailwind-nextjs-starter-blog/blob/main/LICENSE) © [Timothy Lin](https://www.timlrx.com)
+
+TODO
+---
+
+- [x] check build output of nextjs to see if android favicons are present
+- [x] delete favicons, make note on sites
+- [ ] write oldest blog post (likely japan cycling)
+- [ ] (blog post?) - favicons https://realfavicongenerator.net https://maskable.app/editor https://fontjoy.com/# https://fonts.google.com/variablefonts?vfquery=crimson#axis-definitions

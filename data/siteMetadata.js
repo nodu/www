@@ -3,7 +3,7 @@ const siteMetadata = {
   title: 'Nodu.io',
   author: 'Matt Nodurfth',
   headerTitle: 'Matt Nodurfth',
-  description: 'Matt Nodurfth - Profile, Bio, and Blog',
+  description: 'Sharing Projects and interests.',
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://nodu.io',
