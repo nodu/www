@@ -4,56 +4,61 @@ import { genPageMetadata } from 'app/seo'
 
 // export const metadata = genPageMetadata({ title: 'Audiogpt' })
 
-// export default function Page() {
-//
-//   return (
-//     <>
-//       <h1>New page</h1>
-//     </>
-//   )
-// }
-
-
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
 export default function Page() {
+  // Initialize mediaRecorder with the correct type
+  const [mediaRecorder, setMediaRecorder] = useState<MediaRecorder | null>(null)
+  const [audioChunks, setAudioChunks] = useState<BlobPart[]>([])
+  const [recording, setRecording] = useState(false)
 
-  const [permission, setPermission] = useState(false);
-  const [stream, setStream] = useState(null);
+  const handleStartRecording = async () => {
+    try {
+      if (recording) {
+        // Check if mediaRecorder is not null
+        if (mediaRecorder) {
+          mediaRecorder.stop()
+        }
+        setRecording(false)
+      } else {
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
+        const recorder = new MediaRecorder(stream)
+        setMediaRecorder(recorder)
 
-  const getMicrophonePermission = async () => {
-    if ("MediaRecorder" in window) {
-      try {
-        const streamData = await navigator.mediaDevices.getUserMedia({
-          audio: true,
-          video: false,
-        });
-        setPermission(true);
-        setStream(streamData);
-      } catch (err) {
-        alert(err.message);
+        recorder.ondataavailable = (event) => {
+          setAudioChunks((currentChunks) => [...currentChunks, event.data])
+        }
+
+        recorder.onstop = handleSaveRecording
+
+        recorder.start()
+        setRecording(true)
       }
-    } else {
-      alert("The MediaRecorder API is not supported in your browser.");
+    } catch (error) {
+      console.error('Error starting recording:', error)
+      alert('Failed to start recording. Make sure your microphone is working and accessible.')
     }
-  };
+  }
+
+  const handleSaveRecording = () => {
+    const blob = new Blob(audioChunks, { type: 'audio/wav' })
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+
+    const dateTimeStamp = new Date().toISOString().replace(/:/g, '-')
+    a.download = `recording-${dateTimeStamp}.wav`
+    a.click()
+
+    URL.revokeObjectURL(url)
+    setAudioChunks([])
+  }
+
   return (
     <div>
-      <h2>Audio Recorder</h2>
-      <main>
-        <div className="audio-controls">
-          {!permission ? (
-            <button onClick={getMicrophonePermission} type="button">
-              Get Microphone
-            </button>
-          ) : null}
-          {permission ? (
-            <button type="button">
-              Record
-            </button>
-          ) : null}
-        </div>
-      </main>
+      <button onClick={handleStartRecording}>
+        {recording ? 'Stop Recording' : 'Start Recording'}
+      </button>
     </div>
-  );
-};
+  )
+}
