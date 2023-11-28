@@ -102,7 +102,9 @@ export default function Page() {
       <div>
         {recordings.map((recording, index) => (
           <div key={index}>
-            <audio controls src={URL.createObjectURL(recording.blob)} />
+            <audio controls src={URL.createObjectURL(recording.blob)}>
+              <track kind="captions" />
+            </audio>
             <a href={URL.createObjectURL(recording.blob)} download={recording.name}>
               Download {recording.name}
             </a>

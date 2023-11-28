@@ -22,7 +22,7 @@ export default function AudioVisualizer({ audioStream }) {
         audioContext.close()
       }
     }
-  }, [])
+  })
 
   useEffect(() => {
     // Handle changes in audioStream
