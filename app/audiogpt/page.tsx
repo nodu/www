@@ -4,33 +4,84 @@ import { genPageMetadata } from 'app/seo'
 
 // export const metadata = genPageMetadata({ title: 'Audiogpt' })
 
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
+import {
+  addRecording,
+  getAllRecordings,
+  deleteRecording,
+  renameRecording,
+} from '../indexedDBHelper'
+import AudioVisualizer from '../../components/AudioVisualizer'
+
+interface Recording {
+  blob: Blob
+  name: string
+}
 
 export default function Page() {
-  // Initialize mediaRecorder with the correct type
   const [mediaRecorder, setMediaRecorder] = useState<MediaRecorder | null>(null)
-  const [audioChunks, setAudioChunks] = useState<BlobPart[]>([])
   const [recording, setRecording] = useState(false)
+  const [recordings, setRecordings] = useState<Recording[]>([])
+  const [audioStream, setAudioStream] = useState<MediaStream | null>(null)
+  const audioChunksRef = useRef<Blob[]>([])
+
+  useEffect(() => {
+    const loadRecordings = async () => {
+      const recordings = await getAllRecordings()
+      setRecordings(recordings)
+    }
+
+    loadRecordings()
+  }, [])
+
+  const handleDeleteRecording = async (name) => {
+    await deleteRecording(name)
+    setRecordings(recordings.filter((recording) => recording.name !== name))
+  }
+
+  const handleSaveRecording = async () => {
+    if (audioChunksRef.current.length > 0) {
+      const blob = new Blob(audioChunksRef.current, { type: 'audio/wav' })
+      const dateTimeStamp = new Date().toISOString().replace(/:/g, '-')
+      // const name = `recording-${dateTimeStamp}.wav`
+      const name = `recording-${dateTimeStamp}`
+
+      await addRecording({ name, blob })
+      setRecordings((prevRecordings) => [...prevRecordings, { name, blob }])
+      audioChunksRef.current = []
+    } else {
+      console.error('No audio data was recorded.')
+      // Handle the case where no data was recorded
+    }
+  }
 
   const handleStartRecording = async () => {
     try {
       if (recording) {
-        // Check if mediaRecorder is not null
         if (mediaRecorder) {
           mediaRecorder.stop()
+          setAudioStream(null)
         }
         setRecording(false)
       } else {
         const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
+
         const recorder = new MediaRecorder(stream)
+
+        setAudioStream(stream) //set stream for AudioVisualizer
         setMediaRecorder(recorder)
+        audioChunksRef.current = []
 
         recorder.ondataavailable = (event) => {
-          setAudioChunks((currentChunks) => [...currentChunks, event.data])
+          if (typeof event.data === 'undefined') return
+          if (event.data.size === 0) return
+
+          audioChunksRef.current.push(event.data)
         }
 
         recorder.onstop = handleSaveRecording
 
+        // recorder.start(1000)
         recorder.start()
         setRecording(true)
       }
@@ -40,25 +91,27 @@ export default function Page() {
     }
   }
 
-  const handleSaveRecording = () => {
-    const blob = new Blob(audioChunks, { type: 'audio/wav' })
-    const url = URL.createObjectURL(blob)
-    const a = document.createElement('a')
-    a.href = url
-
-    const dateTimeStamp = new Date().toISOString().replace(/:/g, '-')
-    a.download = `recording-${dateTimeStamp}.wav`
-    a.click()
-
-    URL.revokeObjectURL(url)
-    setAudioChunks([])
-  }
-
   return (
     <div>
+      {audioStream && <AudioVisualizer audioStream={audioStream} />}
+
       <button onClick={handleStartRecording}>
         {recording ? 'Stop Recording' : 'Start Recording'}
       </button>
+
+      <div>
+        {recordings.map((recording, index) => (
+          <div key={index}>
+            <audio controls src={URL.createObjectURL(recording.blob)} />
+            <a href={URL.createObjectURL(recording.blob)} download={recording.name}>
+              Download {recording.name}
+            </a>
+            <p>
+              <button onClick={() => handleDeleteRecording(recording.name)}>Delete</button>
+            </p>
+          </div>
+        ))}
+      </div>
     </div>
   )
 }

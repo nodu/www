@@ -6571,6 +6571,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"idb@npm:^7.1.1":
+  version: 7.1.1
+  resolution: "idb@npm:7.1.1"
+  checksum: 1973c28d53c784b177bdef9f527ec89ec239ec7cf5fcbd987dae75a16c03f5b7dfcc8c6d3285716fd0309dd57739805390bd9f98ce23b1b7d8849a3b52de8d56
+  languageName: node
+  linkType: hard
+
 "ieee754@npm:^1.1.13":
   version: 1.2.1
   resolution: "ieee754@npm:1.2.1"
@@ -10960,6 +10967,7 @@ __metadata:
     github-slugger: ^1.4.0
     gray-matter: ^4.0.2
     husky: ^8.0.0
+    idb: ^7.1.1
     image-size: 1.0.0
     lint-staged: ^13.0.0
     next: 14.0.3
