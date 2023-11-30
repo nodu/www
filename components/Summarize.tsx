@@ -11,14 +11,21 @@ interface Props {
   summary: string
 }
 
-export default function Summarize({ apikey, transcript, name, setRecordings, updateRecording, summary }: Props) {
-  const [showModal, setShowModal] = useState<Boolean>(false);
+export default function Summarize({
+  apikey,
+  transcript,
+  name,
+  setRecordings,
+  updateRecording,
+  summary,
+}: Props) {
+  const [showModal, setShowModal] = useState<Boolean>(false)
 
   const gptEndpoint = 'https://api.openai.com/v1/chat/completions'
   const models = {
-    gpt4: "gpt-4",
-    gpt4pv: "gpt-4-1106-preview",
-    gpt35t: "gpt-3.5-turbo",
+    gpt4: 'gpt-4',
+    gpt4pv: 'gpt-4-1106-preview',
+    gpt35t: 'gpt-3.5-turbo',
   }
   const temperature = null
 
@@ -54,35 +61,33 @@ Now, here is the input text:
   const writingStyle = ``
   const summaryLength = ``
 
-
   const handleSummary = async () => {
-
     // Credit https://nicheless.blog/post/audiopen-prompts
     const requestBody = {
       model: models.gpt4pv,
       temperature: temperature,
       messages: [
         {
-          "role": "system",
-          "content": prompt,
+          role: 'system',
+          content: prompt,
         },
         {
-          "role": "user",
-          "content": transcript,
-        }
-      ]
+          role: 'user',
+          content: transcript,
+        },
+      ],
     }
 
-    async function postData(url = "", body = {}) {
+    async function postData(url = '', body = {}) {
       const response = await fetch(url, {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "Authorization": `Bearer ${apikey} `,
-          "Content-Type": "application/json"
+          Authorization: `Bearer ${apikey} `,
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify(body),
-      });
-      return response.json();
+      })
+      return response.json()
     }
 
     postData(gptEndpoint, requestBody).then((response) => {
@@ -90,16 +95,20 @@ Now, here is the input text:
       const summaryResponse = response.choices[0].message.content
       const usage = response.usage
 
-      setRecordings((prevRecs) => prevRecs.map(rec =>
-        rec.name === name ? {
-          ...rec,
-          summary: summaryResponse,
-          metaData: usage,
-        } : rec
-      ));
+      setRecordings((prevRecs) =>
+        prevRecs.map((rec) =>
+          rec.name === name
+            ? {
+                ...rec,
+                summary: summaryResponse,
+                metaData: usage,
+              }
+            : rec
+        )
+      )
 
       updateRecording(name, { summary: summaryResponse })
-    });
+    })
   }
 
   const handleSave = async (FormData) => {
@@ -108,7 +117,7 @@ Now, here is the input text:
   return (
     <>
       <button
-        className="bg-blue-500 text-white active:bg-blue-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+        className="mb-1 mr-1 rounded bg-blue-500 px-6 py-3 text-sm font-bold uppercase text-white shadow outline-none transition-all duration-150 ease-linear hover:shadow-lg focus:outline-none active:bg-blue-600"
         type="button"
         onClick={() => setShowModal(true)}
       >
@@ -116,28 +125,22 @@ Now, here is the input text:
       </button>
       {showModal ? (
         <>
-          <div
-            className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
-          >
-            <div className="relative w-auto my-6 mx-auto max-w-3xl">
+          <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overflow-x-hidden outline-none focus:outline-none">
+            <div className="relative mx-auto my-6 w-auto max-w-3xl">
               {/*content*/}
-              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+              <div className="relative flex w-full flex-col rounded-lg border-0 bg-white shadow-lg outline-none focus:outline-none">
                 {/*header*/}
-                <div className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
-                  <h3 className="text-3xl font-semibold text-black">
-                    Transcription Settings
-                  </h3>
+                <div className="border-blueGray-200 flex items-start justify-between rounded-t border-b border-solid p-5">
+                  <h3 className="text-3xl font-semibold text-black">Transcription Settings</h3>
                   <button
-                    className="p-1 ml-auto bg-transparent border-0 text-black float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
+                    className="float-right ml-auto border-0 bg-transparent p-1 text-3xl font-semibold leading-none text-black outline-none focus:outline-none"
                     onClick={() => setShowModal(false)}
                   >
-                    <span className="h-6 w-6 text-2xl block">
-                      X
-                    </span>
+                    <span className="block h-6 w-6 text-2xl">X</span>
                   </button>
                 </div>
                 {/*body*/}
-                <form className="py-3 px-4 w-full max-w-lg" action={handleSave}>
+                <form className="w-full max-w-lg px-4 py-3" action={handleSave}>
                   {/* <div className="flex flex-wrap -mx-3 mb-6"> */}
                   {/*   <div className="w-full px-3"> */}
                   {/*     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-whisperPrompt"> */}
@@ -155,16 +158,16 @@ Now, here is the input text:
                   {/*   </div> */}
                   {/* </div> */}
 
-                  <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
+                  <div className="border-blueGray-200 flex items-center justify-end rounded-b border-t border-solid p-6">
                     <button
-                      className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                      className="background-transparent mb-1 mr-1 px-6 py-2 text-sm font-bold uppercase text-red-500 outline-none transition-all duration-150 ease-linear focus:outline-none"
                       type="button"
                       onClick={() => setShowModal(false)}
                     >
                       Close
                     </button>
                     <button
-                      className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                      className="mb-1 mr-1 rounded bg-emerald-500 px-6 py-3 text-sm font-bold uppercase text-white shadow outline-none transition-all duration-150 ease-linear hover:shadow-lg focus:outline-none active:bg-emerald-600"
                       type="submit"
                     >
                       Save
@@ -174,10 +177,9 @@ Now, here is the input text:
               </div>
             </div>
           </div>
-          <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+          <div className="fixed inset-0 z-40 bg-black opacity-25"></div>
         </>
-      ) : null
-      }
+      ) : null}
       <div>
         <button onClick={handleSummary}>{summary ? 'Re-Summaraize' : 'Summaraize'}</button>
       </div>
