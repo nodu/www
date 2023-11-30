@@ -12,6 +12,8 @@ import {
   renameRecording,
 } from '../indexedDBHelper'
 import AudioVisualizer from '../../components/AudioVisualizer'
+import Transcribe from '../../components/Transcribe'
+import Summarize from '../../components/Summarize'
 
 interface Recording {
   blob: Blob
@@ -43,8 +45,7 @@ export default function Page() {
     if (audioChunksRef.current.length > 0) {
       const blob = new Blob(audioChunksRef.current, { type: 'audio/wav' })
       const dateTimeStamp = new Date().toISOString().replace(/:/g, '-')
-      // const name = `recording-${dateTimeStamp}.wav`
-      const name = `recording-${dateTimeStamp}`
+      const name = `recording-${dateTimeStamp}.wav`
 
       await addRecording({ name, blob })
       setRecordings((prevRecordings) => [...prevRecordings, { name, blob }])
@@ -108,12 +109,16 @@ export default function Page() {
             <a href={URL.createObjectURL(recording.blob)} download={recording.name}>
               Download {recording.name}
             </a>
-            <p>
+            <div>
               <button onClick={() => handleDeleteRecording(recording.name)}>Delete</button>
-            </p>
+              <Transcribe recording={recording} setRecording={setRecording} recordingName={recording.name} blob={recording.blob} />
+              {/* TODO: just pass the data, don't do lookups inside these childen components */}
+              <Summarize recordingName={recording.name} transcipt={recording.transcipt} />
+            </div>
           </div>
         ))}
       </div>
+
     </div>
   )
 }

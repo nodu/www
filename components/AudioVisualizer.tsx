@@ -1,6 +1,12 @@
+'use client'
+
 import React, { useRef, useEffect } from 'react'
 
-export default function AudioVisualizer({ audioStream }) {
+interface Props {
+  audioStream: MediaStream;
+}
+
+export default function AudioVisualizer({ audioStream }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   let audioContext: AudioContext | null = null
   let analyser: AnalyserNode
