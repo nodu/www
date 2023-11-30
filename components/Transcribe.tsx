@@ -53,7 +53,10 @@ export default function Transcribe({ apikey, blob, setRecordings, updateRecordin
 
 
       setRecordings((prevRecs) => prevRecs.map(rec =>
-        rec.name === name ? { ...rec, transcript: transcribedText } : rec
+        rec.name === name ? {
+          ...rec,
+          transcript: transcribedText,
+        } : rec
       ));
 
       // Update the IndexedDB entry with the new transcript
@@ -62,13 +65,13 @@ export default function Transcribe({ apikey, blob, setRecordings, updateRecordin
   }
   const handleSave = async (FormData) => {
     setShowModal(false)
-    // const key = FormData.get("apikey")
-    // setSettings({ ...settings, apikey: key })
-    // addSetting({ name: "apikey", value: key })
-
     const whisperPrompt = FormData.get("whisperPrompt")
-    setRecording(r => ({ ...r, whisperPrompt }));
-    updateRecording(name, { whisperPrompt })
+    setRecordings((prevRecs) => prevRecs.map(rec =>
+      rec.name === name ? {
+        ...rec,
+        whisperPrompt,
+      } : rec
+    ));
   }
 
   return (
@@ -104,22 +107,6 @@ export default function Transcribe({ apikey, blob, setRecordings, updateRecordin
                 </div>
                 {/*body*/}
                 <form className="py-3 px-4 w-full max-w-lg" action={handleSave}>
-                  <div className="flex flex-wrap -mx-3 mb-6">
-                    <div className="w-full px-3">
-                      <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-apikey">
-                        API KEY:
-                      </label>
-                      <input
-                        className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                        id="grid-apikey"
-                        type="text"
-                        placeholder={apikey || "sk-..."}
-                        defaultValue={apikey ?? ''}
-                        name="apikey"
-                      />
-                      <p className="text-gray-600 text-xs italic">API KEY for openai</p>
-                    </div>
-                  </div>
                   <div className="flex flex-wrap -mx-3 mb-6">
                     <div className="w-full px-3">
                       <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-whisperPrompt">

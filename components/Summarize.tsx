@@ -23,16 +23,34 @@ export default function Summarize({ apikey, transcript, name, setRecordings, upd
   const temperature = null
 
   const prompt = `
-Your task is to summarize my words while maintaining my unique style. Please provide a concise and accurate summary that captures the essence of what I have said, using language and phrasing that reflects my personal style.
-Please note that your response should be flexible enough to allow for various relevant and creative summaries.You should focus on preserving the tone, voice, and personality of my original words, while still conveying the main points clearly and effectively.
-Do not make up information that is not found in my words. Make sure to clean up my words by removing crutch words like um and ah.Form clearly structured text, organizing ideas so they are easily readable.
+Your task is to summarize my words while maintaining my unique style.
+Please provide a concise and accurate summary that captures the essence of what I have said, using language and phrasing that reflects my personal style.
+Please note that your response should be flexible enough to allow for various relevant and creative summaries.
+You should focus on preserving the tone, voice, and personality of my original words, while still conveying the main points clearly and effectively.
+Do not make up information that is not found in my words.
+Make sure to clean up my words by removing crutch words like um and ah.
+Form clearly structured text, organizing ideas so they are easily readable.
+Do your best and only send back the new text.
 `
-
-  // You are a great writer who writes very clearly. You write in English (US). Write simple and easy words that a 5th grader can understand. Make the writing very clear.
-  // Now, here is some text. Change it to the writing style we talked about. Make it shorter too. Use paragraphs and punctuation. Just write the text.
-  // Remember your writing style and follow it while editing this text. If needed, change how the text flows to make it clearer. Also add breaks and punctuation where needed to make the text easier to understand. Do your best and only send back the new text.
-  // You can change the order of the words if it helps.
+  const prompt2 = `
+You are a great writer who writes very clearly.
+Your task is to summarize the input text while maintaining the unique style.
+You write in English (US).
+Write simple and easy words that a 5th grader can understand.
+Make the writing very clear.
+If needed, change how the text flows to make it clearer.
+You can change the order of the words if it helps.
+Use paragraphs and punctuation where needed to make the text easier to understand.
+Do your best and only send back the new text.
+Do not make up information that is not found in the input text.
+Make sure to clean up the text by removing crutch words like um and ah.
+Now, here is the input text:
+`
+  // Change it to the writing style we talked about.
+  // Make it shorter too.
+  // Remember your writing style and follow it while editing this text.
   // Now, shorten the text to half its length. Make sure it still makes sense and is easy to read.
+  //
   const writingStyle = ``
   const summaryLength = ``
 
@@ -72,9 +90,12 @@ Do not make up information that is not found in my words. Make sure to clean up 
       const summaryResponse = response.choices[0].message.content
       const usage = response.usage
 
-
       setRecordings((prevRecs) => prevRecs.map(rec =>
-        rec.name === name ? { ...rec, summary: summaryResponse, metaData: usage } : rec
+        rec.name === name ? {
+          ...rec,
+          summary: summaryResponse,
+          metaData: usage,
+        } : rec
       ));
 
       updateRecording(name, { summary: summaryResponse })
@@ -83,12 +104,6 @@ Do not make up information that is not found in my words. Make sure to clean up 
 
   const handleSave = async (FormData) => {
     setShowModal(false)
-    // const key = FormData.get("apikey")
-    const whisperPrompt = FormData.get("whisperPrompt")
-    // setSettings({ ...settings, apikey: key })
-    // setSummary({ ...recording, whisperPrompt })
-    // addSetting({ name: "apikey", value: key })
-    updateRecording(name, { whisperPrompt })
   }
   return (
     <>
@@ -123,22 +138,6 @@ Do not make up information that is not found in my words. Make sure to clean up 
                 </div>
                 {/*body*/}
                 <form className="py-3 px-4 w-full max-w-lg" action={handleSave}>
-                  <div className="flex flex-wrap -mx-3 mb-6">
-                    <div className="w-full px-3">
-                      <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-apikey">
-                        API KEY:
-                      </label>
-                      <input
-                        className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                        id="grid-apikey"
-                        type="text"
-                        placeholder={apikey || "sk-..."}
-                        defaultValue={apikey ?? ''}
-                        name="apikey"
-                      />
-                      <p className="text-gray-600 text-xs italic">API KEY for openai</p>
-                    </div>
-                  </div>
                   {/* <div className="flex flex-wrap -mx-3 mb-6"> */}
                   {/*   <div className="w-full px-3"> */}
                   {/*     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-whisperPrompt"> */}
