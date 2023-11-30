@@ -1,77 +1,35 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
-import {
-  addSetting,
-  getRecording,
-  getAllSettings,
-  updateRecording,
-} from '../app/indexedDBHelper'
 
 interface Props {
-  recording: Object;
-  setRecording: Function;
-  recordingName: string;
-  blob: Blob;
+  apikey: string
+  blob: Blob
+  setRecordings: Function
+  updateRecording: Function
+  name: string
+  transcript: string
+  whisperPrompt: string
 }
 
-interface Settings {
-  apikey: string | null;
-}
-
-export default function Transcribe({ recording, setRecording, recordingName, blob }: Props) {
-  const [settings, setSettings] = useState<Settings>({ apikey: null })
-  // const [recording, setRecording] = useState({ name: null, blob: null, transcript: null, whisperPrompt: null });
+export default function Transcribe({ apikey, blob, setRecordings, updateRecording, name, transcript, whisperPrompt }: Props) {
   const [showModal, setShowModal] = useState<Boolean>(false);
 
   const whisperApiEndpoint = 'https://api.openai.com/v1/audio/'
   const mode = 'transcriptions'
   const response_format = 'json'
-
-  useEffect(() => {
-    // TODO: bug causing multiple renders
-    const loadSettings = async () => {
-      const settingsFromDB = await getAllSettings()
-      if (settingsFromDB) {
-        //TODO: fix coersion from arr to obj
-        let settingsObj: Settings = { apikey: null };
-        settingsFromDB.forEach(setting => {
-          settingsObj[setting.name] = setting.value
-        });
-        // TODO: move to new component
-        console.log("move to new component, mount in page.tsx", settingsObj)
-
-        setSettings(settingsObj)
-      }
-    }
-
-    const loadRecording = async () => {
-      try {
-        const recording = await getRecording(recordingName);
-        if (recording) {
-          // console.log('rec rec rec', recording)
-          // console.log('script script', recording.transcript)
-          setRecording(recording)
-        }
-      } catch (error) {
-        console.error('Error fetching recording:', error);
-      }
-    };
-
-    loadSettings()
-    loadRecording()
-  }, [])
+  const model = 'whisper-1'
 
   const handleTranscribe = async () => {
     const formBody = new FormData()
     formBody.append('file', blob)
-    formBody.append('model', 'whisper-1')
+    formBody.append('model', model)
     if (mode === 'transcriptions') {
       formBody.append('language', 'en')
     }
-    if (recording.whisperPrompt) {
-      formBody.append('whisperPrompt', recording.whisperPrompt)
-    }
+    // if (recording.whisperPrompt) {
+    //   formBody.append('whisperPrompt', recording.whisperPrompt)
+    // }
     if (response_format) {
       formBody.append('response_format', response_format)
     }
@@ -83,8 +41,7 @@ export default function Transcribe({ recording, setRecording, recordingName, blo
       const response = await fetch(url, {
         method: "POST",
         headers: {
-          // "Content-Type": 'multipart/form-data',
-          "Authorization": `Bearer ${settings.apikey}`,
+          "Authorization": `Bearer ${apikey}`,
         },
         body: body,
       });
@@ -93,21 +50,27 @@ export default function Transcribe({ recording, setRecording, recordingName, blo
 
     postData(whisperApiEndpoint + mode, formBody).then((response) => {
       const transcribedText = response.text
-      setRecording({ ...recording, transcript: transcribedText });
+
+
+      setRecordings((prevRecs) => prevRecs.map(rec =>
+        rec.name === name ? { ...rec, transcript: transcribedText } : rec
+      ));
+
       // Update the IndexedDB entry with the new transcript
-      updateRecording(recordingName, { transcript: transcribedText })
+      updateRecording(name, { transcript: transcribedText })
     });
   }
   const handleSave = async (FormData) => {
-    console.log(".........", settings)
     setShowModal(false)
-    const key = FormData.get("apikey")
+    // const key = FormData.get("apikey")
+    // setSettings({ ...settings, apikey: key })
+    // addSetting({ name: "apikey", value: key })
+
     const whisperPrompt = FormData.get("whisperPrompt")
-    setSettings({ ...settings, apikey: key })
-    setRecording({ ...recording, whisperPrompt })
-    addSetting({ name: "apikey", value: key })
-    updateRecording(recordingName, { whisperPrompt })
+    setRecording(r => ({ ...r, whisperPrompt }));
+    updateRecording(name, { whisperPrompt })
   }
+
   return (
     <>
       <button
@@ -150,8 +113,8 @@ export default function Transcribe({ recording, setRecording, recordingName, blo
                         className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                         id="grid-apikey"
                         type="text"
-                        placeholder={settings.apikey || "sk-..."}
-                        defaultValue={settings.apikey ?? ''}
+                        placeholder={apikey || "sk-..."}
+                        defaultValue={apikey ?? ''}
                         name="apikey"
                       />
                       <p className="text-gray-600 text-xs italic">API KEY for openai</p>
@@ -166,8 +129,8 @@ export default function Transcribe({ recording, setRecording, recordingName, blo
                         className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                         id="grid-whisperPrompt"
                         type="text"
-                        placeholder={recording.whisperPrompt || "..."}
-                        defaultValue={recording.whisperPrompt ?? ''}
+                        placeholder={whisperPrompt || "..."}
+                        defaultValue={whisperPrompt ?? ''}
                         name="whisperPrompt"
                       />
                       <p className="text-gray-600 text-xs italic">whisperPrompt (Proper nouns, punctuation examples, etc)</p>
@@ -198,8 +161,7 @@ export default function Transcribe({ recording, setRecording, recordingName, blo
       ) : null
       }
       <div>
-        <button disabled={!recording.blob} onClick={handleTranscribe}>{recording.transcript ? 'Re-Transcribe' : 'Transcibe'}</button>
-        {recording && <p>{recording.transcript}</p>}
+        <button disabled={!blob} onClick={handleTranscribe}>{transcript ? 'Re-Transcribe' : 'Transcibe'}</button>
       </div>
     </>
   )

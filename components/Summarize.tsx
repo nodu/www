@@ -1,91 +1,45 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
-import {
-  addSetting,
-  getRecording,
-  getAllSettings,
-  updateRecording,
-} from '../app/indexedDBHelper'
 
 interface Props {
-  transcript: string;
-  recordingName: string;
+  apikey: string
+  transcript: string
+  name: string
+  setRecordings: Function
+  updateRecording: Function
+  summary: string
 }
 
-interface Settings {
-  apikey: string | null;
-}
-
-export default function Summarize({ recordingName, transcript }: Props) {
-  const [settings, setSettings] = useState<Settings>({ apikey: null })
-  const [recording, setSummary] = useState({ name: null, blob: null, transcript: null, whisperPrompt: null, summary: null });
+export default function Summarize({ apikey, transcript, name, setRecordings, updateRecording, summary }: Props) {
   const [showModal, setShowModal] = useState<Boolean>(false);
 
   const gptEndpoint = 'https://api.openai.com/v1/chat/completions'
+  const models = {
+    gpt4: "gpt-4",
+    gpt4pv: "gpt-4-1106-preview",
+    gpt35t: "gpt-3.5-turbo",
+  }
+  const temperature = null
 
-  useEffect(() => {
-    console.log('props name', recordingName)
-    console.log('props transcript', transcript)
+  const prompt = `
+Your task is to summarize my words while maintaining my unique style. Please provide a concise and accurate summary that captures the essence of what I have said, using language and phrasing that reflects my personal style.
+Please note that your response should be flexible enough to allow for various relevant and creative summaries.You should focus on preserving the tone, voice, and personality of my original words, while still conveying the main points clearly and effectively.
+Do not make up information that is not found in my words. Make sure to clean up my words by removing crutch words like um and ah.Form clearly structured text, organizing ideas so they are easily readable.
+`
 
+  // You are a great writer who writes very clearly. You write in English (US). Write simple and easy words that a 5th grader can understand. Make the writing very clear.
+  // Now, here is some text. Change it to the writing style we talked about. Make it shorter too. Use paragraphs and punctuation. Just write the text.
+  // Remember your writing style and follow it while editing this text. If needed, change how the text flows to make it clearer. Also add breaks and punctuation where needed to make the text easier to understand. Do your best and only send back the new text.
+  // You can change the order of the words if it helps.
+  // Now, shorten the text to half its length. Make sure it still makes sense and is easy to read.
+  const writingStyle = ``
+  const summaryLength = ``
 
-    // TODO: bug causing multiple renders
-    const loadSettings = async () => {
-      const settingsFromDB = await getAllSettings()
-      if (settingsFromDB) {
-        //TODO: fix coersion from arr to obj
-        let settingsObj: Settings = { apikey: null };
-        settingsFromDB.forEach(setting => {
-          settingsObj[setting.name] = setting.value
-        });
-        // TODO: move to new component
-        console.log("move to new component, mount in page.tsx", settingsObj)
-
-        setSettings(settingsObj)
-      }
-    }
-
-    const loadRecording = async () => {
-      try {
-        const recording = await getRecording(recordingName);
-        if (recording) {
-          // console.log('rec rec rec', recording)
-          // console.log('script script', recording.transcript)
-          setSummary(recording)
-        }
-      } catch (error) {
-        console.error('Error fetching recording:', error);
-      }
-    };
-
-    loadSettings()
-    loadRecording()
-  }, [])
 
   const handleSummary = async () => {
-    const models = {
-      gpt4: "gpt-4",
-      gpt4pv: "gpt-4-1106-preview",
-      gpt35t: "gpt-3.5-turbo",
-    }
-    const temperature = null
-
-    const prompt = `
-       Your task is to summarize my words while maintaining my unique style. Please provide a concise and accurate summary that captures the essence of what I have said, using language and phrasing that reflects my personal style.
-       Please note that your response should be flexible enough to allow for various relevant and creative summaries.You should focus on preserving the tone, voice, and personality of my original words, while still conveying the main points clearly and effectively.
-       Do not make up information that is not found in my words. Make sure to clean up my words by removing crutch words like um and ah.Form clearly structured text, organizing ideas so they are easily readable.
-    `
-
-    // You are a great writer who writes very clearly. You write in English (US). Write simple and easy words that a 5th grader can understand. Make the writing very clear.
-    // Now, here is some text. Change it to the writing style we talked about. Make it shorter too. Use paragraphs and punctuation. Just write the text.
-    // Remember your writing style and follow it while editing this text. If needed, change how the text flows to make it clearer. Also add breaks and punctuation where needed to make the text easier to understand. Do your best and only send back the new text.
-    // You can change the order of the words if it helps.
-    // Now, shorten the text to half its length. Make sure it still makes sense and is easy to read.
-    const writingStyle = ``
-    const summaryLength = ``
 
     // Credit https://nicheless.blog/post/audiopen-prompts
-    console.log('recording transcript', recording.transcript)
     const requestBody = {
       model: models.gpt4pv,
       temperature: temperature,
@@ -96,7 +50,7 @@ export default function Summarize({ recordingName, transcript }: Props) {
         },
         {
           "role": "user",
-          "content": recording.transcript,
+          "content": transcript,
         }
       ]
     }
@@ -105,7 +59,7 @@ export default function Summarize({ recordingName, transcript }: Props) {
       const response = await fetch(url, {
         method: "POST",
         headers: {
-          "Authorization": `Bearer ${settings.apikey} `,
+          "Authorization": `Bearer ${apikey} `,
           "Content-Type": "application/json"
         },
         body: JSON.stringify(body),
@@ -115,22 +69,26 @@ export default function Summarize({ recordingName, transcript }: Props) {
 
     postData(gptEndpoint, requestBody).then((response) => {
       // TODO: add error handling
-      const summary = response.choices[0].message.content
-      // const usage = response.usage
-      setSummary({ ...recording, summary });
-      updateRecording(recordingName, { summary })
+      const summaryResponse = response.choices[0].message.content
+      const usage = response.usage
+
+
+      setRecordings((prevRecs) => prevRecs.map(rec =>
+        rec.name === name ? { ...rec, summary: summaryResponse, metaData: usage } : rec
+      ));
+
+      updateRecording(name, { summary: summaryResponse })
     });
   }
 
   const handleSave = async (FormData) => {
-    console.log(".........", settings)
     setShowModal(false)
-    const key = FormData.get("apikey")
+    // const key = FormData.get("apikey")
     const whisperPrompt = FormData.get("whisperPrompt")
-    setSettings({ ...settings, apikey: key })
-    setSummary({ ...recording, whisperPrompt })
-    addSetting({ name: "apikey", value: key })
-    updateRecording(recordingName, { whisperPrompt })
+    // setSettings({ ...settings, apikey: key })
+    // setSummary({ ...recording, whisperPrompt })
+    // addSetting({ name: "apikey", value: key })
+    updateRecording(name, { whisperPrompt })
   }
   return (
     <>
@@ -174,29 +132,29 @@ export default function Summarize({ recordingName, transcript }: Props) {
                         className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                         id="grid-apikey"
                         type="text"
-                        placeholder={settings.apikey || "sk-..."}
-                        defaultValue={settings.apikey ?? ''}
+                        placeholder={apikey || "sk-..."}
+                        defaultValue={apikey ?? ''}
                         name="apikey"
                       />
                       <p className="text-gray-600 text-xs italic">API KEY for openai</p>
                     </div>
                   </div>
-                  <div className="flex flex-wrap -mx-3 mb-6">
-                    <div className="w-full px-3">
-                      <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-whisperPrompt">
-                        whisperPrompt
-                      </label>
-                      <input
-                        className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                        id="grid-whisperPrompt"
-                        type="text"
-                        placeholder={recording.whisperPrompt || "..."}
-                        defaultValue={recording.whisperPrompt ?? ''}
-                        name="whisperPrompt"
-                      />
-                      <p className="text-gray-600 text-xs italic">whisperPrompt (Proper nouns, punctuation examples, etc)</p>
-                    </div>
-                  </div>
+                  {/* <div className="flex flex-wrap -mx-3 mb-6"> */}
+                  {/*   <div className="w-full px-3"> */}
+                  {/*     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-whisperPrompt"> */}
+                  {/*       whisperPrompt */}
+                  {/*     </label> */}
+                  {/*     <input */}
+                  {/*       className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" */}
+                  {/*       id="grid-whisperPrompt" */}
+                  {/*       type="text" */}
+                  {/*       placeholder={whisperPrompt || "..."} */}
+                  {/*       defaultValue={whisperPrompt ?? ''} */}
+                  {/*       name="whisperPrompt" */}
+                  {/*     /> */}
+                  {/*     <p className="text-gray-600 text-xs italic">whisperPrompt (Proper nouns, punctuation examples, etc)</p> */}
+                  {/*   </div> */}
+                  {/* </div> */}
 
                   <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
                     <button
@@ -222,8 +180,7 @@ export default function Summarize({ recordingName, transcript }: Props) {
       ) : null
       }
       <div>
-        <button onClick={handleSummary}>{recording.summary ? 'Re-Summaraize' : 'Summaraize'}</button>
-        {recording.summary && <p>{recording.summary}</p>}
+        <button onClick={handleSummary}>{summary ? 'Re-Summaraize' : 'Summaraize'}</button>
       </div>
     </>
   )

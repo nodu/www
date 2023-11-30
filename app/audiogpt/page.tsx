@@ -1,38 +1,68 @@
 'use client'
 
-import { genPageMetadata } from 'app/seo'
-
+// import { genPageMetadata } from 'app/seo'
 // export const metadata = genPageMetadata({ title: 'Audiogpt' })
 
 import React, { useState, useEffect, useRef } from 'react'
 import {
+  addSetting,
+  getAllSettings,
+  getRecording,
   addRecording,
   getAllRecordings,
   deleteRecording,
+  updateRecording,
   renameRecording,
 } from '../indexedDBHelper'
+
+interface Settings {
+  apikey: string;
+}
+
+interface Recording {
+  name: string
+  blob: Blob | null
+  transcript: string | null
+  summary: string | null
+  whisperPrompt: string | null
+  metaData: JSON | null
+}
+
 import AudioVisualizer from '../../components/AudioVisualizer'
 import Transcribe from '../../components/Transcribe'
 import Summarize from '../../components/Summarize'
 
-interface Recording {
-  blob: Blob
-  name: string
-}
-
 export default function Page() {
+  const [settings, setSettings] = useState<Settings>()
   const [mediaRecorder, setMediaRecorder] = useState<MediaRecorder | null>(null)
-  const [recording, setRecording] = useState(false)
+  const [isRecording, setIsRecording] = useState<Boolean>(false)
+  const [recording, setRecording] = useState<Recording>()
   const [recordings, setRecordings] = useState<Recording[]>([])
   const [audioStream, setAudioStream] = useState<MediaStream | null>(null)
   const audioChunksRef = useRef<Blob[]>([])
 
   useEffect(() => {
+    const loadSettings = async () => {
+      const settingsFromDB = await getAllSettings()
+      if (settingsFromDB) {
+        //TODO: fix coersion from arr to obj
+        let settingsObj: Settings = { apikey: null };
+        settingsFromDB.forEach(setting => {
+          settingsObj[setting.name] = setting.value
+        });
+        // TODO: move to new component
+        console.log("move to new component, mount in page.tsx", settingsObj)
+
+        setSettings(settingsObj)
+      }
+    }
+
     const loadRecordings = async () => {
       const recordings = await getAllRecordings()
       setRecordings(recordings)
     }
 
+    loadSettings()
     loadRecordings()
   }, [])
 
@@ -58,12 +88,12 @@ export default function Page() {
 
   const handleStartRecording = async () => {
     try {
-      if (recording) {
+      if (isRecording) {
         if (mediaRecorder) {
           mediaRecorder.stop()
           setAudioStream(null)
         }
-        setRecording(false)
+        setIsRecording(false)
       } else {
         const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
 
@@ -84,7 +114,7 @@ export default function Page() {
 
         // recorder.start(1000)
         recorder.start()
-        setRecording(true)
+        setIsRecording(true)
       }
     } catch (error) {
       console.error('Error starting recording:', error)
@@ -97,23 +127,41 @@ export default function Page() {
       {audioStream && <AudioVisualizer audioStream={audioStream} />}
 
       <button onClick={handleStartRecording}>
-        {recording ? 'Stop Recording' : 'Start Recording'}
+        {isRecording ? 'Stop Recording' : 'Start Recording'}
       </button>
 
       <div>
-        {recordings.map((recording, index) => (
+        {recordings.map((rec, index) => (
           <div key={index}>
-            <audio controls src={URL.createObjectURL(recording.blob)}>
+            <audio controls src={URL.createObjectURL(rec.blob)}>
               <track kind="captions" />
             </audio>
-            <a href={URL.createObjectURL(recording.blob)} download={recording.name}>
-              Download {recording.name}
+            <a href={URL.createObjectURL(rec.blob)} download={rec.name}>
+              Download {rec.name}
             </a>
             <div>
-              <button onClick={() => handleDeleteRecording(recording.name)}>Delete</button>
-              <Transcribe recording={recording} setRecording={setRecording} recordingName={recording.name} blob={recording.blob} />
+              <button onClick={() => handleDeleteRecording(rec.name)}>Delete</button>
+              <Transcribe
+                apikey={settings.apikey}
+                name={rec.name}
+                setRecordings={setRecordings}
+                updateRecording={updateRecording}
+                blob={rec.blob}
+                whisperPrompt={rec.whisperPrompt}
+                transcript={rec.transcript}
+              />
+
               {/* TODO: just pass the data, don't do lookups inside these childen components */}
-              <Summarize recordingName={recording.name} transcipt={recording.transcipt} />
+              <Summarize
+                apikey={settings.apikey}
+                name={rec.name}
+                setRecordings={setRecordings}
+                updateRecording={updateRecording}
+                transcript={rec.transcript}
+                summary={rec.summary}
+              />
+              {rec.transcript && <p>{rec.transcript}</p>}
+              {rec.summary && <p>{rec.summary}</p>}
             </div>
           </div>
         ))}
