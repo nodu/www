@@ -1,9 +1,9 @@
 'use client'
 
-import React, { useRef, useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 
 interface Props {
-  audioStream: MediaStream;
+  audioStream: MediaStream
 }
 
 export default function AudioVisualizer({ audioStream }: Props) {

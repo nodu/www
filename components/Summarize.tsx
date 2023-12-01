@@ -1,14 +1,17 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+
+import { RecordingType, RecordingUpdate } from '../types'
 
 interface Props {
-  apikey: string
-  transcript: string
+  apikey?: string
+  transcript?: string
   name: string
-  setRecordings: Function
-  updateRecording: Function
-  summary: string
+  setRecordings: React.Dispatch<React.SetStateAction<RecordingType[]>> // either allow function or RecordingType[], or use:
+  // setRecordings: (recordings: RecordingType[]) => void // And calculate the return arr first and pass into setRecordings
+  updateRecording: (name: string, update: RecordingUpdate) => void
+  summary?: string
 }
 
 export default function Summarize({
@@ -19,7 +22,7 @@ export default function Summarize({
   updateRecording,
   summary,
 }: Props) {
-  const [showModal, setShowModal] = useState<Boolean>(false)
+  const [showModal, setShowModal] = useState<boolean>(false)
 
   const gptEndpoint = 'https://api.openai.com/v1/chat/completions'
   const models = {
@@ -91,23 +94,23 @@ Now, here is the input text:
     }
 
     postData(gptEndpoint, requestBody).then((response) => {
-      // TODO: add error handling
-      const summaryResponse = response.choices[0].message.content
-      const usage = response.usage
-
-      setRecordings((prevRecs) =>
-        prevRecs.map((rec) =>
-          rec.name === name
-            ? {
-                ...rec,
-                summary: summaryResponse,
-                metaData: usage,
-              }
-            : rec
+      if (response.error) {
+        console.log(response.error)
+        alert(response.error)
+      } else {
+        const summaryResponse = response.choices[0].message.content
+        const usage = response.usage
+        setRecordings((prevRecs) =>
+          prevRecs.map((rec) =>
+            rec.name === name ? {
+              ...rec,
+              summary: summaryResponse,
+              metaData: usage,
+            } : rec
+          )
         )
-      )
-
-      updateRecording(name, { summary: summaryResponse })
+        updateRecording(name, { summary: summaryResponse })
+      }
     })
   }
 

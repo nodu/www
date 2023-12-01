@@ -1,15 +1,18 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+
+import { RecordingType, RecordingUpdate } from '../types'
 
 interface Props {
-  apikey: string
+  apikey?: string
   blob: Blob
-  setRecordings: Function
-  updateRecording: Function
   name: string
-  transcript: string
-  whisperPrompt: string
+  transcript?: string
+  whisperPrompt?: string
+  setRecordings: React.Dispatch<React.SetStateAction<RecordingType[]>> // either allow function or RecordingType[], or use:
+  // setRecordings: (recordings: RecordingType[]) => void // And calculate the return arr first and pass into setRecordings
+  updateRecording: (name: string, update: RecordingUpdate) => void
 }
 
 export default function Transcribe({
@@ -21,7 +24,7 @@ export default function Transcribe({
   transcript,
   whisperPrompt,
 }: Props) {
-  const [showModal, setShowModal] = useState<Boolean>(false)
+  const [showModal, setShowModal] = useState<boolean>(false)
 
   const whisperApiEndpoint = 'https://api.openai.com/v1/audio/'
   const mode = 'transcriptions'
@@ -57,21 +60,23 @@ export default function Transcribe({
     }
 
     postData(whisperApiEndpoint + mode, formBody).then((response) => {
-      const transcribedText = response.text
+      if (response.error) {
+        console.log(response.error)
+      } else {
+        const transcribedText: string = response.text
 
-      setRecordings((prevRecs) =>
-        prevRecs.map((rec) =>
-          rec.name === name
-            ? {
+        setRecordings((prevRecs: RecordingType[]): RecordingType[] =>
+          prevRecs.map((rec: RecordingType) =>
+            rec.name === name
+              ? {
                 ...rec,
                 transcript: transcribedText,
               }
-            : rec
+              : rec
+          )
         )
-      )
-
-      // Update the IndexedDB entry with the new transcript
-      updateRecording(name, { transcript: transcribedText })
+        updateRecording(name, { transcript: transcribedText })
+      }
     })
   }
   const handleSave = async (FormData) => {
@@ -81,9 +86,9 @@ export default function Transcribe({
       prevRecs.map((rec) =>
         rec.name === name
           ? {
-              ...rec,
-              whisperPrompt,
-            }
+            ...rec,
+            whisperPrompt,
+          }
           : rec
       )
     )

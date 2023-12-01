@@ -3,42 +3,36 @@
 // import { genPageMetadata } from 'app/seo'
 // export const metadata = genPageMetadata({ title: 'Audiogpt' })
 
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import {
+  addRecording,
   addSetting,
+  deleteRecording,
+  getAllRecordings,
   getAllSettings,
   getRecording,
-  addRecording,
-  getAllRecordings,
-  deleteRecording,
-  updateRecording,
   renameRecording,
+  updateRecording,
 } from '../indexedDBHelper'
 
 interface Settings {
-  apikey: string
+  apikey?: string
 }
 
-interface Recording {
-  name: string
-  blob: Blob | null
-  transcript: string | null
-  summary: string | null
-  whisperPrompt: string | null
-  metaData: JSON | null
-}
+import { RecordingType } from '../../types'
 
 import AudioVisualizer from '../../components/AudioVisualizer'
-import Transcribe from '../../components/Transcribe'
 import Summarize from '../../components/Summarize'
+import Transcribe from '../../components/Transcribe'
 
 export default function Page() {
-  const [showModal, setShowModal] = useState<Boolean>(false)
+  const [showModal, setShowModal] = useState<boolean>(false)
   const [settings, setSettings] = useState<Settings>()
   const [mediaRecorder, setMediaRecorder] = useState<MediaRecorder | null>(null)
-  const [isRecording, setIsRecording] = useState<Boolean>(false)
-  const [recording, setRecording] = useState<Recording>()
-  const [recordings, setRecordings] = useState<Recording[]>([])
+  const [isRecording, setIsRecording] = useState<boolean>(false)
+
+  const [recordings, setRecordings] = useState<RecordingType[]>([] as RecordingType[])
+  // const [recordings, setRecordings] = useState<RecordingType[]>([])
   const [audioStream, setAudioStream] = useState<MediaStream | null>(null)
   const audioChunksRef = useRef<Blob[]>([])
 
@@ -47,7 +41,8 @@ export default function Page() {
       const settingsFromDB = await getAllSettings()
       if (settingsFromDB) {
         //TODO: fix coersion from arr to obj
-        let settingsObj: Settings = { apikey: null }
+        // let settingsObj: Settings = { apikey: null }
+        const settingsObj: Settings = {}
         settingsFromDB.forEach((setting) => {
           settingsObj[setting.name] = setting.value
         })
@@ -168,8 +163,8 @@ export default function Page() {
                         className="mb-3 block w-full appearance-none rounded border border-gray-200 bg-gray-200 px-4 py-3 leading-tight text-gray-700 focus:border-gray-500 focus:bg-white focus:outline-none"
                         id="grid-apikey"
                         type="text"
-                        placeholder={settings.apikey || 'sk-...'}
-                        defaultValue={settings.apikey ?? ''}
+                        placeholder={settings?.apikey || 'sk-...'}
+                        defaultValue={settings?.apikey ?? ''}
                         name="apikey"
                       />
                       <p className="text-xs italic text-gray-600">API KEY for openai</p>
@@ -203,7 +198,6 @@ export default function Page() {
       <button onClick={handleStartRecording}>
         {isRecording ? 'Stop Recording' : 'Start Recording'}
       </button>
-
       <div>
         {recordings.map((rec, index) => (
           <div key={index}>
@@ -216,7 +210,7 @@ export default function Page() {
             <div>
               <button onClick={() => handleDeleteRecording(rec.name)}>Delete</button>
               <Transcribe
-                apikey={settings.apikey}
+                apikey={settings?.apikey}
                 name={rec.name}
                 setRecordings={setRecordings}
                 updateRecording={updateRecording}
@@ -227,7 +221,7 @@ export default function Page() {
 
               {/* TODO: just pass the data, don't do lookups inside these childen components */}
               <Summarize
-                apikey={settings.apikey}
+                apikey={settings?.apikey}
                 name={rec.name}
                 setRecordings={setRecordings}
                 updateRecording={updateRecording}
