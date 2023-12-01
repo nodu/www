@@ -27,9 +27,9 @@ export const addRecording = async (recording) => {
 }
 
 export const getRecording = async (name) => {
-  const db = await initDB();
-  return db.get(AUDIO_STORE_NAME, name);
-};
+  const db = await initDB()
+  return db.get(AUDIO_STORE_NAME, name)
+}
 
 export const getAllRecordings = async () => {
   const db = await initDB()
@@ -58,8 +58,8 @@ export const getAllSettings = async () => {
 }
 
 export const updateRecording = async (name, updates) => {
-  const db = await initDB();
-  const recording = await db.get(AUDIO_STORE_NAME, name);
-  const updatedRecording = { ...recording, ...updates };
-  await db.put(AUDIO_STORE_NAME, updatedRecording);
-};
+  const db = await initDB()
+  const recording = await db.get(AUDIO_STORE_NAME, name)
+  const updatedRecording = { ...recording, ...updates }
+  await db.put(AUDIO_STORE_NAME, updatedRecording)
+}
