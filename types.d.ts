@@ -13,3 +13,7 @@ export type RecordingUpdate = {
   whisperPrompt?: string
   metaData?: object
 }
+export type FileToDownload = {
+  filename: string
+  blob: Blob
+}

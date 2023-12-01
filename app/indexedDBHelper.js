@@ -1,5 +1,6 @@
 import { openDB } from 'idb'
-
+//TODO: use dexie instead: https://github.com/dexie/Dexie.js
+//TODO: Add backup/restore: https://github.com/Polarisation/indexeddb-export-import
 const DATABASE_NAME = 'AudioGptDB'
 const AUDIO_STORE_NAME = 'recordings'
 const SETTINGS_STORE_NAME = 'settings'
@@ -17,7 +18,6 @@ export const initDB = async () => {
       }
     },
   })
-
   return db
 }
 
@@ -62,4 +62,11 @@ export const updateRecording = async (name, updates) => {
   const recording = await db.get(AUDIO_STORE_NAME, name)
   const updatedRecording = { ...recording, ...updates }
   await db.put(AUDIO_STORE_NAME, updatedRecording)
+}
+
+export const exportDB = async () => {
+  return {
+    settings: await getAllSettings(),
+    recordings: await getAllRecordings(),
+  }
 }

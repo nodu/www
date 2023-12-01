@@ -24,6 +24,7 @@ import { RecordingType } from '../../types'
 import AudioVisualizer from '../../components/AudioVisualizer'
 import Summarize from '../../components/Summarize'
 import Transcribe from '../../components/Transcribe'
+import ExportDB from '../../components/ExportDB'
 
 export default function Page() {
   const [showModal, setShowModal] = useState<boolean>(false)
@@ -186,6 +187,7 @@ export default function Page() {
                     </button>
                   </div>
                 </form>
+                <ExportDB />
               </div>
             </div>
           </div>
