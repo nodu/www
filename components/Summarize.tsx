@@ -108,7 +108,7 @@ Now, here is the input text:
                 summary: summaryResponse,
                 metaData: usage,
               }
-              : rec
+            : rec
           )
         )
         updateRecording(name, { summary: summaryResponse })
@@ -184,7 +184,7 @@ Now, here is the input text:
           </div>
           <div className="fixed inset-0 z-40 bg-black opacity-25"></div>
         </>
-        : null}
+      : null}
       <div>
         <button onClick={handleSummary}>{summary ? 'Re-Summaraize' : 'Summaraize'}</button>
       </div>

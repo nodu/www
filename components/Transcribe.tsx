@@ -72,7 +72,7 @@ export default function Transcribe({
                 ...rec,
                 transcript: transcribedText,
               }
-              : rec
+            : rec
           )
         )
         updateRecording(name, { transcript: transcribedText })
@@ -89,7 +89,7 @@ export default function Transcribe({
             ...rec,
             whisperPrompt,
           }
-          : rec
+        : rec
       )
     )
   }
@@ -164,7 +164,7 @@ export default function Transcribe({
           </div>
           <div className="fixed inset-0 z-40 bg-black opacity-25"></div>
         </>
-        : null}
+      : null}
       <div>
         <button disabled={!blob} onClick={handleTranscribe}>
           {transcript ? 'Re-Transcribe' : 'Transcibe'}
