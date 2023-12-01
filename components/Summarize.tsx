@@ -102,13 +102,13 @@ Now, here is the input text:
         const usage = response.usage
         setRecordings((prevRecs) =>
           prevRecs.map((rec) =>
-            rec.name === name ?
-              {
-                ...rec,
-                summary: summaryResponse,
-                metaData: usage,
-              }
-            : rec
+            rec.name === name
+              ? {
+                  ...rec,
+                  summary: summaryResponse,
+                  metaData: usage,
+                }
+              : rec
           )
         )
         updateRecording(name, { summary: summaryResponse })
@@ -128,7 +128,7 @@ Now, here is the input text:
       >
         Summary Settings
       </button>
-      {showModal ?
+      {showModal ? (
         <>
           <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overflow-x-hidden outline-none focus:outline-none">
             <div className="relative mx-auto my-6 w-auto max-w-3xl">
@@ -184,7 +184,7 @@ Now, here is the input text:
           </div>
           <div className="fixed inset-0 z-40 bg-black opacity-25"></div>
         </>
-      : null}
+      ) : null}
       <div>
         <button onClick={handleSummary}>{summary ? 'Re-Summaraize' : 'Summaraize'}</button>
       </div>
