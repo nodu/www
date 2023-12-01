@@ -67,8 +67,8 @@ export default function Transcribe({
 
         setRecordings((prevRecs: RecordingType[]): RecordingType[] =>
           prevRecs.map((rec: RecordingType) =>
-            rec.name === name
-              ? {
+            rec.name === name ?
+              {
                 ...rec,
                 transcript: transcribedText,
               }
@@ -84,8 +84,8 @@ export default function Transcribe({
     const whisperPrompt = FormData.get('whisperPrompt')
     setRecordings((prevRecs) =>
       prevRecs.map((rec) =>
-        rec.name === name
-          ? {
+        rec.name === name ?
+          {
             ...rec,
             whisperPrompt,
           }
@@ -103,7 +103,7 @@ export default function Transcribe({
       >
         Tx Settings
       </button>
-      {showModal ? (
+      {showModal ?
         <>
           <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overflow-x-hidden outline-none focus:outline-none">
             <div className="relative mx-auto my-6 w-auto max-w-3xl">
@@ -164,7 +164,7 @@ export default function Transcribe({
           </div>
           <div className="fixed inset-0 z-40 bg-black opacity-25"></div>
         </>
-      ) : null}
+        : null}
       <div>
         <button disabled={!blob} onClick={handleTranscribe}>
           {transcript ? 'Re-Transcribe' : 'Transcibe'}
