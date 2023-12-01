@@ -72,7 +72,7 @@ Now, here is the input text:
       messages: [
         {
           role: 'system',
-          content: prompt,
+          content: prompt2,
         },
         {
           role: 'user',
