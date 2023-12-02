@@ -186,7 +186,9 @@ Now, here is the input text:
         </>
       ) : null}
       <div>
-        <button onClick={handleSummary}>{summary ? 'Re-Summaraize' : 'Summaraize'}</button>
+        <button className="mb-2" onClick={handleSummary}>
+          {summary ? 'Re-Summaraize' : 'Summaraize'}
+        </button>
       </div>
     </>
   )

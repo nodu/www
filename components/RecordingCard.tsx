@@ -1,5 +1,7 @@
 import Summarize from 'components/Summarize'
 import Transcribe from 'components/Transcribe'
+import AudioVisualizer from 'components/AudioVisualizer'
+import React, { useState } from 'react'
 
 export default function RecordingCard({
   recording,
@@ -7,39 +9,61 @@ export default function RecordingCard({
   settings,
   setRecordings,
   updateRecording,
+  audioStream,
 }) {
+  const [showModal, setShowModal] = useState<boolean>(false)
+  const handleSave = async (FormData) => {
+    setShowModal(false)
+    const whisperPrompt = FormData.get('whisperPrompt')
+    console.log('ssssshhhhh', whisperPrompt)
+    console.log('ssssshhhhh', FormData)
+    setRecordings((prevRecs) =>
+      prevRecs.map((rec) =>
+        rec.name === recording.name
+          ? {
+              ...rec,
+              whisperPrompt,
+            }
+          : rec
+      )
+    )
+    updateRecording(recording.name, { whisperPrompt })
+  }
   return (
     <>
       <div className="container mx-auto p-4">
         <div className="waveform-placeholder mb-6"></div>
 
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-          <div className="flex flex-col rounded-lg bg-white p-4 shadow">
+          <div className="flex flex-col rounded-lg bg-white p-4 shadow dark:bg-black">
             <div className="mb-4 flex items-center justify-between">
-              <button className="flex h-10 w-10 items-center justify-center ">
-                {/* play recording */}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="h-6 w-6"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M15.91 11.672a.375.375 0 010 .656l-5.603 3.113a.375.375 0 01-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112z"
-                  />
-                </svg>
-              </button>
-              <button className="h-8 w-8">
-                {/* close/delete */}
+              {/* <button className="flex h-10 w-10 items-center justify-center "> */}
+              {/*   <svg */}
+              {/*     xmlns="http://www.w3.org/2000/svg" */}
+              {/*     fill="none" */}
+              {/*     viewBox="0 0 24 24" */}
+              {/*     strokeWidth={1.5} */}
+              {/*     stroke="currentColor" */}
+              {/*     className="h-6 w-6" */}
+              {/*   > */}
+              {/*     <path */}
+              {/*       strokeLinecap="round" */}
+              {/*       strokeLinejoin="round" */}
+              {/*       d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" */}
+              {/*     /> */}
+              {/*     <path */}
+              {/*       strokeLinecap="round" */}
+              {/*       strokeLinejoin="round" */}
+              {/*       d="M15.91 11.672a.375.375 0 010 .656l-5.603 3.113a.375.375 0 01-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112z" */}
+              {/*     /> */}
+              {/*   </svg> */}
+              {/* </button> */}
+
+              <div className="flex h-10 w-10 items-center justify-center ">
+                {audioStream && <AudioVisualizer audioStream={audioStream} />}
+              </div>
+              <button className="h-8 w-8" onClick={() => handleDeleteRecording(recording.name)}>
+                {/* Delete */}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -62,17 +86,9 @@ export default function RecordingCard({
             <audio controls src={URL.createObjectURL(recording.blob)}>
               <track kind="captions" />
             </audio>
-            <a href={URL.createObjectURL(recording.blob)} download={recording.name}>
-              Download {recording.name}
-            </a>
 
-            <button onClick={() => handleDeleteRecording(recording.name)}>Delete</button>
-            {recording.transcript && (
-              <p className="mb-2 text-gray-700">Transcript: {recording.transcript}</p>
-            )}
-            {recording.summary && (
-              <p className="mb-2 text-gray-700">Summary: {recording.summary}</p>
-            )}
+            {recording.transcript && <p className="mb-2">Transcript: {recording.transcript}</p>}
+            {recording.summary && <p className="mb-2">Summary: {recording.summary}</p>}
 
             <Transcribe
               apikey={settings?.apikey}
@@ -95,8 +111,9 @@ export default function RecordingCard({
             />
             <div className="mt-auto pt-2">
               <div className="flex justify-between">
-                <button className="h-8 w-8">
+                <button onClick={() => setShowModal(true)} className="h-8 w-8">
                   {/* Local Settings */}
+
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -117,21 +134,89 @@ export default function RecordingCard({
                     />
                   </svg>
                 </button>
+                {showModal ? (
+                  <>
+                    <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overflow-x-hidden outline-none focus:outline-none">
+                      <div className="relative mx-auto my-6 w-auto max-w-3xl">
+                        {/*content*/}
+                        <div className="relative flex w-full flex-col rounded-lg border-0 bg-white shadow-lg outline-none focus:outline-none">
+                          {/*header*/}
+                          <div className="border-blueGray-200 flex items-start justify-between rounded-t border-b border-solid p-5">
+                            <h3 className="text-3xl font-semibold text-black">
+                              Transcription Settings
+                            </h3>
+                            <button
+                              className="float-right ml-auto border-0 bg-transparent p-1 text-3xl font-semibold leading-none text-black outline-none focus:outline-none"
+                              onClick={() => setShowModal(false)}
+                            >
+                              <span className="block h-6 w-6 text-2xl">X</span>
+                            </button>
+                          </div>
+                          {/*body*/}
+                          <form className="w-full max-w-lg px-4 py-3" action={handleSave}>
+                            <div className="-mx-3 mb-6 flex flex-wrap">
+                              <div className="w-full px-3">
+                                <label
+                                  className="mb-2 block text-xs font-bold uppercase tracking-wide text-gray-700"
+                                  htmlFor="grid-whisperPrompt"
+                                >
+                                  whisper Prompt
+                                </label>
+                                <input
+                                  className="mb-3 block w-full appearance-none rounded border border-gray-200 bg-gray-200 px-4 py-3 leading-tight text-gray-700 focus:border-gray-500 focus:bg-white focus:outline-none"
+                                  id="grid-whisperPrompt"
+                                  type="text"
+                                  placeholder={recording.whisperPrompt || '...'}
+                                  defaultValue={recording.whisperPrompt ?? ''}
+                                  name="whisperPrompt"
+                                />
+                                <p className="text-xs italic text-gray-600">
+                                  whisperPrompt (Proper nouns, punctuation examples, etc)
+                                </p>
+                              </div>
+                            </div>
+
+                            <div className="border-blueGray-200 flex items-center justify-end rounded-b border-t border-solid p-6">
+                              <button
+                                className="background-transparent mb-1 mr-1 px-6 py-2 text-sm font-bold uppercase text-red-500 outline-none transition-all duration-150 ease-linear focus:outline-none"
+                                type="button"
+                                onClick={() => setShowModal(false)}
+                              >
+                                Close
+                              </button>
+                              <button
+                                className="mb-1 mr-1 rounded bg-emerald-500 px-6 py-3 text-sm font-bold uppercase text-white shadow outline-none transition-all duration-150 ease-linear hover:shadow-lg focus:outline-none active:bg-emerald-600"
+                                type="submit"
+                              >
+                                Save
+                              </button>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="fixed inset-0 z-40 bg-black opacity-25"></div>
+                  </>
+                ) : null}
+
                 <button className="h-8 w-8">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="currentColor"
-                    className="h-6 w-6"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M9 13.5l3 3m0 0l3-3m-3 3v-6m1.06-4.19l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z"
-                    />
-                  </svg>
+                  <a href={URL.createObjectURL(recording.blob)} download={recording.name}>
+                    {/* Download {recording.name} */}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="h-6 w-6"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M9 13.5l3 3m0 0l3-3m-3 3v-6m1.06-4.19l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z"
+                      />
+                    </svg>
+                  </a>
                 </button>
               </div>
             </div>

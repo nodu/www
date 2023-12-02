@@ -21,7 +21,6 @@ interface Settings {
 
 import { RecordingType } from 'types'
 
-import AudioVisualizer from 'components/AudioVisualizer'
 import RecordingCard from 'components/RecordingCard'
 import Settings from 'components/Settings'
 
@@ -138,7 +137,6 @@ export default function Page() {
           />
         </svg>
       </button>
-      {audioStream && <AudioVisualizer audioStream={audioStream} />}
       <div>
         {recordings.map((rec, index) => (
           <div key={index}>
@@ -148,6 +146,7 @@ export default function Page() {
               recording={rec}
               setRecordings={setRecordings}
               updateRecording={updateRecording}
+              audioStream={audioStream}
             />
           </div>
         ))}
