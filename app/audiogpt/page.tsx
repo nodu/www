@@ -13,27 +13,24 @@ import {
   getRecording,
   renameRecording,
   updateRecording,
-} from '../indexedDBHelper'
+} from 'app/indexedDBHelper'
 
 interface Settings {
   apikey?: string
 }
 
-import { RecordingType } from '../../types'
+import { RecordingType } from 'types'
 
-import AudioVisualizer from '../../components/AudioVisualizer'
-import Summarize from '../../components/Summarize'
-import Transcribe from '../../components/Transcribe'
-import ExportDB from '../../components/ExportDB'
+import AudioVisualizer from 'components/AudioVisualizer'
+import RecordingCard from 'components/RecordingCard'
+import Settings from 'components/Settings'
 
 export default function Page() {
-  const [showModal, setShowModal] = useState<boolean>(false)
   const [settings, setSettings] = useState<Settings>()
   const [mediaRecorder, setMediaRecorder] = useState<MediaRecorder | null>(null)
   const [isRecording, setIsRecording] = useState<boolean>(false)
 
   const [recordings, setRecordings] = useState<RecordingType[]>([] as RecordingType[])
-  // const [recordings, setRecordings] = useState<RecordingType[]>([])
   const [audioStream, setAudioStream] = useState<MediaStream | null>(null)
   const audioChunksRef = useRef<Blob[]>([])
 
@@ -119,120 +116,39 @@ export default function Page() {
     }
   }
 
-  const handleSave = async (FormData) => {
-    setShowModal(false)
-    const key = FormData.get('apikey')
-    setSettings({ ...settings, apikey: key })
-    addSetting({ name: 'apikey', value: key })
-  }
   return (
     <>
-      <button
-        className="mb-1 mr-1 rounded bg-blue-500 px-6 py-3 text-sm font-bold uppercase text-white shadow outline-none transition-all duration-150 ease-linear hover:shadow-lg focus:outline-none active:bg-blue-600"
-        type="button"
-        onClick={() => setShowModal(true)}
-      >
-        Settings
-      </button>
-      {showModal ? (
-        <>
-          <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overflow-x-hidden outline-none focus:outline-none">
-            <div className="relative mx-auto my-6 w-auto max-w-3xl">
-              {/*content*/}
-              <div className="relative flex w-full flex-col rounded-lg border-0 bg-white shadow-lg outline-none focus:outline-none">
-                {/*header*/}
-                <div className="border-blueGray-200 flex items-start justify-between rounded-t border-b border-solid p-5">
-                  <h3 className="text-3xl font-semibold text-black">Global Settings</h3>
-                  <button
-                    className="float-right ml-auto border-0 bg-transparent p-1 text-3xl font-semibold leading-none text-black outline-none focus:outline-none"
-                    onClick={() => setShowModal(false)}
-                  >
-                    <span className="block h-6 w-6 text-2xl">X</span>
-                  </button>
-                </div>
-                {/*body*/}
-                <form className="w-full max-w-lg px-4 py-3" action={handleSave}>
-                  <div className="-mx-3 mb-6 flex flex-wrap">
-                    <div className="w-full px-3">
-                      <label
-                        className="mb-2 block text-xs font-bold uppercase tracking-wide text-gray-700"
-                        htmlFor="grid-apikey"
-                      >
-                        API KEY:
-                      </label>
-                      <input
-                        className="mb-3 block w-full appearance-none rounded border border-gray-200 bg-gray-200 px-4 py-3 leading-tight text-gray-700 focus:border-gray-500 focus:bg-white focus:outline-none"
-                        id="grid-apikey"
-                        type="text"
-                        placeholder={settings?.apikey || 'sk-...'}
-                        defaultValue={settings?.apikey ?? ''}
-                        name="apikey"
-                      />
-                      <p className="text-xs italic text-gray-600">API KEY for openai</p>
-                    </div>
-                  </div>
-                  <div className="border-blueGray-200 flex items-center justify-end rounded-b border-t border-solid p-6">
-                    <button
-                      className="background-transparent mb-1 mr-1 px-6 py-2 text-sm font-bold uppercase text-red-500 outline-none transition-all duration-150 ease-linear focus:outline-none"
-                      type="button"
-                      onClick={() => setShowModal(false)}
-                    >
-                      Close
-                    </button>
-                    <button
-                      className="mb-1 mr-1 rounded bg-emerald-500 px-6 py-3 text-sm font-bold uppercase text-white shadow outline-none transition-all duration-150 ease-linear hover:shadow-lg focus:outline-none active:bg-emerald-600"
-                      type="submit"
-                    >
-                      Save
-                    </button>
-                  </div>
-                </form>
-                <ExportDB />
-              </div>
-            </div>
-          </div>
-          <div className="fixed inset-0 z-40 bg-black opacity-25"></div>
-        </>
-      ) : null}
+      <Settings settings={settings} setSettings={setSettings} addSetting={addSetting} />
 
+      <button className="rounded-full border-2 border-gray-300" onClick={handleStartRecording}>
+        {/* microphone */}
+        {/* {isRecording ? 'Stop Recording' : 'Start Recording'} */}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={1.5}
+          stroke="currentColor"
+          className="h-6 w-6"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z"
+          />
+        </svg>
+      </button>
       {audioStream && <AudioVisualizer audioStream={audioStream} />}
-
-      <button onClick={handleStartRecording}>
-        {isRecording ? 'Stop Recording' : 'Start Recording'}
-      </button>
       <div>
         {recordings.map((rec, index) => (
           <div key={index}>
-            <audio controls src={URL.createObjectURL(rec.blob)}>
-              <track kind="captions" />
-            </audio>
-            <a href={URL.createObjectURL(rec.blob)} download={rec.name}>
-              Download {rec.name}
-            </a>
-            <div>
-              <button onClick={() => handleDeleteRecording(rec.name)}>Delete</button>
-              <Transcribe
-                apikey={settings?.apikey}
-                name={rec.name}
-                setRecordings={setRecordings}
-                updateRecording={updateRecording}
-                blob={rec.blob}
-                whisperPrompt={rec.whisperPrompt}
-                transcript={rec.transcript}
-              />
-
-              {/* TODO: just pass the data, don't do lookups inside these childen components */}
-              <Summarize
-                apikey={settings?.apikey}
-                name={rec.name}
-                setRecordings={setRecordings}
-                updateRecording={updateRecording}
-                transcript={rec.transcript}
-                summary={rec.summary}
-              />
-              {rec.transcript && <p>{rec.transcript}</p>}
-              {rec.summary && <p>{rec.summary}</p>}
-            </div>
+            <RecordingCard
+              settings={settings}
+              handleDeleteRecording={handleDeleteRecording}
+              recording={rec}
+              setRecordings={setRecordings}
+              updateRecording={updateRecording}
+            />
           </div>
         ))}
       </div>
