@@ -1,7 +1,5 @@
 'use client'
 
-import React, { useState } from 'react'
-
 import { RecordingType, RecordingUpdate } from 'types'
 
 interface Props {
@@ -22,7 +20,6 @@ export default function Transcribe({
   updateRecording,
   name,
   transcript,
-  whisperPrompt,
 }: Props) {
   const whisperApiEndpoint = 'https://api.openai.com/v1/audio/'
   const mode = 'transcriptions'

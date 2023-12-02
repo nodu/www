@@ -1,8 +1,5 @@
 'use client'
 
-// import { genPageMetadata } from 'app/seo'
-// export const metadata = genPageMetadata({ title: 'Audiogpt' })
-
 import React, { useEffect, useRef, useState } from 'react'
 import {
   addRecording,
@@ -21,6 +18,7 @@ interface Settings {
 
 import { RecordingType } from 'types'
 
+import AudioVisualizer from 'components/AudioVisualizer'
 import RecordingCard from 'components/RecordingCard'
 import Settings from 'components/Settings'
 
@@ -104,8 +102,6 @@ export default function Page() {
         }
 
         recorder.onstop = handleSaveRecording
-
-        // recorder.start(1000)
         recorder.start()
         setIsRecording(true)
       }
@@ -137,9 +133,11 @@ export default function Page() {
           />
         </svg>
       </button>
-      <div>
+      {audioStream && <AudioVisualizer audioStream={audioStream} />}
+      {/* <div className="columns-3 gap-8"> */}
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
         {recordings.map((rec, index) => (
-          <div key={index}>
+          <div key={index} className="">
             <RecordingCard
               settings={settings}
               handleDeleteRecording={handleDeleteRecording}
