@@ -9,6 +9,7 @@ export default function RecordingCard({
   settings,
   setRecordings,
   updateRecording,
+  setIsLoading,
   audioStream,
 }) {
   const [isOpen, setIsOpen] = useState(false)
@@ -23,19 +24,20 @@ export default function RecordingCard({
 
   const handleSave = async (event) => {
     event.preventDefault()
-    // closeModal()
     console.log(event.target.name)
 
     const { name, value } = event.target
-    setRecordings((prevRecs) =>
-      prevRecs.map((rec) =>
-        rec.name === recording.name
-          ? {
-              ...rec,
-              [name]: value,
-            }
-          : rec
-      )
+    setRecordings(
+      (prevRecs) =>
+        prevRecs.map((rec) =>
+          rec.name === recording.name
+            ? {
+                ...rec,
+                [name]: value,
+              }
+            : rec
+        ),
+      setIsLoading(false)
     )
     updateRecording(recording.name, { [name]: value })
   }
@@ -45,6 +47,12 @@ export default function RecordingCard({
       {recording.summary && <p className="mb-2">Summary: {recording.summary}</p>}
     </>
   )
+  const handleInputKeyDown = async (event) => {
+    setIsLoading(true)
+    if (event.key === 'Enter') {
+      event.preventDefault()
+    }
+  }
 
   const body = (
     <>
@@ -65,11 +73,7 @@ export default function RecordingCard({
                 value={recording.transcript}
                 onChange={handleSave}
                 name="transcript"
-                onKeyDown={(event) => {
-                  if (event.key === 'Enter') {
-                    event.preventDefault()
-                  }
-                }}
+                onKeyDown={handleInputKeyDown}
               ></textarea>
             </div>
 
@@ -83,11 +87,7 @@ export default function RecordingCard({
                 value={recording.summary}
                 onChange={handleSave}
                 name="summary"
-                onKeyDown={(event) => {
-                  if (event.key === 'Enter') {
-                    event.preventDefault()
-                  }
-                }}
+                onKeyDown={handleInputKeyDown}
               ></textarea>
             </div>
           </div>

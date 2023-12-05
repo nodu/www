@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Modal from './Modal'
 import ExportDB from 'components/ExportDB'
-export default function Settings({ settings, setSettings, addSetting }) {
+export default function Settings({ setIsLoading, settings, setSettings, addSetting }) {
   const [isOpen, setIsOpen] = useState(false)
 
   function closeModal() {
@@ -17,19 +17,25 @@ export default function Settings({ settings, setSettings, addSetting }) {
     const [key, subkey] = name.split('.')
     if (subkey) {
       // Nested object
-      setSettings((prevSettings) => ({
-        ...prevSettings,
-        [key]: {
-          ...prevSettings[key],
-          [subkey]: value,
-        },
-      }))
+      setSettings(
+        (prevSettings) => ({
+          ...prevSettings,
+          [key]: {
+            ...prevSettings[key],
+            [subkey]: value,
+          },
+        }),
+        setIsLoading(false)
+      )
     } else {
       // Root level key
-      setSettings((prevSettings) => ({
-        ...prevSettings,
-        [key]: value,
-      }))
+      setSettings(
+        (prevSettings) => ({
+          ...prevSettings,
+          [key]: value,
+        }),
+        setIsLoading(false)
+      )
     }
 
     Object.keys(settings).forEach((key) => {
@@ -37,6 +43,12 @@ export default function Settings({ settings, setSettings, addSetting }) {
     })
   }
 
+  const handleInputKeyDown = async (event) => {
+    setIsLoading(true)
+    if (event.key === 'Enter') {
+      event.preventDefault()
+    }
+  }
   const buttonBody = (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -73,11 +85,7 @@ export default function Settings({ settings, setSettings, addSetting }) {
               defaultValue={settings?.apikey ?? ''}
               name="apikey"
               onChange={handleSubmit}
-              onKeyDown={(event) => {
-                if (event.key === 'Enter') {
-                  event.preventDefault()
-                }
-              }}
+              onKeyDown={handleInputKeyDown}
             />
             <p className="mb-8 text-xs italic text-gray-600">API KEY for openai</p>
 
@@ -95,11 +103,7 @@ export default function Settings({ settings, setSettings, addSetting }) {
               placeholder={settings.whisperPrompt || '...'}
               defaultValue={settings.whisperPrompt ?? ''}
               name="whisperPrompt"
-              onKeyDown={(event) => {
-                if (event.key === 'Enter') {
-                  event.preventDefault()
-                }
-              }}
+              onKeyDown={handleInputKeyDown}
             />
             <p className="mb-8 text-xs italic text-gray-600">
               whisperPrompt (Proper nouns, punctuation examples, etc)
@@ -123,6 +127,7 @@ export default function Settings({ settings, setSettings, addSetting }) {
                     defaultValue={settings.prompts[key] ?? ''}
                     name={'prompts.' + key}
                     onChange={handleSubmit}
+                    onKeyDown={handleInputKeyDown}
                   />
                 </div>
               ))}

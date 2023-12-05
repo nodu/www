@@ -13,6 +13,7 @@ import {
 } from 'app/indexedDBHelper'
 
 import { RecordingType, SettingsType } from 'types'
+import LoadingBar from 'components/LoadingBar'
 
 import AudioVisualizer from 'components/AudioVisualizer'
 import RecordingCard from 'components/RecordingCard'
@@ -22,6 +23,7 @@ export default function Page() {
   const [settings, setSettings] = useState<SettingsType>()
   const [mediaRecorder, setMediaRecorder] = useState<MediaRecorder | null>(null)
   const [isRecording, setIsRecording] = useState<boolean>(false)
+  const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const [recordings, setRecordings] = useState<RecordingType[]>([] as RecordingType[])
   const [audioStream, setAudioStream] = useState<MediaStream | null>(null)
@@ -107,10 +109,25 @@ export default function Page() {
     }
   }
 
+  const handleSetLoading = async () => {
+    if (isLoading) {
+      setIsLoading(false)
+    } else {
+      setIsLoading(true)
+    }
+  }
   return (
     <>
+      <LoadingBar isLoading={isLoading} />
+      <button onClick={handleSetLoading}>loading</button>
+      <button onClick={handleSetLoading}>stop loading</button>
       {settings ? (
-        <Settings settings={settings} setSettings={setSettings} addSetting={addSetting} />
+        <Settings
+          setIsLoading={setIsLoading}
+          settings={settings}
+          setSettings={setSettings}
+          addSetting={addSetting}
+        />
       ) : null}
       <button className="rounded-full border-2 border-gray-300" onClick={handleStartRecording}>
         {/* microphone */}
@@ -142,6 +159,7 @@ export default function Page() {
               setRecordings={setRecordings}
               updateRecording={updateRecording}
               audioStream={audioStream}
+              setIsLoading={setIsLoading}
             />
           </div>
         ))}

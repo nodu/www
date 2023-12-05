@@ -8835,6 +8835,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"nprogress@npm:^0.2.0":
+  version: 0.2.0
+  resolution: "nprogress@npm:0.2.0"
+  checksum: 66b7bec5d563ecf2d1c3d2815e6d5eb74ed815eee8563e0afa63d3f185ab1b9cf2ddd97e1ded263b9995c5019d26d600320e849e50f3747984daa033744619dc
+  languageName: node
+  linkType: hard
+
 "nth-check@npm:^2.0.0, nth-check@npm:^2.0.1":
   version: 2.1.1
   resolution: "nth-check@npm:2.1.1"
@@ -10986,6 +10993,7 @@ __metadata:
     next: 14.0.3
     next-contentlayer: 0.3.4
     next-themes: ^0.2.1
+    nprogress: ^0.2.0
     pliny: 0.1.6
     postcss: ^8.4.24
     prettier: ^3.0.0
