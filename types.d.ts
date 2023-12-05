@@ -17,3 +17,8 @@ export type FileToDownload = {
   filename: string
   blob: Blob
 }
+
+export type SettingsType = {
+  apikey?: string
+  prompts?: object
+}

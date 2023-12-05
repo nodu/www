@@ -11,15 +11,32 @@ export default function Settings({ settings, setSettings, addSetting }) {
   function openModal() {
     setIsOpen(true)
   }
-  const handleSave = async (FormData) => {
-    setIsOpen(false)
-    const apikey = FormData.get('apikey')
-    const prompt = FormData.get('prompt')
-    setSettings({ ...settings, apikey, prompt })
-    addSetting({ name: 'apikey', value: apikey })
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    const { name, value } = event.target
+    const [key, subkey] = name.split('.')
+    if (subkey) {
+      // Nested object
+      setSettings((prevSettings) => ({
+        ...prevSettings,
+        [key]: {
+          ...prevSettings[key],
+          [subkey]: value,
+        },
+      }))
+    } else {
+      // Root level key
+      setSettings((prevSettings) => ({
+        ...prevSettings,
+        [key]: value,
+      }))
+    }
 
-    addSetting({ name: 'prompt', value: prompt })
+    Object.keys(settings).forEach((key) => {
+      addSetting({ name: key, value: settings[key] })
+    })
   }
+
   const buttonBody = (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -36,54 +53,98 @@ export default function Settings({ settings, setSettings, addSetting }) {
       />
     </svg>
   )
+
   const body = (
     <>
-      <form className="w-full max-w-lg px-4 py-3" action={handleSave}>
-        <div className="-mx-3 mb-6 flex flex-wrap">
+      <form className="w-full max-w-2xl px-4 py-3" onSubmit={handleSubmit}>
+        <div className="mx-3 mb-6 flex flex-wrap">
           <div className="w-full px-3">
             <label
               className="mb-2 block text-xs font-bold uppercase tracking-wide text-gray-700"
-              htmlFor="grid-apikey"
+              htmlFor="id-apikey"
             >
               API KEY:
             </label>
             <input
               className="mb-3 block w-full appearance-none rounded border border-gray-200 bg-gray-200 px-4 py-3 leading-tight text-gray-700 focus:border-gray-500 focus:bg-white focus:outline-none"
-              id="grid-apikey"
+              id="id-apikey"
               type="text"
               placeholder={settings?.apikey || 'sk-...'}
               defaultValue={settings?.apikey ?? ''}
               name="apikey"
+              onChange={handleSubmit}
+              onKeyDown={(event) => {
+                if (event.key === 'Enter') {
+                  event.preventDefault()
+                }
+              }}
             />
-            <p className="text-xs italic text-gray-600">API KEY for openai</p>
-            <textarea
+            <p className="mb-8 text-xs italic text-gray-600">API KEY for openai</p>
+
+            <label
+              className="mb-2 block text-xs font-bold uppercase tracking-wide text-gray-700"
+              htmlFor="id-whisperPrompt"
+            >
+              whisper Prompt
+            </label>
+            <input
               className="mb-3 block w-full appearance-none rounded border border-gray-200 bg-gray-200 px-4 py-3 leading-tight text-gray-700 focus:border-gray-500 focus:bg-white focus:outline-none"
-              id="grid-prompt"
-              rows={10}
-              cols={50}
-              placeholder={settings?.prompt || 'you are a expert ...'}
-              defaultValue={settings?.prompt ?? ''}
-              name="prompt"
+              id="id-whisperPrompt"
+              type="text"
+              onChange={handleSubmit}
+              placeholder={settings.whisperPrompt || '...'}
+              defaultValue={settings.whisperPrompt ?? ''}
+              name="whisperPrompt"
+              onKeyDown={(event) => {
+                if (event.key === 'Enter') {
+                  event.preventDefault()
+                }
+              }}
             />
+            <p className="mb-8 text-xs italic text-gray-600">
+              whisperPrompt (Proper nouns, punctuation examples, etc)
+            </p>
+
+            <>
+              {Object.keys(settings.prompts).map((key, index) => (
+                <div key={index}>
+                  <label
+                    className="mb-2 block text-xs font-bold uppercase tracking-wide text-gray-700"
+                    htmlFor={'grid-' + key}
+                  >
+                    Prompt: {key}
+                  </label>
+                  <textarea
+                    className="mb-3 block w-full appearance-none rounded border border-gray-200 bg-gray-200 px-4 py-3 leading-tight text-gray-700 focus:border-gray-500 focus:bg-white focus:outline-none"
+                    id={'grid=' + key}
+                    rows={10}
+                    cols={50}
+                    placeholder={settings.prompts[key] || 'you are a expert ...'}
+                    defaultValue={settings.prompts[key] ?? ''}
+                    name={'prompts.' + key}
+                    onChange={handleSubmit}
+                  />
+                </div>
+              ))}
+            </>
           </div>
         </div>
-
-        <div className="mt-4">
-          <button
-            type="button"
-            className="justify-left inline-flex rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-            onClick={closeModal}
-          >
-            Close
-          </button>
-          <button
-            type="submit"
-            className="justify-right inline-flex rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-            onClick={closeModal}
-          >
-            Submit
-          </button>
-        </div>
+        {/* <div className="mt-4"> */}
+        {/*   <button */}
+        {/*     type="button" */}
+        {/*     className="justify-left inline-flex rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" */}
+        {/*     onClick={closeModal} */}
+        {/*   > */}
+        {/*     Close */}
+        {/*   </button> */}
+        {/*   <button */}
+        {/*     type="submit" */}
+        {/*     className="justify-right inline-flex rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" */}
+        {/*     onClick={closeModal} */}
+        {/*   > */}
+        {/*     Save */}
+        {/*   </button> */}
+        {/* </div> */}
       </form>
       <ExportDB />
     </>
@@ -91,14 +152,16 @@ export default function Settings({ settings, setSettings, addSetting }) {
 
   return (
     <>
-      <Modal
-        openModal={openModal}
-        closeModal={closeModal}
-        isOpen={isOpen}
-        title="Global Settings"
-        body={body}
-        buttonBody={buttonBody}
-      />
+      {settings && (
+        <Modal
+          openModal={openModal}
+          closeModal={closeModal}
+          isOpen={isOpen}
+          title="Global Settings"
+          body={body}
+          buttonBody={buttonBody}
+        />
+      )}
     </>
   )
 }

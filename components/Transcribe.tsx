@@ -19,6 +19,7 @@ export default function Transcribe({
   setRecordings,
   updateRecording,
   name,
+  whisperPrompt,
   transcript,
 }: Props) {
   const whisperApiEndpoint = 'https://api.openai.com/v1/audio/'
@@ -33,9 +34,9 @@ export default function Transcribe({
     if (mode === 'transcriptions') {
       formBody.append('language', 'en')
     }
-    // if (recording.whisperPrompt) {
-    //   formBody.append('whisperPrompt', recording.whisperPrompt)
-    // }
+    if (whisperPrompt) {
+      formBody.append('whisperPrompt', whisperPrompt)
+    }
     if (response_format) {
       formBody.append('response_format', response_format)
     }

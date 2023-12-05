@@ -12,18 +12,14 @@ import {
   updateRecording,
 } from 'app/indexedDBHelper'
 
-interface Settings {
-  apikey?: string
-}
-
-import { RecordingType } from 'types'
+import { RecordingType, SettingsType } from 'types'
 
 import AudioVisualizer from 'components/AudioVisualizer'
 import RecordingCard from 'components/RecordingCard'
 import Settings from 'components/Settings'
 
 export default function Page() {
-  const [settings, setSettings] = useState<Settings>()
+  const [settings, setSettings] = useState<SettingsType>()
   const [mediaRecorder, setMediaRecorder] = useState<MediaRecorder | null>(null)
   const [isRecording, setIsRecording] = useState<boolean>(false)
 
@@ -37,7 +33,7 @@ export default function Page() {
       if (settingsFromDB) {
         //TODO: fix coersion from arr to obj
         // let settingsObj: Settings = { apikey: null }
-        const settingsObj: Settings = {}
+        const settingsObj: SettingsType = {}
         settingsFromDB.forEach((setting) => {
           settingsObj[setting.name] = setting.value
         })
@@ -113,8 +109,9 @@ export default function Page() {
 
   return (
     <>
-      <Settings settings={settings} setSettings={setSettings} addSetting={addSetting} />
-
+      {settings ? (
+        <Settings settings={settings} setSettings={setSettings} addSetting={addSetting} />
+      ) : null}
       <button className="rounded-full border-2 border-gray-300" onClick={handleStartRecording}>
         {/* microphone */}
         {/* {isRecording ? 'Stop Recording' : 'Start Recording'} */}
