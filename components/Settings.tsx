@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Modal from './Modal'
 import ExportDB from 'components/ExportDB'
+
 export default function Settings({ setIsLoading, settings, setSettings, addSetting }) {
   const [isOpen, setIsOpen] = useState(false)
 
@@ -44,11 +45,13 @@ export default function Settings({ setIsLoading, settings, setSettings, addSetti
   }
 
   const handleInputKeyDown = async (event) => {
-    setIsLoading(true)
-    if (event.key === 'Enter') {
+    if (event.key === 'Enter' && event.target.tagName === 'INPUT') {
       event.preventDefault()
+    } else {
+      setIsLoading(true)
     }
   }
+
   const buttonBody = (
     <svg
       xmlns="http://www.w3.org/2000/svg"

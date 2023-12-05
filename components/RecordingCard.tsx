@@ -47,10 +47,12 @@ export default function RecordingCard({
       {recording.summary && <p className="mb-2">Summary: {recording.summary}</p>}
     </>
   )
+
   const handleInputKeyDown = async (event) => {
-    setIsLoading(true)
-    if (event.key === 'Enter') {
+    if (event.key === 'Enter' && event.target.tagName === 'INPUT') {
       event.preventDefault()
+    } else {
+      setIsLoading(true)
     }
   }
 
