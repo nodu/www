@@ -22,3 +22,8 @@ export type SettingsType = {
   apikey?: string
   prompts?: object
 }
+
+export type LoadingType = {
+  isLoading: boolean
+  forceDone?: boolean
+}

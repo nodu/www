@@ -1,18 +1,23 @@
 import React, { useEffect, useState } from 'react'
 import NProgress from 'nprogress'
 
-export default function LoadingBar({ isLoading = false }) {
+import { LoadingType } from 'types'
+
+type LoadingBarProps = {
+  loading: LoadingType
+}
+
+export default function LoadingBar({ loading }: LoadingBarProps) {
   const color = '#29D'
   const startPosition = 0.3
   const height = 2
 
   useEffect(() => {
-    let timer
-    if (isLoading) {
+    if (loading.isLoading) {
       NProgress.set(startPosition)
       NProgress.start()
     } else {
-      NProgress.done()
+      NProgress.done(loading.forceDone)
     }
   })
   const style = (

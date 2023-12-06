@@ -9,7 +9,7 @@ export default function RecordingCard({
   settings,
   setRecordings,
   updateRecording,
-  setIsLoading,
+  setLoading,
   audioStream,
 }) {
   const [isOpen, setIsOpen] = useState(false)
@@ -37,7 +37,7 @@ export default function RecordingCard({
               }
             : rec
         ),
-      setIsLoading(false)
+      setLoading({ isLoading: false, forceDone: true })
     )
     updateRecording(recording.name, { [name]: value })
   }
@@ -55,8 +55,6 @@ export default function RecordingCard({
   const handleInputKeyDown = async (event) => {
     if (event.key === 'Enter' && event.target.tagName === 'INPUT') {
       event.preventDefault()
-    } else {
-      setIsLoading(true)
     }
   }
 

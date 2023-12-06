@@ -2,7 +2,7 @@ import { useState } from 'react'
 import Modal from './Modal'
 import ExportDB from 'components/ExportDB'
 
-export default function Settings({ setIsLoading, settings, setSettings, addSetting }) {
+export default function Settings({ setLoading, settings, setSettings, addSetting }) {
   const [isOpen, setIsOpen] = useState(false)
 
   function closeModal() {
@@ -26,7 +26,7 @@ export default function Settings({ setIsLoading, settings, setSettings, addSetti
             [subkey]: value,
           },
         }),
-        setIsLoading(false)
+        setLoading({ isLoading: false, forceDone: true })
       )
     } else {
       // Root level key
@@ -35,7 +35,7 @@ export default function Settings({ setIsLoading, settings, setSettings, addSetti
           ...prevSettings,
           [key]: value,
         }),
-        setIsLoading(false)
+        setLoading({ isLoading: false, forceDone: true })
       )
     }
 
@@ -47,8 +47,6 @@ export default function Settings({ setIsLoading, settings, setSettings, addSetti
   const handleInputKeyDown = async (event) => {
     if (event.key === 'Enter' && event.target.tagName === 'INPUT') {
       event.preventDefault()
-    } else {
-      setIsLoading(true)
     }
   }
 
