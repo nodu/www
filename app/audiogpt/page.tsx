@@ -12,7 +12,7 @@ import {
   updateRecording,
 } from 'app/indexedDBHelper'
 
-import { RecordingType, SettingsType } from 'types'
+import { RecordingType, SettingsType, LoadingType } from 'types'
 import LoadingBar from 'components/LoadingBar'
 
 import AudioVisualizer from 'components/AudioVisualizer'
@@ -23,7 +23,8 @@ export default function Page() {
   const [settings, setSettings] = useState<SettingsType>()
   const [mediaRecorder, setMediaRecorder] = useState<MediaRecorder | null>(null)
   const [isRecording, setIsRecording] = useState<boolean>(false)
-  const [isLoading, setIsLoading] = useState<boolean>(false)
+
+  const [loading, setLoading] = useState<LoadingType>({ isLoading: false, forceDone: false })
 
   const [recordings, setRecordings] = useState<RecordingType[]>([] as RecordingType[])
   const [audioStream, setAudioStream] = useState<MediaStream | null>(null)
@@ -111,10 +112,10 @@ export default function Page() {
 
   return (
     <>
-      <LoadingBar isLoading={isLoading} />
+      <LoadingBar loading={loading} />
       {settings ? (
         <Settings
-          setIsLoading={setIsLoading}
+          setLoading={setLoading}
           settings={settings}
           setSettings={setSettings}
           addSetting={addSetting}
@@ -150,7 +151,7 @@ export default function Page() {
               setRecordings={setRecordings}
               updateRecording={updateRecording}
               audioStream={audioStream}
-              setIsLoading={setIsLoading}
+              setLoading={setLoading}
             />
           </div>
         ))}
