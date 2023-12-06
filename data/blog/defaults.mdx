@@ -1,0 +1,19 @@
+---
+title: CLI Defaults
+date: '2023-12-05T15:40:00Z'
+tags: ['linux', 'github', 'cli', 'debugging']
+draft: false
+summary: Helper aliases and functions to setup a basic cli.
+layout: PostLayout
+images: []
+---
+
+When I'm remote debugging systems, like kubernetes, and checking network connectivity, I often times lack efficiency because I use aliases and functions in my CLI so much.
+
+So, I created a public repository called defaults for my colleagues and citizens of the internet (you can find the repo here: www.github.com/nodu/defaults). This way, no sign in is needed to quickly get the bash helpers. This allows a very quick initialization of a remote server or new terminal and allows a lot of the syntactic sugar or keyboard magic for instant productivity and quick debugging.
+
+I namespace a lot of these helpers under `m` as it's not a reserved keyword or command used in linux. This allows a OS 'start menu' of sorts, just type `m.`, then press 'tab' and you'll get a listing of all the helpers.
+
+Some of the helpers will fail due to their base programs not being installed yet such as tshark, httpstat, etc. Though the movement helpers like '..' and 'srch' help tremendously.
+
+Check it out.
