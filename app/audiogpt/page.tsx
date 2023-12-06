@@ -109,18 +109,9 @@ export default function Page() {
     }
   }
 
-  const handleSetLoading = async () => {
-    if (isLoading) {
-      setIsLoading(false)
-    } else {
-      setIsLoading(true)
-    }
-  }
   return (
     <>
       <LoadingBar isLoading={isLoading} />
-      <button onClick={handleSetLoading}>loading</button>
-      <button onClick={handleSetLoading}>stop loading</button>
       {settings ? (
         <Settings
           setIsLoading={setIsLoading}
