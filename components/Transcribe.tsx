@@ -11,6 +11,7 @@ interface Props {
   setRecordings: React.Dispatch<React.SetStateAction<RecordingType[]>> // either allow function or RecordingType[], or use:
   // setRecordings: (recordings: RecordingType[]) => void // And calculate the return arr first and pass into setRecordings
   updateRecording: (name: string, update: RecordingUpdate) => void
+  setLoading
 }
 
 export default function Transcribe({
