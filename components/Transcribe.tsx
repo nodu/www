@@ -1,6 +1,6 @@
 'use client'
 
-import { RecordingType, RecordingUpdate } from 'types'
+import { RecordingType, RecordingUpdate, LoadingType } from 'types'
 
 interface Props {
   apikey?: string
@@ -11,7 +11,7 @@ interface Props {
   setRecordings: React.Dispatch<React.SetStateAction<RecordingType[]>> // either allow function or RecordingType[], or use:
   // setRecordings: (recordings: RecordingType[]) => void // And calculate the return arr first and pass into setRecordings
   updateRecording: (name: string, update: RecordingUpdate) => void
-  setLoading
+  setLoading: (newState: LoadingType) => void
 }
 
 export default function Transcribe({

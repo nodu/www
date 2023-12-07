@@ -1,6 +1,6 @@
 'use client'
 
-import { RecordingType, RecordingUpdate } from 'types'
+import { RecordingType, RecordingUpdate, LoadingType } from 'types'
 
 interface Props {
   apikey?: string
@@ -11,7 +11,8 @@ interface Props {
   // setRecordings: (recordings: RecordingType[]) => void // And calculate the return arr first and pass into setRecordings
   updateRecording: (name: string, update: RecordingUpdate) => void
   summary?: string
-  setLoading
+  // setLoading: (LoadingType) => void
+  setLoading: (newState: LoadingType) => void
 }
 
 export default function Summarize({
