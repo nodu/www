@@ -1,7 +1,6 @@
 import 'css/tailwind.css'
 import 'pliny/search/algolia.css'
 
-// import { Space_Grotesk, Crimson_Pro, Noto_Serif, Karla, Nunito_Sans, Cormorant, Roboto_Mono, Yrsa, Varta, Overpass } from 'next/font/google'
 import { Overpass, Crimson_Pro, Karla } from 'next/font/google'
 import { Analytics, AnalyticsConfig } from 'pliny/analytics'
 import { SearchProvider, SearchConfig } from 'pliny/search'
@@ -12,46 +11,11 @@ import siteMetadata from '@/data/siteMetadata'
 import { ThemeProviders } from './theme-providers'
 import { Metadata } from 'next'
 
-// const space_grotesk = Space_Grotesk({
-//   subsets: ['latin'],
-//   display: 'swap',
-//   variable: '--font-space-grotesk',
-// })
-// const cormorant = Cormorant({
-//   subsets: ['latin'],
-//   display: 'swap',
-//   variable: '--font-cormorant',
-// })
-// const roboto_mono = Roboto_Mono({
-//   subsets: ['latin'],
-//   display: 'swap',
-//   variable: '--font-roboto-mono',
-// })
-// const yrsa = Yrsa({
-//   subsets: ['latin'],
-//   display: 'swap',
-//   variable: '--font-yrsa',
-// })
-// const varta = Varta({
-//   subsets: ['latin'],
-//   display: 'swap',
-//   variable: '--font-varta',
-// })
 const overpass = Overpass({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-overpass',
 })
-// const nunito_sans = Nunito_Sans({
-//   subsets: ['latin'],
-//   display: 'swap',
-//   variable: '--font-nunito-sans',
-// })
-// const noto_serif = Noto_Serif({
-//   subsets: ['latin'],
-//   display: 'swap',
-//   variable: '--font-noto-serif',
-// })
 const crimson_pro = Crimson_Pro({
   subsets: ['latin'],
   display: 'swap',
@@ -107,7 +71,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang={siteMetadata.language}
-      // className={`${cormorant.variable} ${noto_serif.variable} ${crimson_pro.variable} ${karla.variable} ${nunito_sans.variable} ${space_grotesk.variable} ${yrsa.variable} ${overpass.variable} ${varta.variable} ${roboto_mono.variable} scroll-smooth`}
       className={`${overpass.variable} ${crimson_pro.variable} ${karla.variable} } scroll-smooth`}
       suppressHydrationWarning
     >
