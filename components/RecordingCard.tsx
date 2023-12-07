@@ -65,7 +65,7 @@ export default function RecordingCard({
           <div>
             <h2 className="text-xl font-semibold">Transcript</h2>
             <textarea
-              className="w-full resize-y rounded-md border-2 border-gray-200 p-5"
+              className="w-full resize-y rounded-md border-2 border-gray-200 p-4"
               placeholder="Text that can be edited"
               value={recording.transcript}
               onChange={handleSave}
@@ -122,6 +122,7 @@ export default function RecordingCard({
           isOpen={isOpen}
           buttonBody={buttonBody}
           body={body}
+          modalWidth="w-11/12 md:w-10/12"
         />
         <Transcribe
           apikey={settings?.apikey}
@@ -131,6 +132,7 @@ export default function RecordingCard({
           blob={recording.blob}
           whisperPrompt={settings?.whisperPrompt}
           transcript={recording.transcript}
+          setLoading={setLoading}
         />
         {/* TODO: just pass the data, don't do lookups inside these childen components */}
         {/* TODO: Maybe do lookups inside the components with prop name, likely more performant with large recordings */}
@@ -142,6 +144,7 @@ export default function RecordingCard({
           updateRecording={updateRecording}
           transcript={recording.transcript}
           summary={recording.summary}
+          setLoading={setLoading}
         />
         <div className="flex justify-between">
           <button className="">

@@ -21,6 +21,7 @@ export default function Transcribe({
   name,
   whisperPrompt,
   transcript,
+  setLoading,
 }: Props) {
   const whisperApiEndpoint = 'https://api.openai.com/v1/audio/'
   const mode = 'transcriptions'
@@ -28,6 +29,7 @@ export default function Transcribe({
   const model = 'whisper-1'
 
   const handleTranscribe = async () => {
+    setLoading({ isLoading: true, forceDone: false })
     const formBody = new FormData()
     formBody.append('file', blob)
     formBody.append('model', model)
@@ -56,6 +58,8 @@ export default function Transcribe({
     }
 
     postData(whisperApiEndpoint + mode, formBody).then((response) => {
+      setLoading({ isLoading: false, forceDone: false })
+
       if (response.error) {
         console.log(response.error)
       } else {

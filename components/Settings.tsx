@@ -57,7 +57,7 @@ export default function Settings({ setLoading, settings, setSettings, addSetting
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className="h-10 w-10 dark:fill-cyan-900"
+      className="h-10 w-10"
     >
       <path
         strokeLinecap="round"
@@ -139,7 +139,7 @@ export default function Settings({ setLoading, settings, setSettings, addSetting
           title="Global Settings"
           body={body}
           buttonBody={buttonBody}
-          modalWidth="w-3/4 md:w-2/3 lg:w-2/4"
+          modalWidth="w-11/12 md:w-2/3 lg:w-1/3"
         />
       )}
     </>

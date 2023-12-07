@@ -11,6 +11,7 @@ interface Props {
   // setRecordings: (recordings: RecordingType[]) => void // And calculate the return arr first and pass into setRecordings
   updateRecording: (name: string, update: RecordingUpdate) => void
   summary?: string
+  setLoading
 }
 
 export default function Summarize({
@@ -21,6 +22,7 @@ export default function Summarize({
   setRecordings,
   updateRecording,
   summary,
+  setLoading,
 }: Props) {
   const gptEndpoint = 'https://api.openai.com/v1/chat/completions'
   const models = {
@@ -34,6 +36,7 @@ export default function Summarize({
   const summaryLength = ``
 
   const handleSummary = async () => {
+    setLoading({ isLoading: true, forceDone: false })
     // Credit https://nicheless.blog/post/audiopen-prompts
     const requestBody = {
       model: models.gpt4pv,
@@ -63,6 +66,7 @@ export default function Summarize({
     }
 
     postData(gptEndpoint, requestBody).then((response) => {
+      setLoading({ isLoading: false, forceDone: false })
       if (response.error) {
         console.log(response.error)
         alert(response.error)
