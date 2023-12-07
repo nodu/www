@@ -60,69 +60,40 @@ export default function RecordingCard({
 
   const body = (
     <>
-      <div className="flex flex-wrap">
-        <form className="w-full px-4 py-3" onSubmit={handleSave}>
-          <div className="rounded-lg bg-white p-6 text-gray-900 shadow-lg">
-            <div className="flex space-x-4">
-              <div className="flex-1">
-                <div className="flex items-start justify-between">
-                  <h2 className="text-xl font-semibold">Transcript</h2>
-                </div>
-                <textarea
-                  className="mt-2 h-40 w-full resize-none rounded-md border-2 border-gray-200 p-4"
-                  placeholder="Text that can be edited"
-                  value={recording.transcript}
-                  onChange={handleSave}
-                  name="transcript"
-                  onKeyDown={handleInputKeyDown}
-                ></textarea>
-              </div>
-
-              <div className="flex-1">
-                <div className="flex items-start justify-between">
-                  <h2 className="text-xl font-semibold">Summary</h2>
-                </div>
-                <textarea
-                  className="mt-2 h-40 w-full resize-none rounded-md border-2 border-gray-200 p-4"
-                  placeholder="Text that can be edited"
-                  value={recording.summary}
-                  onChange={handleSave}
-                  name="summary"
-                  onKeyDown={handleInputKeyDown}
-                ></textarea>
-              </div>
-            </div>
+      <form className="text-gray-700" onSubmit={handleSave}>
+        <div className="mx-auto my-0 grid grid-cols-1 gap-4 md:grid-cols-2">
+          <div>
+            <h2 className="text-xl font-semibold">Transcript</h2>
+            <textarea
+              className="w-full resize-y rounded-md border-2 border-gray-200 p-5"
+              placeholder="Text that can be edited"
+              value={recording.transcript}
+              onChange={handleSave}
+              name="transcript"
+              onKeyDown={handleInputKeyDown}
+              rows={40}
+            ></textarea>
           </div>
-        </form>
-      </div>
+          <div>
+            <h2 className="text-xl font-semibold">Summary</h2>
+            <textarea
+              className="w-full resize-y rounded-md border-2 border-gray-200 p-4"
+              placeholder="Text that can be edited"
+              value={recording.summary}
+              onChange={handleSave}
+              name="summary"
+              onKeyDown={handleInputKeyDown}
+              rows={40}
+            ></textarea>
+          </div>
+        </div>
+      </form>
     </>
   )
   return (
     <>
       <div className="rounded-lg bg-white p-4 shadow dark:bg-black">
         <div className="">
-          {/* <button className="flex h-10 w-10 items-center justify-center "> */}
-          {/*   <svg */}
-          {/*     xmlns="http://www.w3.org/2000/svg" */}
-          {/*     fill="none" */}
-          {/*     viewBox="0 0 24 24" */}
-          {/*     strokeWidth={1.5} */}
-          {/*     stroke="currentColor" */}
-          {/*     className="h-6 w-6" */}
-          {/*   > */}
-          {/*     <path */}
-          {/*       strokeLinecap="round" */}
-          {/*       strokeLinejoin="round" */}
-          {/*       d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" */}
-          {/*     /> */}
-          {/*     <path */}
-          {/*       strokeLinecap="round" */}
-          {/*       strokeLinejoin="round" */}
-          {/*       d="M15.91 11.672a.375.375 0 010 .656l-5.603 3.113a.375.375 0 01-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112z" */}
-          {/*     /> */}
-          {/*   </svg> */}
-          {/* </button> */}
-
           <button className="" onClick={() => handleDeleteRecording(recording.name)}>
             {/* Delete */}
             <svg

@@ -57,7 +57,7 @@ export default function Settings({ setLoading, settings, setSettings, addSetting
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className="h-6 w-6 dark:fill-cyan-900"
+      className="h-10 w-10 dark:fill-cyan-900"
     >
       <path
         strokeLinecap="round"
@@ -69,88 +69,61 @@ export default function Settings({ setLoading, settings, setSettings, addSetting
 
   const body = (
     <>
-      <form className="w-full max-w-2xl px-4 py-3" onSubmit={handleSubmit}>
-        <div className="mx-3 mb-6 flex flex-wrap">
-          <div className="w-full px-3">
-            <label
-              className="mb-2 block text-xs font-bold uppercase tracking-wide text-gray-700"
-              htmlFor="id-apikey"
-            >
-              API KEY:
-            </label>
-            <input
-              className="mb-3 block w-full appearance-none rounded border border-gray-200 bg-gray-200 px-4 py-3 leading-tight text-gray-700 focus:border-gray-500 focus:bg-white focus:outline-none"
-              id="id-apikey"
-              type="text"
-              placeholder={settings?.apikey || 'sk-...'}
-              defaultValue={settings?.apikey ?? ''}
-              name="apikey"
-              onChange={handleSubmit}
-              onKeyDown={handleInputKeyDown}
-            />
-            <p className="mb-8 text-xs italic text-gray-600">API KEY for openai</p>
+      <form className="mt-5 text-gray-700" onSubmit={handleSubmit}>
+        <div className="flex flex-wrap">
+          <label className="mb-2 text-xs font-bold uppercase" htmlFor="id-apikey">
+            API KEY:
+          </label>
+          <input
+            className="mb-2 w-full rounded border border-gray-200 bg-gray-200 focus:border-gray-500 focus:bg-white focus:outline-none"
+            id="id-apikey"
+            type="text"
+            placeholder={settings?.apikey || 'sk-...'}
+            defaultValue={settings?.apikey ?? ''}
+            name="apikey"
+            onChange={handleSubmit}
+            onKeyDown={handleInputKeyDown}
+          />
+          <p className="mb-8 text-xs italic">API KEY for openai</p>
 
-            <label
-              className="mb-2 block text-xs font-bold uppercase tracking-wide text-gray-700"
-              htmlFor="id-whisperPrompt"
-            >
-              whisper Prompt
-            </label>
-            <input
-              className="mb-3 block w-full appearance-none rounded border border-gray-200 bg-gray-200 px-4 py-3 leading-tight text-gray-700 focus:border-gray-500 focus:bg-white focus:outline-none"
-              id="id-whisperPrompt"
-              type="text"
-              onChange={handleSubmit}
-              placeholder={settings.whisperPrompt || '...'}
-              defaultValue={settings.whisperPrompt ?? ''}
-              name="whisperPrompt"
-              onKeyDown={handleInputKeyDown}
-            />
-            <p className="mb-8 text-xs italic text-gray-600">
-              whisperPrompt (Proper nouns, punctuation examples, etc)
-            </p>
+          <label className="mb-2 w-full text-xs font-bold uppercase" htmlFor="id-whisperPrompt">
+            whisper Prompt
+          </label>
+          <input
+            className="mb-2 w-full rounded border border-gray-200 bg-gray-200 focus:border-gray-500 focus:bg-white focus:outline-none"
+            id="id-whisperPrompt"
+            type="text"
+            onChange={handleSubmit}
+            placeholder={settings.whisperPrompt || '...'}
+            defaultValue={settings.whisperPrompt ?? ''}
+            name="whisperPrompt"
+            onKeyDown={handleInputKeyDown}
+          />
+          <p className="mb-8 text-xs italic">
+            whisperPrompt (Proper nouns, punctuation examples, etc)
+          </p>
 
-            <>
-              {Object.keys(settings.prompts).map((key, index) => (
-                <div key={index}>
-                  <label
-                    className="mb-2 block text-xs font-bold uppercase tracking-wide text-gray-700"
-                    htmlFor={'grid-' + key}
-                  >
-                    Prompt: {key}
-                  </label>
-                  <textarea
-                    className="mb-3 block w-full appearance-none rounded border border-gray-200 bg-gray-200 px-4 py-3 leading-tight text-gray-700 focus:border-gray-500 focus:bg-white focus:outline-none"
-                    id={'grid=' + key}
-                    rows={10}
-                    cols={50}
-                    placeholder={settings.prompts[key] || 'you are a expert ...'}
-                    defaultValue={settings.prompts[key] ?? ''}
-                    name={'prompts.' + key}
-                    onChange={handleSubmit}
-                    onKeyDown={handleInputKeyDown}
-                  />
-                </div>
-              ))}
-            </>
-          </div>
+          <>
+            {Object.keys(settings.prompts).map((key, index) => (
+              <div key={index}>
+                <label className="mb-2 text-xs font-bold uppercase" htmlFor={'id-' + key}>
+                  Prompt: {key}
+                </label>
+                <textarea
+                  className="mb-2 w-full rounded border border-gray-200 bg-gray-200 focus:border-gray-500 focus:bg-white focus:outline-none"
+                  id={'id=' + key}
+                  rows={20}
+                  cols={50}
+                  placeholder={settings.prompts[key] || 'you are a expert ...'}
+                  defaultValue={settings.prompts[key] ?? ''}
+                  name={'prompts.' + key}
+                  onChange={handleSubmit}
+                  onKeyDown={handleInputKeyDown}
+                />
+              </div>
+            ))}
+          </>
         </div>
-        {/* <div className="mt-4"> */}
-        {/*   <button */}
-        {/*     type="button" */}
-        {/*     className="justify-left inline-flex rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" */}
-        {/*     onClick={closeModal} */}
-        {/*   > */}
-        {/*     Close */}
-        {/*   </button> */}
-        {/*   <button */}
-        {/*     type="submit" */}
-        {/*     className="justify-right inline-flex rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" */}
-        {/*     onClick={closeModal} */}
-        {/*   > */}
-        {/*     Save */}
-        {/*   </button> */}
-        {/* </div> */}
       </form>
       <ExportDB />
     </>
@@ -166,6 +139,7 @@ export default function Settings({ setLoading, settings, setSettings, addSetting
           title="Global Settings"
           body={body}
           buttonBody={buttonBody}
+          modalWidth="w-3/4 md:w-2/3 lg:w-2/4"
         />
       )}
     </>

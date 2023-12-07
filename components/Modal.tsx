@@ -1,10 +1,18 @@
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
 
-export default function Modal({ openModal, closeModal, isOpen, title, body, buttonBody }) {
+export default function Modal({
+  openModal,
+  closeModal,
+  isOpen,
+  title,
+  body,
+  buttonBody,
+  modalWidth = 'w-5/6',
+}) {
   return (
     <>
-      <div className="inset-0 flex items-center justify-center">
+      <div className="flex justify-end">
         <button type="button" onClick={openModal} className="">
           {buttonBody}
         </button>
@@ -21,7 +29,7 @@ export default function Modal({ openModal, closeModal, isOpen, title, body, butt
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div className="fixed inset-0 bg-black/25" />
+            <div className="fixed inset-0" />
           </Transition.Child>
 
           <div className="fixed inset-0 overflow-y-auto">
@@ -35,7 +43,12 @@ export default function Modal({ openModal, closeModal, isOpen, title, body, butt
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-full max-w-2xl transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                <Dialog.Panel
+                  className={
+                    'transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all ' +
+                    modalWidth
+                  }
+                >
                   <Dialog.Title as="h1" className="text-lg font-medium leading-6 text-gray-900">
                     {title}
                     <button className="fixed right-10" onClick={closeModal}>
@@ -55,7 +68,7 @@ export default function Modal({ openModal, closeModal, isOpen, title, body, butt
                       </svg>
                     </button>
                   </Dialog.Title>
-                  <div className="mt-2">{body}</div>
+                  {body}
                 </Dialog.Panel>
               </Transition.Child>
             </div>
