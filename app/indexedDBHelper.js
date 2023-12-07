@@ -19,9 +19,8 @@ export const initDB = async () => {
           name: 'prompts',
           value: {
             default: `You are a great writer who writes very clearly.
-Your task is to summarize the my text while maintaining my unique style.
+Your task is to summarize text while maintaining its unique style.
 You write in English (US).
-Write simple and easy words that a 5th grader can understand.
 Make the writing very clear.
 If needed, change how the text flows to make it clearer.
 You can change the order of the words if it helps.
@@ -30,14 +29,14 @@ Do your best and only send back the new text.
 Do not make up information that is not found in the my text.
 Make sure to clean up the text by removing crutch words like um and ah.
 Now, here is my text:`,
-            colorful: `Your task is to summarize my words while maintaining my unique style.
-Please provide a concise and accurate summary that captures the essence of what I have said, using language and phrasing that reflects my personal style.
-Please note that your response should be flexible enough to allow for various relevant and creative summaries.
-You should focus on preserving the tone, voice, and personality of my original words, while still conveying the main points clearly and effectively.
-Do not make up information that is not found in my words.
-Make sure to clean up my words by removing crutch words like um and ah.
-Form clearly structured text, organizing ideas so they are easily readable.
-Do your best and only send back the new text.`,
+            //             colorful: `Your task is to summarize my words while maintaining my unique style.
+            // Please provide a concise and accurate summary that captures the essence of what I have said, using language and phrasing that reflects my personal style.
+            // Please note that your response should be flexible enough to allow for various relevant and creative summaries.
+            // You should focus on preserving the tone, voice, and personality of my original words, while still conveying the main points clearly and effectively.
+            // Do not make up information that is not found in my words.
+            // Make sure to clean up my words by removing crutch words like um and ah.
+            // Form clearly structured text, organizing ideas so they are easily readable.
+            // Do your best and only send back the new text.`,
           },
         }
 
