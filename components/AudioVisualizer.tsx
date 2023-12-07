@@ -56,11 +56,11 @@ export default function AudioVisualizer({ audioStream }: Props) {
 
     analyser.getByteTimeDomainData(dataArray)
 
-    ctx.fillStyle = 'rgb(200, 200, 200)'
+    ctx.fillStyle = 'rgb(0, 0, 0)'
     ctx.fillRect(0, 0, canvas.width, canvas.height)
 
     ctx.lineWidth = 2
-    ctx.strokeStyle = 'rgb(0, 0, 0)'
+    ctx.strokeStyle = 'rgb(200, 200, 200)'
 
     ctx.beginPath()
 
@@ -85,5 +85,5 @@ export default function AudioVisualizer({ audioStream }: Props) {
     ctx.stroke()
   }
 
-  return <canvas ref={canvasRef} width="300" height="150"></canvas>
+  return <canvas ref={canvasRef} width="200" height="50"></canvas>
 }

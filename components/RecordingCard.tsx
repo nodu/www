@@ -144,7 +144,7 @@ export default function RecordingCard({
   )
   return (
     <>
-      <div className="rounded-lg bg-white p-4 shadow dark:bg-black">
+      <div className="rounded-lg border-2 border-gray-700 bg-white p-4 shadow shadow-gray-700 dark:bg-black dark:shadow-white">
         <div className="">
           <Modal
             title={'Delete ' + recording.name + '?'}
