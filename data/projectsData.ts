@@ -8,10 +8,10 @@ const projectsData = [
   },
   {
     title: 'Junks.hk',
-    description: `Hand crafted React.js, Node.js, and Postgres web app for instant Junk boat rental booking.`,
+    description: `Startup! Hand crafted React.js, Node.js, and Postgres web app for instant Junk boat rental booking.`,
     imgSrc: '/static/images/junks-homepage.png',
     href: '/blog/junkshk',
-    showProject: false,
+    showProject: true,
   },
   {
     title: 'www',
@@ -22,7 +22,7 @@ const projectsData = [
   },
   {
     title: 'Thermo',
-    description: `Automating an old thermostant in ever winter San Francisco, with a 3D printer and a Raspberry Pi.`,
+    description: `Automating an old thermostat in ever-winter San Francisco, with a 3D printer and a Raspberry Pi.`,
     imgSrc: '/static/images/google.png',
     href: '/blog/thermo',
     showProject: false,
