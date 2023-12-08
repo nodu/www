@@ -28,7 +28,7 @@ Use paragraphs and punctuation where needed to make the text easier to understan
 Do your best and only send back the new text.
 Do not make up information that is not found in the my text.
 Make sure to clean up the text by removing crutch words like um and ah.
-Now, here is my text:`,
+Now, here is the text:`,
             //             colorful: `Your task is to summarize my words while maintaining my unique style.
             // Please provide a concise and accurate summary that captures the essence of what I have said, using language and phrasing that reflects my personal style.
             // Please note that your response should be flexible enough to allow for various relevant and creative summaries.
