@@ -18,6 +18,7 @@ import LoadingBar from 'components/LoadingBar'
 import AudioVisualizer from 'components/AudioVisualizer'
 import RecordingCard from 'components/RecordingCard'
 import Settings from 'components/Settings'
+import Timer from 'components/Timer'
 
 export default function Page() {
   const [settings, setSettings] = useState<SettingsType>()
@@ -163,7 +164,10 @@ export default function Page() {
               )}
             </button>
           </div>
-          <div className="mt-16 flex justify-center">
+          <div className="mt-2 flex justify-center">
+            <Timer isRecording={isRecording} />
+          </div>
+          <div className="mt-12 flex justify-center">
             {audioStream && <AudioVisualizer audioStream={audioStream} />}
           </div>
         </div>
