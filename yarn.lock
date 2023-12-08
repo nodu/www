@@ -10605,6 +10605,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"sonner@npm:^1.2.4":
+  version: 1.2.4
+  resolution: "sonner@npm:1.2.4"
+  peerDependencies:
+    react: ^18.0.0
+    react-dom: ^18.0.0
+  checksum: b6c7cca3bc090b33a43e7960cbc427af947b509a2f3c6928c3ca4b3f6d0327fafd7ddb88f80b556c71b4d6b9d9c0e93efa8fe40bfdc4ba84b63a0fc7894421e4
+  languageName: node
+  linkType: hard
+
 "source-map-js@npm:^1.0.1, source-map-js@npm:^1.0.2":
   version: 1.0.2
   resolution: "source-map-js@npm:1.0.2"
@@ -11010,6 +11020,7 @@ __metadata:
     remark: ^14.0.2
     remark-gfm: ^3.0.1
     remark-math: ^5.1.1
+    sonner: ^1.2.4
     tailwindcss: ^3.3.3
     typescript: ^5.1.3
     unist-util-visit: ^4.1.0

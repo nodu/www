@@ -1,6 +1,7 @@
 'use client'
 
 import { RecordingType, RecordingUpdate, LoadingType } from 'types'
+import { toast } from 'sonner'
 
 interface Props {
   apikey?: string
@@ -62,7 +63,7 @@ export default function Transcribe({
       setLoading({ isLoading: false, forceDone: false })
 
       if (response.error) {
-        console.log(response.error)
+        toast.error(response.error.message)
       } else {
         const transcribedText: string = response.text
 

@@ -1,6 +1,7 @@
 'use client'
 
 import { RecordingType, RecordingUpdate, LoadingType } from 'types'
+import { toast } from 'sonner'
 
 interface Props {
   apikey?: string
@@ -69,8 +70,7 @@ export default function Summarize({
     postData(gptEndpoint, requestBody).then((response) => {
       setLoading({ isLoading: false, forceDone: false })
       if (response.error) {
-        console.log(response.error)
-        alert(response.error)
+        toast.error(response.error.message)
       } else {
         const summaryResponse = response.choices[0].message.content
         const usage = response.usage
