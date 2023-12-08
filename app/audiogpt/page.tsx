@@ -35,14 +35,10 @@ export default function Page() {
     const loadSettings = async () => {
       const settingsFromDB = await getAllSettings()
       if (settingsFromDB) {
-        //TODO: fix coersion from arr to obj
-        // let settingsObj: Settings = { apikey: null }
         const settingsObj: SettingsType = {}
         settingsFromDB.forEach((setting) => {
           settingsObj[setting.name] = setting.value
         })
-        // TODO: move to new component
-        console.log('move to new component, mount in page.tsx', settingsObj)
 
         setSettings(settingsObj)
       }
