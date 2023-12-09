@@ -1,0 +1,28 @@
+---
+title: WWW
+date: '2023-12-07'
+tags: ['nextjs', 'vercel', 'tailwindcss', 'react']
+draft: false
+summary: Meta. Building nodu.io in the open.
+layout: PostLayout
+images: [/static/images/www.png]
+---
+![www](/static/images/www.png)
+
+What do you do when you want to create a portfolio for your projects, interests and ideas but have a penchant for creating everything from scratch and don't want this project to be a bottomless pit of time? Well, you first find a template!
+
+I decided to start with a Next.js community template called [Tailwind Nextjs Starter Blog](https://github.com/timlrx/tailwind-nextjs-starter-blog). It's pretty neat as it has blog posting, tagging, as well as a project portfolio page, and most imprtantly used mdx for the posts. It deploys to the excellent hosting of [Vercel](https://vercel.com) with delicious ci/cd on commit push.
+
+Then next you write a couple posts and decide, hey, wouldn't this all be a heck of a lot easier if you created a transcription and summary service using OpenAI's Whisper and ChatGPT? Yes, yes, you decide to do that. Then you spend the next week building up a completely client-side application, so no data privacy concerns (well except OpenAI...), no database, no syncing, and build it up all in a nice React.js and Tailwind CSS interface so you can dictate your blog posts, have them transcribed and then cleaned up/summarized a little bit and prepared for posting.
+
+Yeah, that's what you do.
+
+I used a ChatGPT-4 model that's been integrated with their image generation models to create the cycling cog logo that I now love. Quite hillarious some of the iterations it created though, like two pedal arms on the same side of the cog!
+
+I intially tried the brand new ['draw to ui'](https://arstechnica.com/information-technology/2023/11/ai-powered-drawing-app-stuns-developers-by-turning-sketches-into-functional-games) features of [Make it real](https://makereal.tldraw.com/); however, while they worked it ultimately took more time to fix the css and ended up writing most by hand with tailwindcss. [Excalidraw](https://excalidraw.com/), now has these features, so I'll check them out as Excalidraw is a great tool to have in your box for quick designs and presentations.
+
+For the favicons and PWA icons, I used the excellent resources [Favicon Generator](https://realfavicongenerator.net) and [Maskable](https://maskable.app/editor) these really help in quickly generating all the different ico sizes and associated plumbing.
+
+For fonts, I found a pretty neat app that generates font pairings using deep learning [Fontjob](https://fontjoy.com) and finding fully variable fonts on [Google's Font repoistory](https://fonts.google.com/variablefonts)
+
+For the few icons and UI components I've used [Heroicons](https://heroicons.com) and [Headlessui](https://headlessui.com), which are both very complementary to Tailwindcss.

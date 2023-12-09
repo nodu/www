@@ -16,9 +16,9 @@ const projectsData = [
   {
     title: 'www',
     description: 'Meta. Building nodu.io in the open.',
-    imgSrc: '/static/images/google.png',
-    href: '/blog/www-nodu',
-    showProject: false,
+    imgSrc: '/static/images/www.png',
+    href: '/blog/www',
+    showProject: true,
   },
   {
     title: 'Thermo',
