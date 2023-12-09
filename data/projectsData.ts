@@ -23,9 +23,9 @@ const projectsData = [
   {
     title: 'Thermo',
     description: `Automating an old thermostat in ever-winter San Francisco, with a 3D printer and a Raspberry Pi.`,
-    imgSrc: '/static/images/google.png',
-    href: '/blog/thermo',
-    showProject: false,
+    imgSrc: '/static/images/thermostat.jpg',
+    href: '/blog/thermostat',
+    showProject: true,
   },
   {
     title: 'Defaults',

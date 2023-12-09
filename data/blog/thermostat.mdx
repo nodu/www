@@ -1,0 +1,29 @@
+---
+title: Thermostat
+date: '2023-12-08'
+tags: ['3DPrinting', 'react', 'python', 'go', 'tailwindcss', 'nginx']
+draft: false
+summary: Making a thermostat IoT with 3D Printing, Go, Python, and React via RPi
+layout: PostLayout
+images: [/static/images/thermostat.jpg]
+---
+
+![Thermostat](/static/images/thermostat.jpg)
+
+In our home in ever-winter San Francisco, we experienced consistently chilly mornings and evenings. (Thanks Carl.) Waking up in a cold dark house is absolutely no fun, so I set out to fix it! We had an outdated, non-digital thermostat, which I could’ve easily replaced with a modern Wi-Fi-enabled one. However, I was eager to dive into the world of 3D modeling and additive manufacturing, so I chose a different path.
+
+I started by turning on my 3D printer and gathering various spare components from my workshop, such as thermocouples, a spare servo, and an old Raspberry Pi. The first piece I created was a friction-fit backplate for the thermostat for mounting all the components. I measured the existing thermostat housing and used Blender to design a simple backplate. Then, I modeled some arms with adjustable holes to attach the thermostat's control arm to the servo motor.
+
+Following the modeling, I wrote some code to act as wrappers for the thermocouple and servo libraries, allowing initial command-line control. After the system was functional, I mounted the components onto the backplate, connected them to the Raspberry Pi's GPIO pins, and proceeded to the fun task of coding. The goal was to operate the thermostat from our phones using a web server hosted on the Raspberry Pi. But mostly to never have to use the app as the system would manage temperature automatically.
+
+For the server, I decided to explore Go to build the API, and it excelled in terms of speed and ease of development for such a simple project. In terms of the UI, I chose the now mostly deprecated template, Create React App, as its an easy way to start React project scaffolding. Then I added some Tailwind CSS for styling.
+
+For state management, I just wrote basic configs to a database file on the OS; this way, temperature and system continuity survived any crashes or power outages.
+
+For the routing to the webserver, I set the project up behind a simple nginx proxy.
+
+The main functions for the GO API server are to act as a simple PID controller during the day, keeping the temperature constant and as a chron job to turn the thermostat on in the mornings and off at night.
+
+This was quite a fun project that really helped with comfort and efficiency - keeping the thermostat on when we want it and off when we don't.
+
+The entirety of the code for this custom thermostat project—the hardware management, API, and  UI—is available on my GitHub (https://github.com/nodu/thermostat).
