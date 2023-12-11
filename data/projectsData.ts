@@ -1,10 +1,10 @@
 const projectsData = [
   {
     title: 'AudioGPT',
-    description: 'Transcribe, Record, and Summarise with ChatGPT and Whisper.cpp.',
-    imgSrc: '/static/images/google.png',
+    description: 'Transcribe, Record, and Summarise with Whisper and ChatGPT client side only.',
+    imgSrc: '/static/images/AudioGPT-hero.png',
     href: '/blog/audiogpt',
-    showProject: false,
+    showProject: true,
   },
   {
     title: 'Junks.hk',
@@ -36,17 +36,17 @@ const projectsData = [
   },
   {
     title: 'Fermentation Station',
-    description: '',
-    imgSrc: '/static/images/time-machine.jpg',
+    description: `PID controller for fermenting vegetables and alcohol with a RPi Zero W and Grafana.`,
+    imgSrc: '/static/images/fermentationstation.png',
     href: '/blog/fermentationstation',
-    showProject: false,
+    showProject: true,
   },
   {
     title: 'Maker Faire - Raspberry Pi Workshop',
-    description: 'Class tought at Hong Kong Maker Faire on the Raspberry pi.',
-    imgSrc: '/static/images/time-machine.jpg',
+    description: 'Workshop tought at Hong Kong Maker Faire on the Raspberry pi.',
+    imgSrc: '/static/images/rpi-fss.png',
     href: '/blog/makerfaire-rpiworkshop',
-    showProject: false,
+    showProject: true,
   },
   {
     title: 'Sirtet',
