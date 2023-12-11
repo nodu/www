@@ -155,6 +155,7 @@ export default function RecordingCard({
             modalWidth="w-11/12 md:w-10/12"
           />
         </div>
+        <h1 className="my-4">{recording.name}</h1>
         <audio controls src={URL.createObjectURL(recording.blob)}>
           <track kind="captions" />
         </audio>
