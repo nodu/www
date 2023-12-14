@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Modal from './Modal'
 import ExportDB from 'components/ExportDB'
+import ImportRecordings from 'components/ImportRecordings'
 
 export default function Settings({ setLoading, settings, setSettings, addSetting }) {
   const [isOpen, setIsOpen] = useState(false)
@@ -125,7 +126,9 @@ export default function Settings({ setLoading, settings, setSettings, addSetting
           </>
         </div>
       </form>
-      <ExportDB />
+      <ExportDB setLoading={setLoading} />
+      <hr className="my-8 h-px border-0 bg-gray-200 dark:bg-gray-700" />
+      <ImportRecordings setLoading={setLoading} />
     </>
   )
 

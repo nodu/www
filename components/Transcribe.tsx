@@ -2,7 +2,7 @@
 
 import { RecordingType, RecordingUpdate, LoadingType } from 'types'
 import { toast } from 'sonner'
-
+import { useEffect } from 'react'
 interface Props {
   apikey?: string
   blob: Blob
@@ -29,6 +29,12 @@ export default function Transcribe({
   const mode = 'transcriptions'
   const response_format = 'json'
   const model = 'whisper-1'
+
+  useEffect(() => {
+    if (blob && !transcript) {
+      handleTranscribe()
+    }
+  }, [])
 
   const handleTranscribe = async () => {
     setLoading({ isLoading: true, forceDone: false })

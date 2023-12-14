@@ -96,8 +96,15 @@ export const updateRecording = async (name, updates) => {
 }
 
 export const exportDB = async () => {
+  const settingsData = await getAllSettings()
+  let returnSettings = []
+  settingsData.forEach((set) => {
+    if (set.name !== 'apikey') {
+      returnSettings.push(set)
+    }
+  })
   return {
-    settings: await getAllSettings(),
+    settings: returnSettings,
     recordings: await getAllRecordings(),
   }
 }

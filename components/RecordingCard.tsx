@@ -112,9 +112,22 @@ export default function RecordingCard({
   const body = (
     <>
       <form className="text-gray-700" onSubmit={handleSave}>
+        {!recording.customName ?? <h1 className="my-4">blerb{recording.customName}</h1>}
+        <h1 className="my-4">{recording.name}</h1>
+
         <div className="mx-auto my-0 grid grid-cols-1 gap-4 md:grid-cols-2">
           <div>
             <h2 className="text-xl font-semibold">Transcript</h2>
+            <Transcribe
+              apikey={settings?.apikey}
+              name={recording.name}
+              setRecordings={setRecordings}
+              updateRecording={updateRecording}
+              blob={recording.blob}
+              whisperPrompt={settings?.whisperPrompt}
+              transcript={recording.transcript}
+              setLoading={setLoading}
+            />
             <textarea
               className="w-full resize-y rounded-md border-2 border-gray-200 p-4"
               placeholder="Text that can be edited"
@@ -127,6 +140,16 @@ export default function RecordingCard({
           </div>
           <div>
             <h2 className="text-xl font-semibold">Summary</h2>
+            <Summarize
+              apikey={settings?.apikey}
+              prompts={settings.prompts}
+              name={recording.name}
+              setRecordings={setRecordings}
+              updateRecording={updateRecording}
+              transcript={recording.transcript}
+              summary={recording.summary}
+              setLoading={setLoading}
+            />
             <textarea
               className="w-full resize-y rounded-md border-2 border-gray-200 p-4"
               placeholder="Text that can be edited"
@@ -155,6 +178,7 @@ export default function RecordingCard({
             modalWidth="w-11/12 md:w-10/12"
           />
         </div>
+        {!recording.customName ?? <h1 className="my-4">blerb{recording.customName}</h1>}
         <h1 className="my-4">{recording.name}</h1>
         <audio controls src={URL.createObjectURL(recording.blob)}>
           <track kind="captions" />

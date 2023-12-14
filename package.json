@@ -22,6 +22,7 @@
     "gray-matter": "^4.0.2",
     "idb": "^7.1.1",
     "image-size": "1.0.0",
+    "jszip": "^3.10.1",
     "next": "14.0.3",
     "next-contentlayer": "0.3.4",
     "next-themes": "^0.2.1",
