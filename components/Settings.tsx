@@ -17,32 +17,29 @@ export default function Settings({ setLoading, settings, setSettings, addSetting
     event.preventDefault()
     const { name, value } = event.target
     const [key, subkey] = name.split('.')
+
     if (subkey) {
       // Nested object
-      setSettings(
-        (prevSettings) => ({
-          ...prevSettings,
-          [key]: {
-            ...prevSettings[key],
-            [subkey]: value,
-          },
-        }),
-        setLoading({ isLoading: false, forceDone: true })
-      )
+      setSettings((prevSettings) => ({
+        ...prevSettings,
+        [key]: {
+          ...prevSettings[key],
+          [subkey]: value,
+        },
+      }))
+
+      addSetting({ name: key, value: { [subkey]: value } })
+      setLoading({ isLoading: false, forceDone: true })
     } else {
       // Root level key
-      setSettings(
-        (prevSettings) => ({
-          ...prevSettings,
-          [key]: value,
-        }),
-        setLoading({ isLoading: false, forceDone: true })
-      )
-    }
+      setSettings((prevSettings) => ({
+        ...prevSettings,
+        [key]: value,
+      }))
 
-    Object.keys(settings).forEach((key) => {
-      addSetting({ name: key, value: settings[key] })
-    })
+      addSetting({ name: key, value: value })
+      setLoading({ isLoading: false, forceDone: true })
+    }
   }
 
   const handleInputKeyDown = async (event) => {

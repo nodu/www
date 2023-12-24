@@ -26,11 +26,10 @@ export default function ImportRecordings({ setLoading }: Props) {
   }
 
   const importZip = async () => {
-    setLoading({ isLoading: true, forceDone: false })
-    toast.message('Importing...')
-    console.log(selectedZip)
-
     if (selectedZip) {
+      setLoading({ isLoading: true, forceDone: false })
+      toast.message('Importing...')
+      console.log(selectedZip)
       const zip = await JSZip.loadAsync(selectedZip)
       let jsonData: JsonData = { recordings: [] }
       const blobs = {}
@@ -43,7 +42,7 @@ export default function ImportRecordings({ setLoading }: Props) {
           console.log(jsonData)
         } else {
           const fileData = await zip.files[fileName].async('blob')
-          const blob = new Blob([fileData], { type: 'wav' })
+          const blob = new Blob([fileData], { type: 'audio/wav' })
           blobs[fileName] = blob
         }
       }
@@ -65,6 +64,8 @@ export default function ImportRecordings({ setLoading }: Props) {
       }
       toast.message('Import complete!')
       setLoading({ isLoading: false, forceDone: false })
+    } else {
+      toast.warning('No selected Zip file!')
     }
   }
 
