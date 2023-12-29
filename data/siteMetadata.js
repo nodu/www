@@ -11,7 +11,7 @@ const siteMetadata = {
   siteLogo: '/static/images/logo.svg',
   socialBanner: '/static/images/twitter-card.png',
   mastodon: '',
-  email: 'blog@nodu.io',
+  email: 'hello@nodu.io',
   github: 'https://github.com/nodu',
   twitter: '',
   facebook: '',
