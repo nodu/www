@@ -1,5 +1,4 @@
 import sendgrid from '@sendgrid/mail'
-import type { NextApiRequest, NextApiResponse } from 'next'
 
 if (!process.env.SENDGRID_API_KEY) {
   throw new Error('SENDGRID_API_KEY is not defined in your environment variables')
@@ -7,8 +6,7 @@ if (!process.env.SENDGRID_API_KEY) {
 
 sendgrid.setApiKey(process.env.SENDGRID_API_KEY)
 
-// async function handler(req, res) {
-async function handler(req: NextApiRequest, res: NextApiResponse) {
+async function handler(req, res) {
   try {
     const msg = {
       to: 'hello@nodu.io',
