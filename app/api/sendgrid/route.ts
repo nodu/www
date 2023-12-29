@@ -9,7 +9,6 @@ sendgrid.setApiKey(process.env.SENDGRID_API_KEY)
 async function handler(req: NextRequest) {
   try {
     const body = await req.json()
-    console.log(body)
 
     const msg = {
       to: 'hello@nodu.io',

@@ -34,7 +34,6 @@ export default function ContactUs() {
     }
 
     setErrors({ ...tempErrors })
-    console.log('errors', errors)
     return isValid
   }
 
@@ -45,7 +44,6 @@ export default function ContactUs() {
 
     if (isValidForm) {
       setButtonText('Sending')
-      console.log('body', fullname, email, message)
       const res = await fetch('/api/sendgrid', {
         body: JSON.stringify({
           email: email,
@@ -59,10 +57,8 @@ export default function ContactUs() {
       })
 
       const { error } = await res.json()
-      console.log('response', res)
 
       if (error) {
-        console.log(error)
         setShowSuccessMessage(false)
         setShowFailureMessage(true)
         setButtonText('Send')
@@ -81,7 +77,6 @@ export default function ContactUs() {
       setEmail('')
       setMessage('')
     }
-    console.log(fullname, email, message)
   }
   return (
     <main>
