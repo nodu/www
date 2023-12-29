@@ -1,10 +1,22 @@
 ---
 title: AudioGPT
-date: '2023-10-12'
-tags: ['projects', 'react', 'ai', 'gpt', 'tailwind', 'nextjs', 'vercel']
+date: '2023-12-29'
+tags: ['projects', 'react', 'typescript', 'ai', 'gpt', 'tailwind', 'nextjs', 'vercel']
 draft: false
-summary: Post Coming Soon!
+summary: Transcribe, Record, and Summarise with Whisper and ChatGPT client side only.
 images: []
 ---
 
-Post coming soon!
+AudioGPT is a handy client-side application I developed, which serves as a voice recording, transcription, and text cleanup service. It's crafted using technologies like React, TypeScript, and IndexedDB and is hosted on Next.js by Vercel. This service is particularly practical for converting spoken information into a clear, written format. When you record a note, it is transcribed using OpenAI's Whisper model. You are then given the option to refine the transcript by editing a default prompt, which helps eliminate unnecessary fillers and rearranges the text for easy sharing or documentation purposes.
+
+This tool is incredibly beneficial for transforming meeting discussions into concise memos. You can record explanations or demonstrations and let AudioGPT process the recordings into usable documentation that can be preserved and accessed indefinitely. This integration into the software development process saves time and simplifies documentation efforts.
+
+From a privacy standpoint, I made a point to keep all operations client-side, avoiding third-party data handling. However, OpenAI's API does receive the data for transcription, which isn't ideal. Looking ahead, an open-source project like whisper.cpp might enable complete in-browser transcription, though summarization would still necessitate an in-browser GPT model, which is currently resource-intensive.
+
+All recordings are saved as blobs in IndexedDB, along with transcripts and summaries in the local browser's recording table. You can export these as a zip file using jszip, directly in the browser. If needed, you can sync across devices by uploading the zip to another instance of AudioGPT.
+
+While synchronization could be smoother—I've considered WebRTC for peer-to-peer connections—currently, exporting and uploading to cloud storage fits my use cases. The side project has significantly enhanced my productivity, facilitating the transition from spoken concepts to written drafts.
+
+In the spirit of iterative improvement and overcoming the pressure for perfection, this tool helps capture initial thoughts without the friction of writing from scratch. The summaries can be further refined, allowing for edits and the addition of notes or links. I plan to package AudioGPT as an NPM module for easy integration into other applications. Meanwhile, users can experiment by adding their OpenAI API key to my setup at [nodu.io/audiogpt](https://nodu.io/audiogpt).
+
+Similar services to AudioGPT exist, but they require you to trust a third party with your data as well as trust OpenAI. On top of that, you also have to pay for the service. However, if you're already a paying customer of OpenAI, using products like ChatGPT or other models, you can utilize AudioGPT for 'free'/super low cost

@@ -1,10 +1,19 @@
 ---
 title: Fermentation Station
 date: '2023-10-14'
-tags: ['projects', 'grafana', 'circuits', 'aws']
+tags: ['projects', 'grafana', 'circuits', 'aws', 'raspberry pi', 'linux', 'python']
 draft: false
-summary: Post Coming Soon!
-images: []
+summary: PID controller for fermenting vegetables and alcohol with a RPi Zero W and Grafana.
+images: [/static/images/fermentationstation.png]
 ---
 
-Post coming soon!
+![fermentation](/static/images/fermentationstation.png)
+
+
+I'm passionate about cooking and creating delightful culinary experiences, which extends to fermenting foods like sauerkraut, pickles, and brewing beer, wine, and mead. Maintaining a consistent temperature during fermentation is key to ensuring a clean and tasty product. With spare components including a Raspberry Pi Zero Wi-Fi, relay switches, thermocouples, an extension cord, and a carboy heater at my disposal, I embarked on a project to fine-tune the fermentation process.
+
+I constructed a simple PID controller, using Python, to manage the carboy heater. The carboy heater is designed to maintain a warm temperature around a five-gallon carboy (often used in beer brewing and particularly useful in cold environments or damp cellars). I connected the heater to a Raspberry Pi via a relay switch and incorporated thermocouples to monitor temperature. The entire setup was placed inside a box for improved temperature insulation.
+
+Using Grafana on the Raspberry Pi, I could graphically display temperature trends, adding a visual element to the project. I installed one thermocouple outside and another inside the fermentation box. While the external thermocouple served as an informative device to track daily temperature fluctuations, the internal one provides the data point to control the relay. It reads the temperature every second, directing the carboy heater to switch on or off as needed to maintain the precise warmth required for specific fermentation processes.
+
+This enjoyable side project not only enhanced my technical skills but also contributed to creating delicious fermented foods. Those interested in examining the code can find it on my [GitHub](https://github.com/nodu/fermentationstation).

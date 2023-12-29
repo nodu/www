@@ -17,9 +17,10 @@ export default function Page() {
             <div className="rounded-lg border-2 border-gray-200 border-opacity-60 p-6 shadow dark:border-gray-700">
               <h3 className="mb-2 text-xl font-bold">Fractional CTO</h3>
               <p className="">
-                Leverage my Fractional CTO Services to guide your technology strategy. I provide
-                experienced tech leadership to help navigate complex digital transformations,
-                aligning your IT goals with business objectives for optimal growth and efficiency.
+                Leverage my Fractional CTO Services to guide your technology strategy and team
+                mangement. I provide experienced tech leadership to help navigate complex digital
+                transformations, aligning your IT goals with business objectives for optimal growth
+                and efficiency.
               </p>
             </div>
             <div className="rounded-lg border-2 border-gray-200 border-opacity-60 p-6 shadow dark:border-gray-700">
@@ -52,7 +53,7 @@ export default function Page() {
               <h3 className="mb-2 text-xl font-bold">CI/CD</h3>
               <p className="">
                 Embrace agility with my Continuous Integration and Continuous Deployment (CI/CD)
-                solutions. I streamline your software development process, enabling faster and more
+                solutions. Streamline your software development process, enabling faster and more
                 reliable code deployments with no downtime.
               </p>
             </div>
