@@ -1,11 +1,17 @@
 'use client'
 import React, { useState } from 'react'
 
+interface FormErrors {
+  email?: string
+  message?: string
+  fullname?: string
+}
+
 export default function ContactUs() {
   const [fullname, setFullname] = useState('')
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
-  const [errors, setErrors] = useState({})
+  const [errors, setErrors] = useState<FormErrors>({})
   const [buttonText, setButtonText] = useState('Send')
   const [showSuccessMessage, setShowSuccessMessage] = useState(false)
   const [showFailureMessage, setShowFailureMessage] = useState(false)
@@ -140,9 +146,7 @@ export default function ContactUs() {
 
         <div className="text-left">
           {showSuccessMessage && (
-            <p className="my-2 text-sm font-semibold text-green-500">
-              Thankyou! Your Message has been delivered.
-            </p>
+            <p className="my-2 text-sm font-semibold text-green-500">Thank you! We'll chat soon.</p>
           )}
           {showFailureMessage && (
             <p className="text-red-500">Oops! Something went wrong, please try again.</p>

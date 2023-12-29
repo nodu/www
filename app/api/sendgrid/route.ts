@@ -1,26 +1,28 @@
 import sendgrid from '@sendgrid/mail'
-
+import { NextRequest, NextResponse } from 'next/server'
 if (!process.env.SENDGRID_API_KEY) {
   throw new Error('SENDGRID_API_KEY is not defined in your environment variables')
 }
 
 sendgrid.setApiKey(process.env.SENDGRID_API_KEY)
 
-async function handler(req, res) {
+async function handler(req: NextRequest) {
   try {
+    const body = await req.json()
+    console.log(body)
+
     const msg = {
       to: 'hello@nodu.io',
       from: 'hello@nodu.io',
       subject: `Email from nodu.io`,
-      html: `<div><p>${req.body.fullname}</p><p>${req.body.email}</p><p>${req.body.message}</p></div>`,
+      html: `<div><p>${body.fullname}</p><p>${body.email}</p><p>${body.message}</p></div>`,
     }
 
     await sendgrid.send(msg)
-
-    res.status(200).json({ message: 'Email sent successfully' })
+    return NextResponse.json({ message: 'Email sent successfully' }, { status: 200 })
   } catch (error) {
     console.error('Error sending email:', error)
-    res.status(500).json({ error: 'Error sending email' })
+    return NextResponse.json({ error: 'Method not allowed' }, { status: 500 })
   }
 }
 
