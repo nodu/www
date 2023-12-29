@@ -99,7 +99,7 @@ export default function ContactUs() {
           className="mb-3 block w-full rounded border border-gray-200 bg-gray-200 px-4 py-3 dark:text-black"
         />
 
-        {errors?.fullname && <p className="text-red-500">Fullname cannot be empty.</p>}
+        {errors?.fullname && <p className="text-red-500">Full name cannot be empty.</p>}
 
         <label htmlFor="email" className="mt-4 font-light ">
           Email<span className="text-red-500">*</span>
