@@ -164,6 +164,7 @@ export default function RecordingCard({
       </form>
     </>
   )
+  const audioSourceObjectURL = URL.createObjectURL(recording.blob)
   return (
     <>
       <div className="rounded-lg border-2 border-gray-700 bg-white p-4 shadow shadow-gray-700 dark:bg-black dark:shadow-white">
@@ -180,7 +181,8 @@ export default function RecordingCard({
         </div>
         {!recording.customName ?? <h1 className="my-4">blerb{recording.customName}</h1>}
         <h1 className="my-4">{recording.name}</h1>
-        <audio controls src={URL.createObjectURL(recording.blob)}>
+        <audio controls>
+          <source src={audioSourceObjectURL} />
           <track kind="captions" />
         </audio>
         <Modal
