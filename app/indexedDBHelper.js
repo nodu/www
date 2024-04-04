@@ -72,12 +72,6 @@ export const deleteRecording = async (name) => {
   await db.delete(AUDIO_STORE_NAME, name)
 }
 
-export const renameRecording = async (oldName, newName, blob) => {
-  const db = await initDB()
-  await db.delete(AUDIO_STORE_NAME, oldName)
-  await db.put(AUDIO_STORE_NAME, { name: newName, blob })
-}
-
 export const addSetting = async (setting) => {
   const db = await initDB()
   await db.put(SETTINGS_STORE_NAME, setting)

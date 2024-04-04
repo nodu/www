@@ -7,8 +7,6 @@ import {
   deleteRecording,
   getAllRecordings,
   getAllSettings,
-  getRecording,
-  renameRecording,
   updateRecording,
 } from 'app/indexedDBHelper'
 

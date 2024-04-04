@@ -12,7 +12,7 @@ export default function Modal({
 }) {
   return (
     <>
-      <div className="flex justify-end">
+      <div className="flex">
         <button type="button" onClick={openModal} className="">
           {buttonBody}
         </button>

@@ -14,6 +14,8 @@ export default function RecordingCard({
 }) {
   const [isOpen, setIsOpen] = useState(false)
   const [isDeleteOpen, setIsDeleteOpen] = useState(false)
+  const [isRenameOpen, setIsRenameOpen] = useState(false)
+  const [customName, setCustomName] = useState('')
 
   const deleteButtonBody = (
     <>
@@ -35,21 +37,76 @@ export default function RecordingCard({
   )
 
   const deleteBody = (
-    <div className="mt-5 flex justify-center">
+    <div className="mt-5 text-gray-700">
+      <div className="mt-5 flex justify-center">
+        <p className="text-xs italic">File name: {recording.name}</p>
+      </div>
+      <div className="mt-5 flex justify-center">
+        <button
+          type="button"
+          className="rounded bg-red-600 px-4 py-2 font-bold text-white hover:bg-red-800"
+          onClick={() => {
+            handleDeleteRecording(recording.name)
+            closeDeleteModal()
+          }}
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  )
+  const renameModalBody = (
+    <div className="mt-5 justify-center text-gray-700">
+      <div className="flex flex-wrap">
+        <label className="mb-2 text-xs font-bold uppercase" htmlFor="id-recording-name">
+          Recording Name:
+        </label>
+        <input
+          className="mb-2 w-full rounded border border-gray-200 bg-gray-200 focus:border-gray-500 focus:bg-white focus:outline-none"
+          id="id-recording-name"
+          type="text"
+          value={customName}
+          onChange={(e) => setCustomName(e.target.value)}
+          placeholder={recording.customName ? recording.customName : recording.name}
+          defaultValue={recording.customName ? recording.customName : recording.name}
+          name="recording-name"
+        />
+        <p className="mb-8 text-xs italic">File name: {recording.name}</p>
+      </div>
       <button
         type="button"
-        className="rounded bg-red-600 px-4 py-2 font-bold text-white hover:bg-red-800"
+        className="rounded bg-blue-600 px-4 py-2 font-bold text-white hover:bg-blue-800"
         onClick={() => {
-          handleDeleteRecording(recording.name)
-          closeDeleteModal()
+          setRecordings(
+            (prevRecs) =>
+              prevRecs.map((rec) =>
+                rec.name === recording.name
+                  ? {
+                      ...rec,
+                      customName: customName,
+                    }
+                  : rec
+              ),
+            setLoading({ isLoading: false, forceDone: true })
+          )
+          updateRecording(recording.name, { customName: customName })
+          closeRenameModal()
         }}
       >
-        Delete
+        Rename
       </button>
     </div>
   )
   function closeModal() {
     setIsOpen(false)
+  }
+
+  function openRenameModal() {
+    setIsRenameOpen(true)
+  }
+
+  function closeRenameModal() {
+    setIsRenameOpen(false)
   }
 
   function openDeleteModal() {
@@ -66,7 +123,7 @@ export default function RecordingCard({
 
   const handleSave = async (event) => {
     event.preventDefault()
-    console.log(event.target.name)
+    // console.log(event.target.name)
 
     const { name, value } = event.target
     setRecordings(
@@ -112,8 +169,9 @@ export default function RecordingCard({
   const body = (
     <>
       <form className="text-gray-700" onSubmit={handleSave}>
-        {!recording.customName ?? <h1 className="my-4">blerb{recording.customName}</h1>}
-        <h1 className="my-4">{recording.name}</h1>
+        <h1 className="my-4">{`${
+          recording.customName ? recording.customName : recording.name
+        }`}</h1>
 
         <div className="mx-auto my-0 grid grid-cols-1 gap-4 md:grid-cols-2">
           <div>
@@ -168,9 +226,9 @@ export default function RecordingCard({
   return (
     <>
       <div className="rounded-lg border-2 border-gray-700 bg-white p-4 shadow shadow-gray-700 dark:bg-black dark:shadow-white">
-        <div className="">
+        <div className="flex justify-end">
           <Modal
-            title={'Delete ' + recording.name + '?'}
+            title={`Delete ${recording.customName ? recording.customName : recording.name}?`}
             openModal={openDeleteModal}
             closeModal={closeDeleteModal}
             isOpen={isDeleteOpen}
@@ -179,8 +237,16 @@ export default function RecordingCard({
             modalWidth="w-11/12 md:w-10/12"
           />
         </div>
-        {!recording.customName ?? <h1 className="my-4">blerb{recording.customName}</h1>}
-        <h1 className="my-4">{recording.name}</h1>
+        <Modal
+          title={`Rename ${recording.customName ? recording.customName : recording.name}?`}
+          openModal={openRenameModal}
+          closeModal={closeRenameModal}
+          isOpen={isRenameOpen}
+          buttonBody={
+            <p className="mb-2">{recording.customName ? recording.customName : recording.name}</p>
+          }
+          body={renameModalBody}
+        />
         <audio controls>
           <source src={audioSourceObjectURL} />
           <track kind="captions" />
@@ -216,7 +282,7 @@ export default function RecordingCard({
           summary={recording.summary}
           setLoading={setLoading}
         />
-        <div className="flex justify-between">
+        <div className="flex justify-end">
           <button className="">
             <a href={URL.createObjectURL(recording.blob)} download={recording.name}>
               {/* Download {recording.name} */}

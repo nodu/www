@@ -132,15 +132,17 @@ export default function Settings({ setLoading, settings, setSettings, addSetting
   return (
     <>
       {settings && (
-        <Modal
-          openModal={openModal}
-          closeModal={closeModal}
-          isOpen={isOpen}
-          title="Global Settings"
-          body={body}
-          buttonBody={buttonBody}
-          modalWidth="w-11/12 md:w-2/3 lg:w-1/3"
-        />
+        <div className="flex justify-end">
+          <Modal
+            openModal={openModal}
+            closeModal={closeModal}
+            isOpen={isOpen}
+            title="Global Settings"
+            body={body}
+            buttonBody={buttonBody}
+            modalWidth="w-11/12 md:w-2/3 lg:w-1/3"
+          />
+        </div>
       )}
     </>
   )
