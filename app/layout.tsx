@@ -1,6 +1,7 @@
 import 'css/tailwind.css'
 import 'pliny/search/algolia.css'
 
+import { Analytics as VercelAnalytics } from '@vercel/analytics/react'
 import { Overpass, Crimson_Pro, Karla } from 'next/font/google'
 import { Analytics, AnalyticsConfig } from 'pliny/analytics'
 import { SearchProvider, SearchConfig } from 'pliny/search'
@@ -103,6 +104,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>
                 <Header />
                 <main className="mb-auto">{children}</main>
+                <VercelAnalytics />
               </SearchProvider>
               <Footer />
             </div>
