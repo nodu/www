@@ -1,4 +1,4 @@
-const { withContentlayer } = require('next-contentlayer')
+const { withContentlayer } = require('next-contentlayer2')
 
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
@@ -48,10 +48,10 @@ const securityHeaders = [
     value: 'max-age=31536000; includeSubDomains',
   },
   // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy
-  // {
-  //   key: 'Permissions-Policy',
-  //   value: 'camera=(), microphone=(), geolocation=()',
-  // },
+  {
+    key: 'Permissions-Policy',
+    value: 'camera=(), microphone=(*), geolocation=(*)',
+  },
 ]
 
 /**
