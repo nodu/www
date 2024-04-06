@@ -26,9 +26,6 @@ const siteMetadata = {
     // We use an env variable for this site to avoid other users cloning our analytics ID
     // umamiWebsiteId: process.env.NEXT_UMAMI_ID, // e.g. 123e4567-e89b-12d3-a456-426614174000
     // },
-    plausibleAnalytics: {
-      plausibleDataDomain: 'nodu.io', // e.g. tailwind-nextjs-starter-blog.vercel.app
-    },
     // simpleAnalytics: {},
     posthogAnalytics: {
       posthogProjectApiKey: 'phc_nTYrUu6aXcmGIu8AuKDwNAO4QRDlsm5IubyAHAcffDx', // e.g. 123e4567-e89b-12d3-a456-426614174000
