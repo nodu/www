@@ -39,6 +39,16 @@ export default function AuthorLayout({ children, content }: Props) {
               <SocialIcon kind="linkedin" href={linkedin} />
               <SocialIcon kind="twitter" href={twitter} />
             </div>
+            <div className="mt-5 flex items-center justify-center">
+              <a href="https://www.buymeacoffee.com/nodu" target="_blank">
+                <Image
+                  src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
+                  alt="Buy Me A Coffee"
+                  width={217}
+                  height={60}
+                />
+              </a>
+            </div>
           </div>
           <div className="prose max-w-none pb-8 pt-8 dark:prose-invert xl:col-span-2">
             {children}

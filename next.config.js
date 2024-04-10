@@ -7,7 +7,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 // You might need to insert additional domains in script-src if you are using external services
 const ContentSecurityPolicy = `
   default-src 'self';
-  script-src 'self' 'unsafe-eval' 'unsafe-inline' *.posthog.com;
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' *.posthog.com *.buymeacoffee.com *.vercel-scripts.com https://fonts.googleapis.com;
   style-src 'self' 'unsafe-inline';
   img-src * blob: data:;
   media-src 'self' blob: data: *.s3.amazonaws.com;
@@ -70,6 +70,10 @@ module.exports = () => {
         {
           protocol: 'https',
           hostname: 'picsum.photos',
+        },
+        {
+          protocol: 'https',
+          hostname: 'cdn.buymeacoffee.com',
         },
       ],
     },
