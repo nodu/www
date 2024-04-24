@@ -4,6 +4,9 @@ ls:
 dev:
 	yarn dev
 
+debug:
+	yarn debug
+
 build:
 	yarn build
 
