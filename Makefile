@@ -1,3 +1,6 @@
+help:
+	cat Makefile
+
 ls:
 	vercel ls
 

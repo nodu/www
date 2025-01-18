@@ -1,6 +1,5 @@
 'use client'
 
-import React, { useEffect, useRef, useState } from 'react'
 import {
   addRecording,
   addSetting,
@@ -9,9 +8,10 @@ import {
   getAllSettings,
   updateRecording,
 } from 'app/indexedDBHelper'
+import { useEffect, useRef, useState } from 'react'
 
-import { RecordingType, SettingsType, LoadingType } from 'types'
 import LoadingBar from 'components/LoadingBar'
+import { LoadingType, RecordingType, SettingsType } from 'types'
 
 import AudioVisualizer from 'components/AudioVisualizer'
 import RecordingCard from 'components/RecordingCard'
