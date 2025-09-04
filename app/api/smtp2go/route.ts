@@ -1,10 +1,11 @@
-import sendgrid from '@sendgrid/mail'
 import { NextRequest, NextResponse } from 'next/server'
-if (!process.env.SENDGRID_API_KEY) {
-  throw new Error('SENDGRID_API_KEY is not defined in your environment variables')
+import SMTP2GOApi from 'smtp2go-nodejs'
+
+if (!process.env.SEND2GO_API_KEY) {
+  throw new Error('SEND2GO_API_KEY is not defined in your environment variables')
 }
 
-sendgrid.setApiKey(process.env.SENDGRID_API_KEY)
+const api = SMTP2GOApi(process.env.SEND2GO_API_KEY)
 
 async function handler(req: NextRequest) {
   try {
@@ -17,7 +18,15 @@ async function handler(req: NextRequest) {
       html: `<div><p>${body.fullname}</p><p>${body.email}</p><p>${body.message}</p></div>`,
     }
 
-    await sendgrid.send(msg)
+    const mailService = api
+      .mail()
+      .to({ email: msg.to })
+      .from({ email: msg.from })
+      .subject(msg.subject)
+      .html(msg.html)
+
+    await api.client().consume(mailService)
+
     return NextResponse.json({ message: 'Email sent successfully' }, { status: 200 })
   } catch (error) {
     console.error('Error sending email:', error)
