@@ -1,6 +1,10 @@
 help:
 	cat Makefile
 
+setup:
+	yarn install
+	yarn build
+
 ls:
 	vercel ls
 
