@@ -7902,10 +7902,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"idb@npm:^7.1.1":
-  version: 7.1.1
-  resolution: "idb@npm:7.1.1"
-  checksum: 1973c28d53c784b177bdef9f527ec89ec239ec7cf5fcbd987dae75a16c03f5b7dfcc8c6d3285716fd0309dd57739805390bd9f98ce23b1b7d8849a3b52de8d56
+"idb@npm:^8.0.3":
+  version: 8.0.3
+  resolution: "idb@npm:8.0.3"
+  checksum: e0f160be2b9a3b031db25a3bd134b5187f1b51d7e2cdc85a0e5ec62b0f635a7e37847d4888c9d919e7de1e9d8646a9390ce42d249b6a0b30d538c651ab1c3852
   languageName: node
   linkType: hard
 
@@ -12473,7 +12473,7 @@ __metadata:
     github-slugger: ^2.0.0
     gray-matter: ^4.0.2
     husky: ^8.0.0
-    idb: ^7.1.1
+    idb: ^8.0.3
     image-size: 1.0.0
     jszip: ^3.10.1
     lint-staged: ^13.0.0
