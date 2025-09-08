@@ -12,197 +12,200 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@algolia/autocomplete-core@npm:1.9.3":
-  version: 1.9.3
-  resolution: "@algolia/autocomplete-core@npm:1.9.3"
+"@algolia/abtesting@npm:1.3.0":
+  version: 1.3.0
+  resolution: "@algolia/abtesting@npm:1.3.0"
   dependencies:
-    "@algolia/autocomplete-plugin-algolia-insights": 1.9.3
-    "@algolia/autocomplete-shared": 1.9.3
-  checksum: ce78048568660184a4fa3c6548f344a7f5ce0ba45d4cfc233f9756b6d4f360afd5ae3a18efefcd27a626d3a0d6cf22d9cba3e21b217afae62b8e9d11bc4960da
+    "@algolia/client-common": 5.37.0
+    "@algolia/requester-browser-xhr": 5.37.0
+    "@algolia/requester-fetch": 5.37.0
+    "@algolia/requester-node-http": 5.37.0
+  checksum: 3a2fc11d2c5ebfa4fbcc45673fc9e2dc313b9a45974b94f9b68b7f5174a15e2ffa403767aa211c1f313fd5411ed655a2cd17418181d4b511d055b67ee887cb45
   languageName: node
   linkType: hard
 
-"@algolia/autocomplete-plugin-algolia-insights@npm:1.9.3":
-  version: 1.9.3
-  resolution: "@algolia/autocomplete-plugin-algolia-insights@npm:1.9.3"
+"@algolia/autocomplete-core@npm:1.17.9":
+  version: 1.17.9
+  resolution: "@algolia/autocomplete-core@npm:1.17.9"
   dependencies:
-    "@algolia/autocomplete-shared": 1.9.3
+    "@algolia/autocomplete-plugin-algolia-insights": 1.17.9
+    "@algolia/autocomplete-shared": 1.17.9
+  checksum: dde242b1a2d8485e6c7bc94d00e25d707aa66dcd276ee1dde13213f1620bf6a1d289a61c657e40c707ca726a8aa009ab5e8229f92ae5cf22266de490b0634d20
+  languageName: node
+  linkType: hard
+
+"@algolia/autocomplete-plugin-algolia-insights@npm:1.17.9":
+  version: 1.17.9
+  resolution: "@algolia/autocomplete-plugin-algolia-insights@npm:1.17.9"
+  dependencies:
+    "@algolia/autocomplete-shared": 1.17.9
   peerDependencies:
     search-insights: ">= 1 < 3"
-  checksum: 030695bf692021c27f52a3d4931efed23032796e326d4ae7957ae91b51c36a10dc2d885fb043909e853f961c994b8e9ff087f50bb918cfa075370562251a199f
+  checksum: 32761d44a407d7c5ecfae98bb78b45a1ca85c59f44167ea36057315fb357c49684e9126bb7a67a513a27bda60a9661cecd6215f2daa903288860201b0b18c745
   languageName: node
   linkType: hard
 
-"@algolia/autocomplete-preset-algolia@npm:1.9.3":
-  version: 1.9.3
-  resolution: "@algolia/autocomplete-preset-algolia@npm:1.9.3"
+"@algolia/autocomplete-preset-algolia@npm:1.17.9":
+  version: 1.17.9
+  resolution: "@algolia/autocomplete-preset-algolia@npm:1.17.9"
   dependencies:
-    "@algolia/autocomplete-shared": 1.9.3
+    "@algolia/autocomplete-shared": 1.17.9
   peerDependencies:
     "@algolia/client-search": ">= 4.9.1 < 6"
     algoliasearch: ">= 4.9.1 < 6"
-  checksum: 1ab3273d3054b348eed286ad1a54b21807846326485507b872477b827dc688006d4f14233cebd0bf49b2932ec8e29eca6d76e48a3c9e9e963b25153b987549c0
+  checksum: 0dac2aae02121d37466b4ce1ca533420b25cd70e218a9e645e6194bd84a6012a0e94c22125437adb89599ecf14e4488882f91da382c6c9a8d9447e929b317522
   languageName: node
   linkType: hard
 
-"@algolia/autocomplete-shared@npm:1.9.3":
-  version: 1.9.3
-  resolution: "@algolia/autocomplete-shared@npm:1.9.3"
+"@algolia/autocomplete-shared@npm:1.17.9":
+  version: 1.17.9
+  resolution: "@algolia/autocomplete-shared@npm:1.17.9"
   peerDependencies:
     "@algolia/client-search": ">= 4.9.1 < 6"
     algoliasearch: ">= 4.9.1 < 6"
-  checksum: 06014c8b08d30c452de079f48c0235d8fa09904bf511da8dc1b7e491819940fd4ff36b9bf65340242b2e157a26799a3b9aea01feee9c5bf67be3c48d7dff43d7
+  checksum: f16223f5995db0deb014a066e3587ec2da76e62b861aa21411be92cb255b7023507803283803d8c960b396a2c6b690951337c32fef34f68c59ecfb3822dee577
   languageName: node
   linkType: hard
 
-"@algolia/cache-browser-local-storage@npm:4.23.2":
-  version: 4.23.2
-  resolution: "@algolia/cache-browser-local-storage@npm:4.23.2"
+"@algolia/client-abtesting@npm:5.37.0":
+  version: 5.37.0
+  resolution: "@algolia/client-abtesting@npm:5.37.0"
   dependencies:
-    "@algolia/cache-common": 4.23.2
-  checksum: 3b6b09666ba38f3675927f8193928e168becbb77fd3f0b27d1f7a94540be81c9837950c9e82a08502f48cff36938602ff8067575e6c12aea3869525ea3dcf69a
+    "@algolia/client-common": 5.37.0
+    "@algolia/requester-browser-xhr": 5.37.0
+    "@algolia/requester-fetch": 5.37.0
+    "@algolia/requester-node-http": 5.37.0
+  checksum: 093e380c704756cb31dd5e514cd6e0afdfc544de7d03d1f14ac5dbf703041aa3b2d776229e00f4ac023a75192b15f8593cc090f719aa3b0a9b78f9abba5a486d
   languageName: node
   linkType: hard
 
-"@algolia/cache-common@npm:4.23.2":
-  version: 4.23.2
-  resolution: "@algolia/cache-common@npm:4.23.2"
-  checksum: 45cbf8feafbd13219982c178c3173c22f836e7d1b4bfc87ce346e7d6a565d45c822b3ad301afec120a1131f91f31f9c078ae897b917885277a952a9cc67515e2
-  languageName: node
-  linkType: hard
-
-"@algolia/cache-in-memory@npm:4.23.2":
-  version: 4.23.2
-  resolution: "@algolia/cache-in-memory@npm:4.23.2"
+"@algolia/client-analytics@npm:5.37.0":
+  version: 5.37.0
+  resolution: "@algolia/client-analytics@npm:5.37.0"
   dependencies:
-    "@algolia/cache-common": 4.23.2
-  checksum: a89ed4320e94825effd647124fdfef18a2beee3942efa7fe865d071be04de096a8b3835cd0d872ba349681770ce9c8cf12720b9f74b0124db67b715f64c6a8fa
+    "@algolia/client-common": 5.37.0
+    "@algolia/requester-browser-xhr": 5.37.0
+    "@algolia/requester-fetch": 5.37.0
+    "@algolia/requester-node-http": 5.37.0
+  checksum: 04b5c42d3e1a980d1c88299eb67d3ffb00f92c3ed84790ddf969a269f012118ceb7f3c50e90c27e3f67841448d94e38923164ed8eed90f22ad965ad524326874
   languageName: node
   linkType: hard
 
-"@algolia/client-account@npm:4.23.2":
-  version: 4.23.2
-  resolution: "@algolia/client-account@npm:4.23.2"
+"@algolia/client-common@npm:5.37.0":
+  version: 5.37.0
+  resolution: "@algolia/client-common@npm:5.37.0"
+  checksum: eb22eea291d434b35c0126e01d702379d870d46105883b05cdc6e496f2d7a8fac2309d5ab609896056377c21cad4e99175304768ad536b11057e2ae14d80b3c5
+  languageName: node
+  linkType: hard
+
+"@algolia/client-insights@npm:5.37.0":
+  version: 5.37.0
+  resolution: "@algolia/client-insights@npm:5.37.0"
   dependencies:
-    "@algolia/client-common": 4.23.2
-    "@algolia/client-search": 4.23.2
-    "@algolia/transporter": 4.23.2
-  checksum: fa180f2c9c25e455d3094627586fc880c1b88c5bb0eba7ce663792d416d887f35108202e2a7279abd4a3df7c75bf0ef7fe63c21243fe7324970b350e654a0471
+    "@algolia/client-common": 5.37.0
+    "@algolia/requester-browser-xhr": 5.37.0
+    "@algolia/requester-fetch": 5.37.0
+    "@algolia/requester-node-http": 5.37.0
+  checksum: caf1407a4052f52151fcaca8dae04e865df59e07c0f0deaea25aea3ab6b8e38856d1e84fea4c4cf61f5ddb69b1a231883d0c42c4ce5887828e49695d4ea50a46
   languageName: node
   linkType: hard
 
-"@algolia/client-analytics@npm:4.23.2":
-  version: 4.23.2
-  resolution: "@algolia/client-analytics@npm:4.23.2"
+"@algolia/client-personalization@npm:5.37.0":
+  version: 5.37.0
+  resolution: "@algolia/client-personalization@npm:5.37.0"
   dependencies:
-    "@algolia/client-common": 4.23.2
-    "@algolia/client-search": 4.23.2
-    "@algolia/requester-common": 4.23.2
-    "@algolia/transporter": 4.23.2
-  checksum: 51302bf7dbdfd97a88e4a181649d09a848f8b8a167ef55a0f951f00e3091f01c27aa8541698ef08fe029d36558447e983361bef880522c1ccc18e852db2a905c
+    "@algolia/client-common": 5.37.0
+    "@algolia/requester-browser-xhr": 5.37.0
+    "@algolia/requester-fetch": 5.37.0
+    "@algolia/requester-node-http": 5.37.0
+  checksum: be5aa223b8962e5b5b66c581cf7010c9798e33234f8408bf44c68450a505abbb0fae8db2b6bb67f0711dcc5c24fcafabc83a026b252ffedc31e84992cda64126
   languageName: node
   linkType: hard
 
-"@algolia/client-common@npm:4.23.2":
-  version: 4.23.2
-  resolution: "@algolia/client-common@npm:4.23.2"
+"@algolia/client-query-suggestions@npm:5.37.0":
+  version: 5.37.0
+  resolution: "@algolia/client-query-suggestions@npm:5.37.0"
   dependencies:
-    "@algolia/requester-common": 4.23.2
-    "@algolia/transporter": 4.23.2
-  checksum: 0d36e794e682794d8831a2a92050a8fdd4f9a50e80debd41f608b4401c61fc9c96ec68b23385c474b34cc6bc2dc9468e418c07274878507e8fabdf73dd534322
+    "@algolia/client-common": 5.37.0
+    "@algolia/requester-browser-xhr": 5.37.0
+    "@algolia/requester-fetch": 5.37.0
+    "@algolia/requester-node-http": 5.37.0
+  checksum: e7963baadf918d043011ceacaa1cf064d688e16d911a04109bda55bd8941f98edf06307708ef6efae1ca3d60ba153ae7b45ca558142942944f2081d545305b7c
   languageName: node
   linkType: hard
 
-"@algolia/client-personalization@npm:4.23.2":
-  version: 4.23.2
-  resolution: "@algolia/client-personalization@npm:4.23.2"
+"@algolia/client-search@npm:5.37.0":
+  version: 5.37.0
+  resolution: "@algolia/client-search@npm:5.37.0"
   dependencies:
-    "@algolia/client-common": 4.23.2
-    "@algolia/requester-common": 4.23.2
-    "@algolia/transporter": 4.23.2
-  checksum: b8fc0fe3922f8db8b13572d3eb4f472defa277261e5cbf6b01d1a59ff470b88380f1b569c3abb25e43ec1abdcfd276c199ffd336464904cdfa65a346e309853e
+    "@algolia/client-common": 5.37.0
+    "@algolia/requester-browser-xhr": 5.37.0
+    "@algolia/requester-fetch": 5.37.0
+    "@algolia/requester-node-http": 5.37.0
+  checksum: 4cb7b7dd39c3fe13c28b16739e7768a9da8eeecc4e74dc21d2304c67f7f846ae5dfbc7042837145f1d7f4a04689af4c22635c8d7ee798fece1de6b6a11b66c47
   languageName: node
   linkType: hard
 
-"@algolia/client-search@npm:4.23.2":
-  version: 4.23.2
-  resolution: "@algolia/client-search@npm:4.23.2"
+"@algolia/ingestion@npm:1.37.0":
+  version: 1.37.0
+  resolution: "@algolia/ingestion@npm:1.37.0"
   dependencies:
-    "@algolia/client-common": 4.23.2
-    "@algolia/requester-common": 4.23.2
-    "@algolia/transporter": 4.23.2
-  checksum: e8eee05b362c84b33a7f4ba5e3af5274a3b4dde9cf20d4c755dce0f31715495f982574c84cc98f6b67d92229a06f9d5f9588b4d8659413131d4a589a3bd9a3f4
+    "@algolia/client-common": 5.37.0
+    "@algolia/requester-browser-xhr": 5.37.0
+    "@algolia/requester-fetch": 5.37.0
+    "@algolia/requester-node-http": 5.37.0
+  checksum: d2a786cea4da95eb569b7ca19b1dd0a3ad999b6f933fbb7cb216d24943cd427e3eae6745cd3bc7ef63cbdf18747bada0edc451f03e0f3d870d6dd34116a08491
   languageName: node
   linkType: hard
 
-"@algolia/logger-common@npm:4.23.2":
-  version: 4.23.2
-  resolution: "@algolia/logger-common@npm:4.23.2"
-  checksum: da3c48adce896c91dd7a9770f8e6378394d4c7f0cd6f50710d340e411be0c8c52cd731488822ebec2926d2cbba7d0674dead23255f43bdf3f811f10a68c80f5e
-  languageName: node
-  linkType: hard
-
-"@algolia/logger-console@npm:4.23.2":
-  version: 4.23.2
-  resolution: "@algolia/logger-console@npm:4.23.2"
+"@algolia/monitoring@npm:1.37.0":
+  version: 1.37.0
+  resolution: "@algolia/monitoring@npm:1.37.0"
   dependencies:
-    "@algolia/logger-common": 4.23.2
-  checksum: d3c82c5a6a15399621898bf8206a636be0c7edab59c22fd48c2590d77804365266a87e721b6ceee9ff97a8e5a7cd1b9353cf56dd7b3ac31b5ff36e7634decd13
+    "@algolia/client-common": 5.37.0
+    "@algolia/requester-browser-xhr": 5.37.0
+    "@algolia/requester-fetch": 5.37.0
+    "@algolia/requester-node-http": 5.37.0
+  checksum: d0a205a9ab47c0ef9a89f0e88e962632145e37ca747dbb42b09ca6d107dfe7f75db86a92df202f94d061569d1eddef87d02b4d91abc310e6ad034ca09dfb4349
   languageName: node
   linkType: hard
 
-"@algolia/recommend@npm:4.23.2":
-  version: 4.23.2
-  resolution: "@algolia/recommend@npm:4.23.2"
+"@algolia/recommend@npm:5.37.0":
+  version: 5.37.0
+  resolution: "@algolia/recommend@npm:5.37.0"
   dependencies:
-    "@algolia/cache-browser-local-storage": 4.23.2
-    "@algolia/cache-common": 4.23.2
-    "@algolia/cache-in-memory": 4.23.2
-    "@algolia/client-common": 4.23.2
-    "@algolia/client-search": 4.23.2
-    "@algolia/logger-common": 4.23.2
-    "@algolia/logger-console": 4.23.2
-    "@algolia/requester-browser-xhr": 4.23.2
-    "@algolia/requester-common": 4.23.2
-    "@algolia/requester-node-http": 4.23.2
-    "@algolia/transporter": 4.23.2
-  checksum: fa2b81656ac9aa557e06b57b3acde558d29da84ce45fddbe083145ec22cc540653f24436df2ecd24ffcfaf7c6115862833e76f6e745dad64b19a5a4a8aa36330
+    "@algolia/client-common": 5.37.0
+    "@algolia/requester-browser-xhr": 5.37.0
+    "@algolia/requester-fetch": 5.37.0
+    "@algolia/requester-node-http": 5.37.0
+  checksum: 0b84edbdbebd47a3edb2c78c2526feca57bec6ed90f6ea170e9a499fc2a65a7e6a47c8a62e8000459367e9640a20e6a1af992b2b32c4f22691fc80597a6eb095
   languageName: node
   linkType: hard
 
-"@algolia/requester-browser-xhr@npm:4.23.2":
-  version: 4.23.2
-  resolution: "@algolia/requester-browser-xhr@npm:4.23.2"
+"@algolia/requester-browser-xhr@npm:5.37.0":
+  version: 5.37.0
+  resolution: "@algolia/requester-browser-xhr@npm:5.37.0"
   dependencies:
-    "@algolia/requester-common": 4.23.2
-  checksum: a16bdcebac7febd82052fab2bb9caef6c3e84a94092c0b70f2ea3aefff825099f6c6aa02bfeaacff6c5157e3bb89bfcfd690746e34aeb988272d64c4e31fb560
+    "@algolia/client-common": 5.37.0
+  checksum: 8b6986516b901f731b4385ea85d099f0e32540d1686f0259d48a99866ff77d261acd18c3744e76ce21f01d21f4377d31b2f46abbbc16a542404553a5ae6bbc82
   languageName: node
   linkType: hard
 
-"@algolia/requester-common@npm:4.23.2":
-  version: 4.23.2
-  resolution: "@algolia/requester-common@npm:4.23.2"
-  checksum: a57da6b4a675b2176aa66d3148939e023f8fb2eb1e0a8830e4e07d2ecf4edae3416ee8614dd5bae4b8a1fc40fc3a418db24180a6a9cc64b227312e00512fc456
-  languageName: node
-  linkType: hard
-
-"@algolia/requester-node-http@npm:4.23.2":
-  version: 4.23.2
-  resolution: "@algolia/requester-node-http@npm:4.23.2"
+"@algolia/requester-fetch@npm:5.37.0":
+  version: 5.37.0
+  resolution: "@algolia/requester-fetch@npm:5.37.0"
   dependencies:
-    "@algolia/requester-common": 4.23.2
-  checksum: 3085543774fbdf77f043d22ec9528815408e103a9c628f84c702338f16bcbd1cf818d70c7fcb3a11c4542e5b264c56a7e30840c56fd895c5645f72ba16808fc8
+    "@algolia/client-common": 5.37.0
+  checksum: b3cacd276dd8161ae43688a45ce562f6d2ab0bd018bd59ee7c476b4ee1e5980941b3014c09d80b8b99b8b16ec4049603615425707441e2beb8620831076bb5f4
   languageName: node
   linkType: hard
 
-"@algolia/transporter@npm:4.23.2":
-  version: 4.23.2
-  resolution: "@algolia/transporter@npm:4.23.2"
+"@algolia/requester-node-http@npm:5.37.0":
+  version: 5.37.0
+  resolution: "@algolia/requester-node-http@npm:5.37.0"
   dependencies:
-    "@algolia/cache-common": 4.23.2
-    "@algolia/logger-common": 4.23.2
-    "@algolia/requester-common": 4.23.2
-  checksum: 8ac57c003e6c5ab39c0cd873c325746c90e6bdbe0857c4157b551678cc4efed48e9423317dfced722d094810649d1ae44210c98122d6c1bece35713adffd2b24
+    "@algolia/client-common": 5.37.0
+  checksum: d57f0a70195895588f883836754fdb36136872f4936a915895df1afa631ba0f9b0f81b8479b06a22de938eb298c65f114ef45c41ec5ee20237343dc486b06881
   languageName: node
   linkType: hard
 
@@ -1904,18 +1907,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@contentlayer2/cli@npm:0.4.1":
-  version: 0.4.1
-  resolution: "@contentlayer2/cli@npm:0.4.1"
-  dependencies:
-    "@contentlayer2/core": 0.4.1
-    "@contentlayer2/utils": 0.4.1
-    clipanion: ^3.2.1
-    typanion: ^3.12.1
-  checksum: f4672cd80da672f2254467836284ee03d6be3a1c1b40a8056eb88c844d51f4068c19611e6f46dd14ac78b42333d4b2ad9617441db4c564f19fe57d62e4f786c3
-  languageName: node
-  linkType: hard
-
 "@contentlayer2/cli@npm:0.5.5":
   version: 0.5.5
   resolution: "@contentlayer2/cli@npm:0.5.5"
@@ -1928,12 +1919,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@contentlayer2/client@npm:0.4.1":
-  version: 0.4.1
-  resolution: "@contentlayer2/client@npm:0.4.1"
+"@contentlayer2/cli@npm:0.5.8":
+  version: 0.5.8
+  resolution: "@contentlayer2/cli@npm:0.5.8"
   dependencies:
-    "@contentlayer2/core": 0.4.1
-  checksum: dcc9aeca9eb4566cbc8efaf5d9c3de196f6e2ab0b89de4ed761d20c72f8470bb3034f3565f21b17097c36ebbf7aa4301050d72bde2114abd6339fbfbeef5486d
+    "@contentlayer2/core": 0.5.8
+    "@contentlayer2/utils": 0.5.8
+    clipanion: ^3.2.1
+    typanion: ^3.12.1
+  checksum: 600313d089f97e78c20809a3863f81ffc6f28e4a774de793ea6e1b24fd78fa63abd2008748610ae5a4d05b7699d2dfd6b1ed52b205eea13b73c4ffb72763a43a
   languageName: node
   linkType: hard
 
@@ -1946,32 +1940,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@contentlayer2/core@npm:0.4.1":
-  version: 0.4.1
-  resolution: "@contentlayer2/core@npm:0.4.1"
+"@contentlayer2/client@npm:0.5.8":
+  version: 0.5.8
+  resolution: "@contentlayer2/client@npm:0.5.8"
   dependencies:
-    "@contentlayer2/utils": 0.4.1
-    camel-case: ^4.1.2
-    comment-json: ^4.2.3
-    esbuild: 0.17.x || 0.18.x || 0.19.x || 0.20.x
-    gray-matter: ^4.0.3
-    mdx-bundler: ^10.0.2
-    rehype-stringify: ^10.0.0
-    remark-frontmatter: ^5.0.0
-    remark-parse: ^11.0.0
-    remark-rehype: ^11.1.0
-    source-map-support: ^0.5.21
-    type-fest: ^4.10.0
-    unified: ^11.0.4
-  peerDependencies:
-    esbuild: 0.17.x || 0.18.x || 0.19.x || 0.20.x
-    markdown-wasm: 1.x
-  peerDependenciesMeta:
-    esbuild:
-      optional: true
-    markdown-wasm:
-      optional: true
-  checksum: 2cd9282c111d4d670d90579ebf7663477030f6950abc3d64fc5cae74f2c985862a816ee1dd1fbf172cbb42358a5cf4b2c1f0c111261f62fb7085630266609cd9
+    "@contentlayer2/core": 0.5.8
+  checksum: bd950de2e7b42a3dda95e8093117dbe93c2a44f81cfafeb8f5e01d6c31a926f831dc1afd2950d9df74d205b9040f7d83d1576d8ca60d3ae750e7ed68c5e7aa7e
   languageName: node
   linkType: hard
 
@@ -2004,22 +1978,32 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@contentlayer2/source-files@npm:0.4.1":
-  version: 0.4.1
-  resolution: "@contentlayer2/source-files@npm:0.4.1"
+"@contentlayer2/core@npm:0.5.8":
+  version: 0.5.8
+  resolution: "@contentlayer2/core@npm:0.5.8"
   dependencies:
-    "@contentlayer2/core": 0.4.1
-    "@contentlayer2/utils": 0.4.1
-    chokidar: ^3.5.3
-    fast-glob: ^3.2.12
+    "@contentlayer2/utils": 0.5.8
+    camel-case: ^4.1.2
+    comment-json: ^4.2.3
+    esbuild: ">=0.17"
     gray-matter: ^4.0.3
-    imagescript: ^1.2.16
-    micromatch: ^4.0.5
-    ts-pattern: ^5.0.6
+    mdx-bundler: ^10.1.1
+    rehype-stringify: ^10.0.0
+    remark-frontmatter: ^5.0.0
+    remark-parse: ^11.0.0
+    remark-rehype: ^11.1.0
+    source-map-support: ^0.5.21
+    type-fest: ^4.10.0
     unified: ^11.0.4
-    yaml: ^2.3.1
-    zod: ^3.22.4
-  checksum: 182e52eed37dcbc9aa6ab301d41ef46081933d305acde7cfca4b5c03d2a41110003f1bcdf154b5068136e1addbde4f8169c2a7b1596fce40cbfc272534eb1463
+  peerDependencies:
+    esbuild: ">=0.17"
+    markdown-wasm: 1.x
+  peerDependenciesMeta:
+    esbuild:
+      optional: true
+    markdown-wasm:
+      optional: true
+  checksum: 70c301fe5160b0cb3ad41ba567c7273be3d7a37d881ba7542cb6d51d5c3aed3f2f6f136bc91b4241e4467a3d8656d1278d64fcfc7fd35e8e5bbfb46e39100ec0
   languageName: node
   linkType: hard
 
@@ -2042,14 +2026,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@contentlayer2/source-remote-files@npm:0.4.1":
-  version: 0.4.1
-  resolution: "@contentlayer2/source-remote-files@npm:0.4.1"
+"@contentlayer2/source-files@npm:0.5.8":
+  version: 0.5.8
+  resolution: "@contentlayer2/source-files@npm:0.5.8"
   dependencies:
-    "@contentlayer2/core": 0.4.1
-    "@contentlayer2/source-files": 0.4.1
-    "@contentlayer2/utils": 0.4.1
-  checksum: 1c5ac448de4be29e700235d45584e9a1b1b887fb340ebf1054f0ea7a6cc6cf8aab65dee116f2bf6731c7ad15e4ec8a07069159146bc48477b977f9be9ff14c96
+    "@contentlayer2/core": 0.5.8
+    "@contentlayer2/utils": 0.5.8
+    chokidar: ^3.5.3
+    fast-glob: ^3.2.12
+    gray-matter: ^4.0.3
+    imagescript: ^1.2.16
+    micromatch: ^4.0.5
+    ts-pattern: ^5.0.6
+    unified: ^11.0.4
+    yaml: ^2.3.1
+    zod: ^3.22.4
+  checksum: 8a7e13e811f1f60c4b032f431db0473d9be982d65d72998423046c592164b5078198c5ba5aa47cf359a800bf68a64c615ab2a99030d97cc5d6ebb8d8db89505b
   languageName: node
   linkType: hard
 
@@ -2064,37 +2056,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@contentlayer2/utils@npm:0.4.1":
-  version: 0.4.1
-  resolution: "@contentlayer2/utils@npm:0.4.1"
+"@contentlayer2/source-remote-files@npm:0.5.8":
+  version: 0.5.8
+  resolution: "@contentlayer2/source-remote-files@npm:0.5.8"
   dependencies:
-    "@effect-ts/core": ^0.60.5
-    "@effect-ts/otel": ^0.15.1
-    "@effect-ts/otel-exporter-trace-otlp-grpc": ^0.15.1
-    "@effect-ts/otel-sdk-trace-node": ^0.15.1
-    "@js-temporal/polyfill": ^0.4.4
-    "@opentelemetry/api": ^1.7.0
-    "@opentelemetry/core": ^1.21.0
-    "@opentelemetry/exporter-trace-otlp-grpc": ^0.48.0
-    "@opentelemetry/resources": ^1.21.0
-    "@opentelemetry/sdk-trace-base": ^1.21.0
-    "@opentelemetry/sdk-trace-node": ^1.21.0
-    "@opentelemetry/semantic-conventions": ^1.21.0
-    chokidar: ^3.5.3
-    hash-wasm: ^4.11.0
-    inflection: ^3.0.0
-    memfs: 3.6.0
-    oo-ascii-tree: ^1.94.0
-    ts-pattern: ^5.0.6
-    type-fest: ^4.10.0
-  peerDependenciesMeta:
-    "@effect-ts/core":
-      optional: true
-    "@effect-ts/otel":
-      optional: true
-    "@effect-ts/otel-node":
-      optional: true
-  checksum: 7ff4ebbe82b1fc965d223803f35d700501234a7f6bf554d1bb0a53e783a59f200a72594bceccc22ed720ad82e41a7bd159c115eb301a129103ebdbe101dfca5e
+    "@contentlayer2/core": 0.5.8
+    "@contentlayer2/source-files": 0.5.8
+    "@contentlayer2/utils": 0.5.8
+  checksum: f6ad5f12b8d0467c7c8cfb86b9ca860640d5f237edbcd965258aa3d90e933b96a0cd29bfad1ca9ad589a5ab73f4306306a70883c4d8c6b0dc489623de0f9acb9
   languageName: node
   linkType: hard
 
@@ -2131,6 +2100,39 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@contentlayer2/utils@npm:0.5.8":
+  version: 0.5.8
+  resolution: "@contentlayer2/utils@npm:0.5.8"
+  dependencies:
+    "@effect-ts/core": ^0.60.5
+    "@effect-ts/otel": ^0.15.1
+    "@effect-ts/otel-sdk-trace-node": ^0.15.1
+    "@js-temporal/polyfill": ^0.4.4
+    "@opentelemetry/api": ^1.9.0
+    "@opentelemetry/core": ^1.30.1
+    "@opentelemetry/exporter-trace-otlp-grpc": ^0.57.1
+    "@opentelemetry/resources": ^1.30.1
+    "@opentelemetry/sdk-trace-base": ^1.30.1
+    "@opentelemetry/sdk-trace-node": ^1.30.1
+    "@opentelemetry/semantic-conventions": ^1.28.0
+    chokidar: ^3.5.3
+    hash-wasm: ^4.11.0
+    inflection: ^3.0.0
+    memfs: ^4.8.2
+    oo-ascii-tree: ^1.94.0
+    ts-pattern: ^5.0.6
+    type-fest: ^4.10.0
+  peerDependenciesMeta:
+    "@effect-ts/core":
+      optional: true
+    "@effect-ts/otel":
+      optional: true
+    "@effect-ts/otel-node":
+      optional: true
+  checksum: 31bb728d09da7767f19cd6308fc86c8235c076354acaa5d971f9588326c82f401579efa9a2e19b3bbf132525f594cfa94e25c1fce62cdfb9c6d82dd3d641fcfc
+  languageName: node
+  linkType: hard
+
 "@discoveryjs/json-ext@npm:0.5.7":
   version: 0.5.7
   resolution: "@discoveryjs/json-ext@npm:0.5.7"
@@ -2138,25 +2140,25 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@docsearch/css@npm:3.6.0":
-  version: 3.6.0
-  resolution: "@docsearch/css@npm:3.6.0"
-  checksum: 6fa5d7a386f56dc90a2e060e3e368e075356709dd412df2a03bb7b4041c5c6dcf379078163c16d022c2a27fdd4c75596c33485d1bd6b37ad6fbac80f51704af1
+"@docsearch/css@npm:3.9.0":
+  version: 3.9.0
+  resolution: "@docsearch/css@npm:3.9.0"
+  checksum: 8e6f5a995d17881c76b31e5364274b3387917ccbc417ba183009f2655dd507244f7009d27807675f09011efcd8e13d80505e7e17eff1a5d93bcd71324a5fc262
   languageName: node
   linkType: hard
 
-"@docsearch/react@npm:^3.5.0":
-  version: 3.6.0
-  resolution: "@docsearch/react@npm:3.6.0"
+"@docsearch/react@npm:^3.6.2":
+  version: 3.9.0
+  resolution: "@docsearch/react@npm:3.9.0"
   dependencies:
-    "@algolia/autocomplete-core": 1.9.3
-    "@algolia/autocomplete-preset-algolia": 1.9.3
-    "@docsearch/css": 3.6.0
-    algoliasearch: ^4.19.1
+    "@algolia/autocomplete-core": 1.17.9
+    "@algolia/autocomplete-preset-algolia": 1.17.9
+    "@docsearch/css": 3.9.0
+    algoliasearch: ^5.14.2
   peerDependencies:
-    "@types/react": ">= 16.8.0 < 19.0.0"
-    react: ">= 16.8.0 < 19.0.0"
-    react-dom: ">= 16.8.0 < 19.0.0"
+    "@types/react": ">= 16.8.0 < 20.0.0"
+    react: ">= 16.8.0 < 20.0.0"
+    react-dom: ">= 16.8.0 < 20.0.0"
     search-insights: ">= 1 < 3"
   peerDependenciesMeta:
     "@types/react":
@@ -2167,7 +2169,7 @@ __metadata:
       optional: true
     search-insights:
       optional: true
-  checksum: 1025c6072661eb4427ffe561d9f6f4a8ca08b509a8e1bb64ff92eccad544d0dc1705c9cddbea74f9672e1d960dc3c94b76cfa8a8665346128aea2e19a3745a55
+  checksum: af6c531af5f4c10fb57d4d29ae47fe297e4201c5130492e2c73c34306348bf87ab05b7eeae2cb83a6c33dbe8da3754b82275b86ae0116df65f34a9e51f9291bc
   languageName: node
   linkType: hard
 
@@ -2177,21 +2179,6 @@ __metadata:
   dependencies:
     "@effect-ts/system": ^0.57.5
   checksum: c1236ce2f261a4547379061c80eb55ca476d3638289b2d2b54fb491aabe2ad9e325e1774c948f34572d9bceb07c0e74f1be2d69b060673c0b1df44f149dae164
-  languageName: node
-  linkType: hard
-
-"@effect-ts/otel-exporter-trace-otlp-grpc@npm:^0.15.1":
-  version: 0.15.1
-  resolution: "@effect-ts/otel-exporter-trace-otlp-grpc@npm:0.15.1"
-  dependencies:
-    "@effect-ts/otel": ^0.15.1
-  peerDependencies:
-    "@effect-ts/core": ^0.60.2
-    "@opentelemetry/api": ^1.4.0
-    "@opentelemetry/core": ^1.13.0
-    "@opentelemetry/exporter-trace-otlp-grpc": ^0.39.0
-    "@opentelemetry/sdk-trace-base": ^1.13.0
-  checksum: 5f81693c725f9bdf515374752437c0d20d65b123ca2235ba9cedf477308e43c115edb8b8b4934e19d8e89f52307d5001efe6299e4ca43734459fc37aab9bad30
   languageName: node
   linkType: hard
 
@@ -2250,13 +2237,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@esbuild/aix-ppc64@npm:0.20.2":
-  version: 0.20.2
-  resolution: "@esbuild/aix-ppc64@npm:0.20.2"
-  conditions: os=aix & cpu=ppc64
-  languageName: node
-  linkType: hard
-
 "@esbuild/aix-ppc64@npm:0.25.1":
   version: 0.25.1
   resolution: "@esbuild/aix-ppc64@npm:0.25.1"
@@ -2268,13 +2248,6 @@ __metadata:
   version: 0.25.9
   resolution: "@esbuild/aix-ppc64@npm:0.25.9"
   conditions: os=aix & cpu=ppc64
-  languageName: node
-  linkType: hard
-
-"@esbuild/android-arm64@npm:0.20.2":
-  version: 0.20.2
-  resolution: "@esbuild/android-arm64@npm:0.20.2"
-  conditions: os=android & cpu=arm64
   languageName: node
   linkType: hard
 
@@ -2292,13 +2265,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@esbuild/android-arm@npm:0.20.2":
-  version: 0.20.2
-  resolution: "@esbuild/android-arm@npm:0.20.2"
-  conditions: os=android & cpu=arm
-  languageName: node
-  linkType: hard
-
 "@esbuild/android-arm@npm:0.25.1":
   version: 0.25.1
   resolution: "@esbuild/android-arm@npm:0.25.1"
@@ -2310,13 +2276,6 @@ __metadata:
   version: 0.25.9
   resolution: "@esbuild/android-arm@npm:0.25.9"
   conditions: os=android & cpu=arm
-  languageName: node
-  linkType: hard
-
-"@esbuild/android-x64@npm:0.20.2":
-  version: 0.20.2
-  resolution: "@esbuild/android-x64@npm:0.20.2"
-  conditions: os=android & cpu=x64
   languageName: node
   linkType: hard
 
@@ -2334,13 +2293,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@esbuild/darwin-arm64@npm:0.20.2":
-  version: 0.20.2
-  resolution: "@esbuild/darwin-arm64@npm:0.20.2"
-  conditions: os=darwin & cpu=arm64
-  languageName: node
-  linkType: hard
-
 "@esbuild/darwin-arm64@npm:0.25.1":
   version: 0.25.1
   resolution: "@esbuild/darwin-arm64@npm:0.25.1"
@@ -2352,13 +2304,6 @@ __metadata:
   version: 0.25.9
   resolution: "@esbuild/darwin-arm64@npm:0.25.9"
   conditions: os=darwin & cpu=arm64
-  languageName: node
-  linkType: hard
-
-"@esbuild/darwin-x64@npm:0.20.2":
-  version: 0.20.2
-  resolution: "@esbuild/darwin-x64@npm:0.20.2"
-  conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
@@ -2376,13 +2321,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@esbuild/freebsd-arm64@npm:0.20.2":
-  version: 0.20.2
-  resolution: "@esbuild/freebsd-arm64@npm:0.20.2"
-  conditions: os=freebsd & cpu=arm64
-  languageName: node
-  linkType: hard
-
 "@esbuild/freebsd-arm64@npm:0.25.1":
   version: 0.25.1
   resolution: "@esbuild/freebsd-arm64@npm:0.25.1"
@@ -2394,13 +2332,6 @@ __metadata:
   version: 0.25.9
   resolution: "@esbuild/freebsd-arm64@npm:0.25.9"
   conditions: os=freebsd & cpu=arm64
-  languageName: node
-  linkType: hard
-
-"@esbuild/freebsd-x64@npm:0.20.2":
-  version: 0.20.2
-  resolution: "@esbuild/freebsd-x64@npm:0.20.2"
-  conditions: os=freebsd & cpu=x64
   languageName: node
   linkType: hard
 
@@ -2418,13 +2349,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@esbuild/linux-arm64@npm:0.20.2":
-  version: 0.20.2
-  resolution: "@esbuild/linux-arm64@npm:0.20.2"
-  conditions: os=linux & cpu=arm64
-  languageName: node
-  linkType: hard
-
 "@esbuild/linux-arm64@npm:0.25.1":
   version: 0.25.1
   resolution: "@esbuild/linux-arm64@npm:0.25.1"
@@ -2436,13 +2360,6 @@ __metadata:
   version: 0.25.9
   resolution: "@esbuild/linux-arm64@npm:0.25.9"
   conditions: os=linux & cpu=arm64
-  languageName: node
-  linkType: hard
-
-"@esbuild/linux-arm@npm:0.20.2":
-  version: 0.20.2
-  resolution: "@esbuild/linux-arm@npm:0.20.2"
-  conditions: os=linux & cpu=arm
   languageName: node
   linkType: hard
 
@@ -2460,13 +2377,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@esbuild/linux-ia32@npm:0.20.2":
-  version: 0.20.2
-  resolution: "@esbuild/linux-ia32@npm:0.20.2"
-  conditions: os=linux & cpu=ia32
-  languageName: node
-  linkType: hard
-
 "@esbuild/linux-ia32@npm:0.25.1":
   version: 0.25.1
   resolution: "@esbuild/linux-ia32@npm:0.25.1"
@@ -2478,13 +2388,6 @@ __metadata:
   version: 0.25.9
   resolution: "@esbuild/linux-ia32@npm:0.25.9"
   conditions: os=linux & cpu=ia32
-  languageName: node
-  linkType: hard
-
-"@esbuild/linux-loong64@npm:0.20.2":
-  version: 0.20.2
-  resolution: "@esbuild/linux-loong64@npm:0.20.2"
-  conditions: os=linux & cpu=loong64
   languageName: node
   linkType: hard
 
@@ -2502,13 +2405,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@esbuild/linux-mips64el@npm:0.20.2":
-  version: 0.20.2
-  resolution: "@esbuild/linux-mips64el@npm:0.20.2"
-  conditions: os=linux & cpu=mips64el
-  languageName: node
-  linkType: hard
-
 "@esbuild/linux-mips64el@npm:0.25.1":
   version: 0.25.1
   resolution: "@esbuild/linux-mips64el@npm:0.25.1"
@@ -2520,13 +2416,6 @@ __metadata:
   version: 0.25.9
   resolution: "@esbuild/linux-mips64el@npm:0.25.9"
   conditions: os=linux & cpu=mips64el
-  languageName: node
-  linkType: hard
-
-"@esbuild/linux-ppc64@npm:0.20.2":
-  version: 0.20.2
-  resolution: "@esbuild/linux-ppc64@npm:0.20.2"
-  conditions: os=linux & cpu=ppc64
   languageName: node
   linkType: hard
 
@@ -2544,13 +2433,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@esbuild/linux-riscv64@npm:0.20.2":
-  version: 0.20.2
-  resolution: "@esbuild/linux-riscv64@npm:0.20.2"
-  conditions: os=linux & cpu=riscv64
-  languageName: node
-  linkType: hard
-
 "@esbuild/linux-riscv64@npm:0.25.1":
   version: 0.25.1
   resolution: "@esbuild/linux-riscv64@npm:0.25.1"
@@ -2565,13 +2447,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@esbuild/linux-s390x@npm:0.20.2":
-  version: 0.20.2
-  resolution: "@esbuild/linux-s390x@npm:0.20.2"
-  conditions: os=linux & cpu=s390x
-  languageName: node
-  linkType: hard
-
 "@esbuild/linux-s390x@npm:0.25.1":
   version: 0.25.1
   resolution: "@esbuild/linux-s390x@npm:0.25.1"
@@ -2583,13 +2458,6 @@ __metadata:
   version: 0.25.9
   resolution: "@esbuild/linux-s390x@npm:0.25.9"
   conditions: os=linux & cpu=s390x
-  languageName: node
-  linkType: hard
-
-"@esbuild/linux-x64@npm:0.20.2":
-  version: 0.20.2
-  resolution: "@esbuild/linux-x64@npm:0.20.2"
-  conditions: os=linux & cpu=x64
   languageName: node
   linkType: hard
 
@@ -2621,13 +2489,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@esbuild/netbsd-x64@npm:0.20.2":
-  version: 0.20.2
-  resolution: "@esbuild/netbsd-x64@npm:0.20.2"
-  conditions: os=netbsd & cpu=x64
-  languageName: node
-  linkType: hard
-
 "@esbuild/netbsd-x64@npm:0.25.1":
   version: 0.25.1
   resolution: "@esbuild/netbsd-x64@npm:0.25.1"
@@ -2656,13 +2517,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@esbuild/openbsd-x64@npm:0.20.2":
-  version: 0.20.2
-  resolution: "@esbuild/openbsd-x64@npm:0.20.2"
-  conditions: os=openbsd & cpu=x64
-  languageName: node
-  linkType: hard
-
 "@esbuild/openbsd-x64@npm:0.25.1":
   version: 0.25.1
   resolution: "@esbuild/openbsd-x64@npm:0.25.1"
@@ -2684,13 +2538,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@esbuild/sunos-x64@npm:0.20.2":
-  version: 0.20.2
-  resolution: "@esbuild/sunos-x64@npm:0.20.2"
-  conditions: os=sunos & cpu=x64
-  languageName: node
-  linkType: hard
-
 "@esbuild/sunos-x64@npm:0.25.1":
   version: 0.25.1
   resolution: "@esbuild/sunos-x64@npm:0.25.1"
@@ -2702,13 +2549,6 @@ __metadata:
   version: 0.25.9
   resolution: "@esbuild/sunos-x64@npm:0.25.9"
   conditions: os=sunos & cpu=x64
-  languageName: node
-  linkType: hard
-
-"@esbuild/win32-arm64@npm:0.20.2":
-  version: 0.20.2
-  resolution: "@esbuild/win32-arm64@npm:0.20.2"
-  conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
@@ -2726,13 +2566,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@esbuild/win32-ia32@npm:0.20.2":
-  version: 0.20.2
-  resolution: "@esbuild/win32-ia32@npm:0.20.2"
-  conditions: os=win32 & cpu=ia32
-  languageName: node
-  linkType: hard
-
 "@esbuild/win32-ia32@npm:0.25.1":
   version: 0.25.1
   resolution: "@esbuild/win32-ia32@npm:0.25.1"
@@ -2744,13 +2577,6 @@ __metadata:
   version: 0.25.9
   resolution: "@esbuild/win32-ia32@npm:0.25.9"
   conditions: os=win32 & cpu=ia32
-  languageName: node
-  linkType: hard
-
-"@esbuild/win32-x64@npm:0.20.2":
-  version: 0.20.2
-  resolution: "@esbuild/win32-x64@npm:0.20.2"
-  conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
 
@@ -3267,15 +3093,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@opentelemetry/api-logs@npm:0.48.0":
-  version: 0.48.0
-  resolution: "@opentelemetry/api-logs@npm:0.48.0"
-  dependencies:
-    "@opentelemetry/api": ^1.0.0
-  checksum: 2224d0da74cb65219bf802f234051b3b6fe3deba599151e46f490b0194719eb0b989f5f335842bcf2709c9aa15c6edb2b9bd4d477b78a3a3be43bce20f563299
-  languageName: node
-  linkType: hard
-
 "@opentelemetry/api-logs@npm:0.57.2":
   version: 0.57.2
   resolution: "@opentelemetry/api-logs@npm:0.57.2"
@@ -3285,33 +3102,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@opentelemetry/api@npm:^1.0.0":
-  version: 1.4.1
-  resolution: "@opentelemetry/api@npm:1.4.1"
-  checksum: e783c40d1a518abf9c4c5d65223237c1392cd9a6c53ac6e2c3ef0c05ff7266e3dfc4fd9874316dae0dcb7a97950878deb513bcbadfaad653d48f0215f2a0911b
-  languageName: node
-  linkType: hard
-
 "@opentelemetry/api@npm:^1.3.0, @opentelemetry/api@npm:^1.9.0":
   version: 1.9.0
   resolution: "@opentelemetry/api@npm:1.9.0"
   checksum: 9e88e59d53ced668f3daaecfd721071c5b85a67dd386f1c6f051d1be54375d850016c881f656ffbe9a03bedae85f7e89c2f2b635313f9c9b195ad033cdc31020
-  languageName: node
-  linkType: hard
-
-"@opentelemetry/api@npm:^1.7.0":
-  version: 1.8.0
-  resolution: "@opentelemetry/api@npm:1.8.0"
-  checksum: 0e32079975f05bee6de2ad8ade097f0afdc63f462c76550150fce2444c73ab92aaf851ac85e638b6e3b269da6640ac7e63f33913a0fd7df9f9beec2e100759df
-  languageName: node
-  linkType: hard
-
-"@opentelemetry/context-async-hooks@npm:1.23.0":
-  version: 1.23.0
-  resolution: "@opentelemetry/context-async-hooks@npm:1.23.0"
-  peerDependencies:
-    "@opentelemetry/api": ">=1.0.0 <1.9.0"
-  checksum: 4dc6c4f816402fe3deb5d43aebd4ceadd8afa8feab2047eed7cc906379fd341686cac8d16bce1c436d15e03b29883bcf73f04d4da005abe318e0b9ec69bdbd23
   languageName: node
   linkType: hard
 
@@ -3324,28 +3118,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@opentelemetry/core@npm:1.21.0":
-  version: 1.21.0
-  resolution: "@opentelemetry/core@npm:1.21.0"
-  dependencies:
-    "@opentelemetry/semantic-conventions": 1.21.0
-  peerDependencies:
-    "@opentelemetry/api": ">=1.0.0 <1.8.0"
-  checksum: 857eb667732edd1ad20107446935f1860b67602ab78493c2d0fc1711fdff0d8d1b63afcf1ea28468d62605e1237a38feb641ed9a154c3af87adb21b54101ba65
-  languageName: node
-  linkType: hard
-
-"@opentelemetry/core@npm:1.23.0, @opentelemetry/core@npm:^1.21.0":
-  version: 1.23.0
-  resolution: "@opentelemetry/core@npm:1.23.0"
-  dependencies:
-    "@opentelemetry/semantic-conventions": 1.23.0
-  peerDependencies:
-    "@opentelemetry/api": ">=1.0.0 <1.9.0"
-  checksum: 88aa733364c42f90a61a6efc8b5138dcfed4763f3a0692d957d506a6fe49db943169a0631ad762ac7569723faf5eaca092d6590eca1ad8ff77583fb10512a06b
-  languageName: node
-  linkType: hard
-
 "@opentelemetry/core@npm:1.30.1, @opentelemetry/core@npm:^1.30.1":
   version: 1.30.1
   resolution: "@opentelemetry/core@npm:1.30.1"
@@ -3354,22 +3126,6 @@ __metadata:
   peerDependencies:
     "@opentelemetry/api": ">=1.0.0 <1.10.0"
   checksum: fe71452fffc6b5efe4bd1f0ab18b0424e744825f9a837f5bf08be80fe6d2c90c443743cb3d220cffad27b7d83dc38e0a7861c91ec965be156394e752c95e583c
-  languageName: node
-  linkType: hard
-
-"@opentelemetry/exporter-trace-otlp-grpc@npm:^0.48.0":
-  version: 0.48.0
-  resolution: "@opentelemetry/exporter-trace-otlp-grpc@npm:0.48.0"
-  dependencies:
-    "@grpc/grpc-js": ^1.7.1
-    "@opentelemetry/core": 1.21.0
-    "@opentelemetry/otlp-grpc-exporter-base": 0.48.0
-    "@opentelemetry/otlp-transformer": 0.48.0
-    "@opentelemetry/resources": 1.21.0
-    "@opentelemetry/sdk-trace-base": 1.21.0
-  peerDependencies:
-    "@opentelemetry/api": ^1.0.0
-  checksum: ce345c0a872af36a946d7287ec516f55c88bd3a95dfac78a6e72bbb5c3b431b201727206880b75c522f9cfadd8691207a6f91004c1263793042313958321bf60
   languageName: node
   linkType: hard
 
@@ -3390,17 +3146,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@opentelemetry/otlp-exporter-base@npm:0.48.0":
-  version: 0.48.0
-  resolution: "@opentelemetry/otlp-exporter-base@npm:0.48.0"
-  dependencies:
-    "@opentelemetry/core": 1.21.0
-  peerDependencies:
-    "@opentelemetry/api": ^1.0.0
-  checksum: 9b6b163842588b5074ea82a796b773914a2bc94706c4fd2dc7962b693e4802c01441cb441dbc2cf134b23ca481b2fab463121f938527abb9a04790f67119101e
-  languageName: node
-  linkType: hard
-
 "@opentelemetry/otlp-exporter-base@npm:0.57.2":
   version: 0.57.2
   resolution: "@opentelemetry/otlp-exporter-base@npm:0.57.2"
@@ -3410,20 +3155,6 @@ __metadata:
   peerDependencies:
     "@opentelemetry/api": ^1.3.0
   checksum: 6bacc1dc968f43abfbb4b50aca3172a0aaf4dbdd0d927f0e8961f5f6f0cd5cd06e33f5ae81f41ba9d45a146a03cedebac795dc7d5d864c2c039eac1f3d9ca0bd
-  languageName: node
-  linkType: hard
-
-"@opentelemetry/otlp-grpc-exporter-base@npm:0.48.0":
-  version: 0.48.0
-  resolution: "@opentelemetry/otlp-grpc-exporter-base@npm:0.48.0"
-  dependencies:
-    "@grpc/grpc-js": ^1.7.1
-    "@opentelemetry/core": 1.21.0
-    "@opentelemetry/otlp-exporter-base": 0.48.0
-    protobufjs: ^7.2.3
-  peerDependencies:
-    "@opentelemetry/api": ^1.0.0
-  checksum: 32994224240efe30ca6ec5de579d503904a4b3ec60581386133a6f15a7d965ba8b320b7b2a6930fefda9765d7af4e0284c06eb73a7d0a6b7f4928ed4a1d85acb
   languageName: node
   linkType: hard
 
@@ -3438,22 +3169,6 @@ __metadata:
   peerDependencies:
     "@opentelemetry/api": ^1.3.0
   checksum: e947850f50a03711bfa6e3a62aa7cf1738fa3d7add4e2076b9e674c13f17356647224d88da41a5dbf2279f4355db53b695ed5419a3d4c5874bb1de743d3f2b62
-  languageName: node
-  linkType: hard
-
-"@opentelemetry/otlp-transformer@npm:0.48.0":
-  version: 0.48.0
-  resolution: "@opentelemetry/otlp-transformer@npm:0.48.0"
-  dependencies:
-    "@opentelemetry/api-logs": 0.48.0
-    "@opentelemetry/core": 1.21.0
-    "@opentelemetry/resources": 1.21.0
-    "@opentelemetry/sdk-logs": 0.48.0
-    "@opentelemetry/sdk-metrics": 1.21.0
-    "@opentelemetry/sdk-trace-base": 1.21.0
-  peerDependencies:
-    "@opentelemetry/api": ">=1.3.0 <1.8.0"
-  checksum: eee9dd629f750a629e5ce3ea8c254e804d125e6d8b716d5083c494ea0c62554067ef5753b85877182ed3f529aa117fcd2dfea7b05a3306db69fcb146dfed00d9
   languageName: node
   linkType: hard
 
@@ -3474,17 +3189,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@opentelemetry/propagator-b3@npm:1.23.0":
-  version: 1.23.0
-  resolution: "@opentelemetry/propagator-b3@npm:1.23.0"
-  dependencies:
-    "@opentelemetry/core": 1.23.0
-  peerDependencies:
-    "@opentelemetry/api": ">=1.0.0 <1.9.0"
-  checksum: 8478a4ac3fcad3ea53ed7af70c7da22dee48a262aef2bb2c64a039a3aff1368476b23ce385b95b3c34334a29d7964c98ca3c08bc05dd2999a891faf3ab858799
-  languageName: node
-  linkType: hard
-
 "@opentelemetry/propagator-b3@npm:1.30.1":
   version: 1.30.1
   resolution: "@opentelemetry/propagator-b3@npm:1.30.1"
@@ -3493,17 +3197,6 @@ __metadata:
   peerDependencies:
     "@opentelemetry/api": ">=1.0.0 <1.10.0"
   checksum: 19e7a7667aff64a2735278e3c2cbd207a2da2f9ae48effca0716deaf18ecf6fb1a539d52ed7fbc5f0eb66fa43a12c4078af75a212451d8cd1a8346b54f3b2515
-  languageName: node
-  linkType: hard
-
-"@opentelemetry/propagator-jaeger@npm:1.23.0":
-  version: 1.23.0
-  resolution: "@opentelemetry/propagator-jaeger@npm:1.23.0"
-  dependencies:
-    "@opentelemetry/core": 1.23.0
-  peerDependencies:
-    "@opentelemetry/api": ">=1.0.0 <1.9.0"
-  checksum: 240f27f15473704a5cf8549ea22b1640d865ef40c3da65b023e7f44cc89422b9f983061e4508a3f4576339907625c8f725c42e7f5e77c243c833e03d9490880d
   languageName: node
   linkType: hard
 
@@ -3518,30 +3211,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@opentelemetry/resources@npm:1.21.0":
-  version: 1.21.0
-  resolution: "@opentelemetry/resources@npm:1.21.0"
-  dependencies:
-    "@opentelemetry/core": 1.21.0
-    "@opentelemetry/semantic-conventions": 1.21.0
-  peerDependencies:
-    "@opentelemetry/api": ">=1.0.0 <1.8.0"
-  checksum: 79866dd673aa0b3cc4c2bbe614af48b7fa15e09661875c160eb00667832a83f531ea7c4bea8f1d3d97ee01ab5107152125ddc85837bf984c441471707417cacb
-  languageName: node
-  linkType: hard
-
-"@opentelemetry/resources@npm:1.23.0, @opentelemetry/resources@npm:^1.21.0":
-  version: 1.23.0
-  resolution: "@opentelemetry/resources@npm:1.23.0"
-  dependencies:
-    "@opentelemetry/core": 1.23.0
-    "@opentelemetry/semantic-conventions": 1.23.0
-  peerDependencies:
-    "@opentelemetry/api": ">=1.0.0 <1.9.0"
-  checksum: e780d34f8107cdd2853aab3c0c680a817da54d9c6020bba9b8a6b8e7b637487592d87440e5c4f09a10dfad7aededde34532e0e337a5c2d441bf26dd921836cfc
-  languageName: node
-  linkType: hard
-
 "@opentelemetry/resources@npm:1.30.1, @opentelemetry/resources@npm:^1.30.1":
   version: 1.30.1
   resolution: "@opentelemetry/resources@npm:1.30.1"
@@ -3551,19 +3220,6 @@ __metadata:
   peerDependencies:
     "@opentelemetry/api": ">=1.0.0 <1.10.0"
   checksum: a930d52fcdb18bda6d27a5d867493a6aa560fcad9f266af0c5d24c26069253b463f5cb9961577c3ebb1de752ae37ef4e1344009273504e19604ea7495a4028bd
-  languageName: node
-  linkType: hard
-
-"@opentelemetry/sdk-logs@npm:0.48.0":
-  version: 0.48.0
-  resolution: "@opentelemetry/sdk-logs@npm:0.48.0"
-  dependencies:
-    "@opentelemetry/core": 1.21.0
-    "@opentelemetry/resources": 1.21.0
-  peerDependencies:
-    "@opentelemetry/api": ">=1.4.0 <1.8.0"
-    "@opentelemetry/api-logs": ">=0.39.1"
-  checksum: 2bac3ed3b87bdd0d6dbf00edbd7be78e94c9276a9cf1ecaa31d320272aa455cc5c5784b97f339f93237d80eecbdb6b8148cc1cfdcae1364ee60c4a0651b1a922
   languageName: node
   linkType: hard
 
@@ -3580,19 +3236,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@opentelemetry/sdk-metrics@npm:1.21.0":
-  version: 1.21.0
-  resolution: "@opentelemetry/sdk-metrics@npm:1.21.0"
-  dependencies:
-    "@opentelemetry/core": 1.21.0
-    "@opentelemetry/resources": 1.21.0
-    lodash.merge: ^4.6.2
-  peerDependencies:
-    "@opentelemetry/api": ">=1.3.0 <1.8.0"
-  checksum: 393d01c15ab000bb2b05c95233e58d9e8341b0e1e2e437b7257291bf6e1edfec2971aaf76f5bc974a2291c4678dfcaed699676223e18a5f33018d3e4825b479b
-  languageName: node
-  linkType: hard
-
 "@opentelemetry/sdk-metrics@npm:1.30.1":
   version: 1.30.1
   resolution: "@opentelemetry/sdk-metrics@npm:1.30.1"
@@ -3602,32 +3245,6 @@ __metadata:
   peerDependencies:
     "@opentelemetry/api": ">=1.3.0 <1.10.0"
   checksum: b74d16b1a0550e840fea4e7585162d3f3f817aef5e6991e86c1d1808c1e18ec32f6e32982756622671505c3d224976e1f6c11fb4b49d39f281fd7848b57277a0
-  languageName: node
-  linkType: hard
-
-"@opentelemetry/sdk-trace-base@npm:1.21.0, @opentelemetry/sdk-trace-base@npm:^1.21.0":
-  version: 1.21.0
-  resolution: "@opentelemetry/sdk-trace-base@npm:1.21.0"
-  dependencies:
-    "@opentelemetry/core": 1.21.0
-    "@opentelemetry/resources": 1.21.0
-    "@opentelemetry/semantic-conventions": 1.21.0
-  peerDependencies:
-    "@opentelemetry/api": ">=1.0.0 <1.8.0"
-  checksum: b3c35d4b001ad4c098d01ecc363b0d7289de95243db50e914af1450b3e7387c62e058074a654f3dc5d868cf18c011590f4a9902cb5b83aeb1850bcec67d9d89c
-  languageName: node
-  linkType: hard
-
-"@opentelemetry/sdk-trace-base@npm:1.23.0":
-  version: 1.23.0
-  resolution: "@opentelemetry/sdk-trace-base@npm:1.23.0"
-  dependencies:
-    "@opentelemetry/core": 1.23.0
-    "@opentelemetry/resources": 1.23.0
-    "@opentelemetry/semantic-conventions": 1.23.0
-  peerDependencies:
-    "@opentelemetry/api": ">=1.0.0 <1.9.0"
-  checksum: 564a14a38b151d793949da95949a5eb4e0034ff95356162a7fcf7fe6a81b312cd8d601d6e46b303e6d9f785152ff28621cb7bd114f61e064bfdfa77ed28ca8cc
   languageName: node
   linkType: hard
 
@@ -3644,22 +3261,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@opentelemetry/sdk-trace-node@npm:^1.21.0":
-  version: 1.23.0
-  resolution: "@opentelemetry/sdk-trace-node@npm:1.23.0"
-  dependencies:
-    "@opentelemetry/context-async-hooks": 1.23.0
-    "@opentelemetry/core": 1.23.0
-    "@opentelemetry/propagator-b3": 1.23.0
-    "@opentelemetry/propagator-jaeger": 1.23.0
-    "@opentelemetry/sdk-trace-base": 1.23.0
-    semver: ^7.5.2
-  peerDependencies:
-    "@opentelemetry/api": ">=1.0.0 <1.9.0"
-  checksum: 165f26d77672d6745e9b1d3af78e3b1afcd4fe1b48e0eaef1aa67e9c86e822f9d0947cb0066c6a1080bdcf03c9da268870cace839254d1fee03446b25dbf6d30
-  languageName: node
-  linkType: hard
-
 "@opentelemetry/sdk-trace-node@npm:^1.30.1":
   version: 1.30.1
   resolution: "@opentelemetry/sdk-trace-node@npm:1.30.1"
@@ -3673,20 +3274,6 @@ __metadata:
   peerDependencies:
     "@opentelemetry/api": ">=1.0.0 <1.10.0"
   checksum: e9122c45b509c11130640d6f5bc621bd547771919dcb6fb0fee0d244c9b5a07d3f721dd338eddcadd1b1d6ef0111de79bbc7a862115fa23e7ed28bca39738c67
-  languageName: node
-  linkType: hard
-
-"@opentelemetry/semantic-conventions@npm:1.21.0":
-  version: 1.21.0
-  resolution: "@opentelemetry/semantic-conventions@npm:1.21.0"
-  checksum: 8bd477ddabecf87499985de773265b35a09142071b14e1e427237181e90c4e0f5b1959d009acfb81b80319debbcb453f137e6686c63b60af9656aa611f607b77
-  languageName: node
-  linkType: hard
-
-"@opentelemetry/semantic-conventions@npm:1.23.0, @opentelemetry/semantic-conventions@npm:^1.21.0":
-  version: 1.23.0
-  resolution: "@opentelemetry/semantic-conventions@npm:1.23.0"
-  checksum: a4bd6e67e0fe5821be7dc14baff77574e9881d208a63740a3ab416b367c132bc77cf3c0b398daea1344c9af2f32383cf6c7da3141ba6d1e87e30756e4f2234b8
   languageName: node
   linkType: hard
 
@@ -4481,26 +4068,25 @@ __metadata:
   languageName: node
   linkType: hard
 
-"algoliasearch@npm:^4.19.1":
-  version: 4.23.2
-  resolution: "algoliasearch@npm:4.23.2"
+"algoliasearch@npm:^5.14.2":
+  version: 5.37.0
+  resolution: "algoliasearch@npm:5.37.0"
   dependencies:
-    "@algolia/cache-browser-local-storage": 4.23.2
-    "@algolia/cache-common": 4.23.2
-    "@algolia/cache-in-memory": 4.23.2
-    "@algolia/client-account": 4.23.2
-    "@algolia/client-analytics": 4.23.2
-    "@algolia/client-common": 4.23.2
-    "@algolia/client-personalization": 4.23.2
-    "@algolia/client-search": 4.23.2
-    "@algolia/logger-common": 4.23.2
-    "@algolia/logger-console": 4.23.2
-    "@algolia/recommend": 4.23.2
-    "@algolia/requester-browser-xhr": 4.23.2
-    "@algolia/requester-common": 4.23.2
-    "@algolia/requester-node-http": 4.23.2
-    "@algolia/transporter": 4.23.2
-  checksum: 25a3303a5aff34a049c9d115d140650b4178b4cf2d78b23f4e8bdae7caa5e1a61d22c888a12d162ac22cfeba99e2579b4c17b03ccd33f5b5446c9db8f10ff712
+    "@algolia/abtesting": 1.3.0
+    "@algolia/client-abtesting": 5.37.0
+    "@algolia/client-analytics": 5.37.0
+    "@algolia/client-common": 5.37.0
+    "@algolia/client-insights": 5.37.0
+    "@algolia/client-personalization": 5.37.0
+    "@algolia/client-query-suggestions": 5.37.0
+    "@algolia/client-search": 5.37.0
+    "@algolia/ingestion": 1.37.0
+    "@algolia/monitoring": 1.37.0
+    "@algolia/recommend": 5.37.0
+    "@algolia/requester-browser-xhr": 5.37.0
+    "@algolia/requester-fetch": 5.37.0
+    "@algolia/requester-node-http": 5.37.0
+  checksum: 33ddbe883c1ea0f93352cdf5dc3604beb0e32c721f7df37f10b3151603ae91887eb5f573c16de481789ff0b4d04adb77de6d4470efcde9f3437fef94407f0f66
   languageName: node
   linkType: hard
 
@@ -5418,19 +5004,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"contentlayer2@npm:^0.4.4":
-  version: 0.4.4
-  resolution: "contentlayer2@npm:0.4.4"
+"contentlayer2@npm:^0.5.3":
+  version: 0.5.8
+  resolution: "contentlayer2@npm:0.5.8"
   dependencies:
-    "@contentlayer2/cli": 0.4.1
-    "@contentlayer2/client": 0.4.1
-    "@contentlayer2/core": 0.4.1
-    "@contentlayer2/source-files": 0.4.1
-    "@contentlayer2/source-remote-files": 0.4.1
-    "@contentlayer2/utils": 0.4.1
+    "@contentlayer2/cli": 0.5.8
+    "@contentlayer2/client": 0.5.8
+    "@contentlayer2/core": 0.5.8
+    "@contentlayer2/source-files": 0.5.8
+    "@contentlayer2/source-remote-files": 0.5.8
+    "@contentlayer2/utils": 0.5.8
   bin:
     contentlayer2: ./bin/cli.cjs
-  checksum: 7ec7482548010218a3020297823b484d761f476fcbb23e289ba46a23b917bcd433b71c67ec7b9d6824254b58586f49a28528eefaf7e25bcc1db1b96131cfc628
+  checksum: 4b928868a0e4f8b826bd4b9a0e6af08c62d07ef0064c6426e683b2855d7b23574b775f4037b9d693cdb7bfb5854c12e24671af95449d0513c90d72ba43d38002
   languageName: node
   linkType: hard
 
@@ -6148,86 +5734,6 @@ __metadata:
     is-date-object: ^1.0.1
     is-symbol: ^1.0.2
   checksum: 4ead6671a2c1402619bdd77f3503991232ca15e17e46222b0a41a5d81aebc8740a77822f5b3c965008e631153e9ef0580540007744521e72de8e33599fca2eed
-  languageName: node
-  linkType: hard
-
-"esbuild@npm:0.17.x || 0.18.x || 0.19.x || 0.20.x":
-  version: 0.20.2
-  resolution: "esbuild@npm:0.20.2"
-  dependencies:
-    "@esbuild/aix-ppc64": 0.20.2
-    "@esbuild/android-arm": 0.20.2
-    "@esbuild/android-arm64": 0.20.2
-    "@esbuild/android-x64": 0.20.2
-    "@esbuild/darwin-arm64": 0.20.2
-    "@esbuild/darwin-x64": 0.20.2
-    "@esbuild/freebsd-arm64": 0.20.2
-    "@esbuild/freebsd-x64": 0.20.2
-    "@esbuild/linux-arm": 0.20.2
-    "@esbuild/linux-arm64": 0.20.2
-    "@esbuild/linux-ia32": 0.20.2
-    "@esbuild/linux-loong64": 0.20.2
-    "@esbuild/linux-mips64el": 0.20.2
-    "@esbuild/linux-ppc64": 0.20.2
-    "@esbuild/linux-riscv64": 0.20.2
-    "@esbuild/linux-s390x": 0.20.2
-    "@esbuild/linux-x64": 0.20.2
-    "@esbuild/netbsd-x64": 0.20.2
-    "@esbuild/openbsd-x64": 0.20.2
-    "@esbuild/sunos-x64": 0.20.2
-    "@esbuild/win32-arm64": 0.20.2
-    "@esbuild/win32-ia32": 0.20.2
-    "@esbuild/win32-x64": 0.20.2
-  dependenciesMeta:
-    "@esbuild/aix-ppc64":
-      optional: true
-    "@esbuild/android-arm":
-      optional: true
-    "@esbuild/android-arm64":
-      optional: true
-    "@esbuild/android-x64":
-      optional: true
-    "@esbuild/darwin-arm64":
-      optional: true
-    "@esbuild/darwin-x64":
-      optional: true
-    "@esbuild/freebsd-arm64":
-      optional: true
-    "@esbuild/freebsd-x64":
-      optional: true
-    "@esbuild/linux-arm":
-      optional: true
-    "@esbuild/linux-arm64":
-      optional: true
-    "@esbuild/linux-ia32":
-      optional: true
-    "@esbuild/linux-loong64":
-      optional: true
-    "@esbuild/linux-mips64el":
-      optional: true
-    "@esbuild/linux-ppc64":
-      optional: true
-    "@esbuild/linux-riscv64":
-      optional: true
-    "@esbuild/linux-s390x":
-      optional: true
-    "@esbuild/linux-x64":
-      optional: true
-    "@esbuild/netbsd-x64":
-      optional: true
-    "@esbuild/openbsd-x64":
-      optional: true
-    "@esbuild/sunos-x64":
-      optional: true
-    "@esbuild/win32-arm64":
-      optional: true
-    "@esbuild/win32-ia32":
-      optional: true
-    "@esbuild/win32-x64":
-      optional: true
-  bin:
-    esbuild: bin/esbuild
-  checksum: bc88050fc1ca5c1bd03648f9979e514bdefb956a63aa3974373bb7b9cbac0b3aac9b9da1b5bdca0b3490e39d6b451c72815dbd6b7d7f978c91fbe9c9e9aa4e4c
   languageName: node
   linkType: hard
 
@@ -7054,13 +6560,6 @@ __metadata:
   dependencies:
     minipass: ^7.0.3
   checksum: 8722a41109130851d979222d3ec88aabaceeaaf8f57b2a8f744ef8bd2d1ce95453b04a61daa0078822bc5cd21e008814f06fe6586f56fef511e71b8d2394d802
-  languageName: node
-  linkType: hard
-
-"fs-monkey@npm:^1.0.4":
-  version: 1.0.5
-  resolution: "fs-monkey@npm:1.0.5"
-  checksum: 424b67f65b37fe66117ae2bb061f790fe6d4b609e1d160487c74b3d69fbf42f262c665ccfba32e8b5f113f96f92e9a58fcdebe42d5f6649bdfc72918093a3119
   languageName: node
   linkType: hard
 
@@ -9173,25 +8672,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mdx-bundler@npm:^10.0.2":
-  version: 10.0.2
-  resolution: "mdx-bundler@npm:10.0.2"
-  dependencies:
-    "@babel/runtime": ^7.23.2
-    "@esbuild-plugins/node-resolve": ^0.2.2
-    "@fal-works/esbuild-plugin-global-externals": ^2.1.2
-    "@mdx-js/esbuild": ^3.0.0
-    gray-matter: ^4.0.3
-    remark-frontmatter: ^5.0.0
-    remark-mdx-frontmatter: ^4.0.0
-    uuid: ^9.0.1
-    vfile: ^6.0.1
-  peerDependencies:
-    esbuild: 0.*
-  checksum: 06227050ed160ca77e6667f287eb13eaae7f686bb3a44cbfbcdd869e8eba98439750d2dc6c173165b3c7b8ab59a037a5a383b5feec2eb883d568fc0416b66d8f
-  languageName: node
-  linkType: hard
-
 "mdx-bundler@npm:^10.1.1":
   version: 10.1.1
   resolution: "mdx-bundler@npm:10.1.1"
@@ -9208,15 +8688,6 @@ __metadata:
   peerDependencies:
     esbuild: 0.*
   checksum: 305e3db8eed7c4f62438ca9fd18d2f3a472fb042e13828d680abc2d567d22242c058827d53e7052a0b85fd93b28660cb139577078cb3cbe30c2c53223bf6523a
-  languageName: node
-  linkType: hard
-
-"memfs@npm:3.6.0":
-  version: 3.6.0
-  resolution: "memfs@npm:3.6.0"
-  dependencies:
-    fs-monkey: ^1.0.4
-  checksum: 934e79f32aabb10869056815bf369ed63aacb61d13183a3a3826847bbb359d7023fd5b365984ddd73faed463bbb5370ed5cd1e87ecf50ac010c5cac81929ed78
   languageName: node
   linkType: hard
 
@@ -10020,18 +9491,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next-contentlayer2@npm:^0.4.4":
-  version: 0.4.4
-  resolution: "next-contentlayer2@npm:0.4.4"
+"next-contentlayer2@npm:^0.5.3":
+  version: 0.5.8
+  resolution: "next-contentlayer2@npm:0.5.8"
   dependencies:
-    "@contentlayer2/core": 0.4.1
-    "@contentlayer2/utils": 0.4.1
+    "@contentlayer2/core": 0.5.8
+    "@contentlayer2/utils": 0.5.8
   peerDependencies:
-    contentlayer2: 0.4.4
-    next: ^12 || ^13 || ^14
-    react: "*"
-    react-dom: "*"
-  checksum: aa48c73959ed59d72761defb4cb5f9a676dd0cd9e932a8b3c63b24881416fbed2d5e78afffe18c8f7309195d4b1b66d14650e6724d9322d929f633e7990ea3f7
+    contentlayer2: 0.5.8
+    next: ">=12.0.0"
+    react: ^18 || ^19 || ^19.0.0-rc
+    react-dom: ^18 || ^19 || ^19.0.0-rc
+  checksum: 41f9d1cc021e87397e0dcdc89928e7292db775dfcc90850b0b9c6b85cdde8538b65e1ca2ad634a03c6b663f526d955ca11a02eb771e08663420e5254705359de
   languageName: node
   linkType: hard
 
@@ -10574,28 +10045,28 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pliny@npm:0.2.0":
-  version: 0.2.0
-  resolution: "pliny@npm:0.2.0"
+"pliny@npm:0.4.1":
+  version: 0.4.1
+  resolution: "pliny@npm:0.4.1"
   dependencies:
-    "@docsearch/react": ^3.5.0
+    "@docsearch/react": ^3.6.2
     "@giscus/react": ^3.0.0
     "@mailchimp/mailchimp_marketing": ^3.0.80
-    contentlayer2: ^0.4.4
+    contentlayer2: ^0.5.3
     copyfiles: ^2.4.1
     github-slugger: ^2.0.0
     js-yaml: 4.1.0
     kbar: 0.1.0-beta.45
-    next-contentlayer2: ^0.4.4
+    next-contentlayer2: ^0.5.3
     next-themes: ^0.3.0
     probe-image-size: ^7.2.3
     remark: ^15.0.0
     unist-util-visit: ^5.0.0
   peerDependencies:
     next: ">=13.0.0"
-    react: ^17.0.2 || ^18.0.0
-    react-dom: ^17.0.2 || ^18.0.0
-  checksum: 00a9b538832814aa5706f963cc43152bee8a8cda48544ab051d0b460bc119af35701e842a91ac56753db85a8e2157d7678599e334756111c2fb2c26655e02ef8
+    react: ^17.0.2 || ^18 || ^19 || ^19.0.0-rc
+    react-dom: ^17.0.2 || ^18 || ^19 || ^19.0.0-rc
+  checksum: 0400965974c7b1c1c5d96d5541978aec43c6137874b51e2dd59f1c8f688150c53158fefa8a2d17e35b8e16d9827e70aa86afc8ab6374f230aa27636240a2d9d9
   languageName: node
   linkType: hard
 
@@ -10838,26 +10309,6 @@ __metadata:
   version: 6.5.0
   resolution: "property-information@npm:6.5.0"
   checksum: 6e55664e2f64083b715011e5bafaa1e694faf36986c235b0907e95d09259cc37c38382e3cc94a4c3f56366e05336443db12c8a0f0968a8c0a1b1416eebfc8f53
-  languageName: node
-  linkType: hard
-
-"protobufjs@npm:^7.2.3":
-  version: 7.2.6
-  resolution: "protobufjs@npm:7.2.6"
-  dependencies:
-    "@protobufjs/aspromise": ^1.1.2
-    "@protobufjs/base64": ^1.1.2
-    "@protobufjs/codegen": ^2.0.4
-    "@protobufjs/eventemitter": ^1.1.0
-    "@protobufjs/fetch": ^1.1.0
-    "@protobufjs/float": ^1.0.2
-    "@protobufjs/inquire": ^1.1.0
-    "@protobufjs/path": ^1.1.2
-    "@protobufjs/pool": ^1.1.0
-    "@protobufjs/utf8": ^1.1.0
-    "@types/node": ">=13.7.0"
-    long: ^5.0.0
-  checksum: 3c62e48f7d50017ac3b0dcd2a58e617cf858f9fba56a488bd48b9aa3482893a75540052dbcb3c12dfbaab42b1d04964611175faf06bdadcd33a4ebac982a511e
   languageName: node
   linkType: hard
 
@@ -12468,7 +11919,7 @@ __metadata:
     next-contentlayer2: 0.5.5
     next-themes: ^0.3.0
     nprogress: ^0.2.0
-    pliny: 0.2.0
+    pliny: 0.4.1
     postcss: ^8.4.24
     prettier: ^3.0.0
     prettier-plugin-tailwindcss: ^0.5.11
